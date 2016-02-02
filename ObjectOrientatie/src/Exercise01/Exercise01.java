@@ -13,5 +13,11 @@ package Exercise01;
 public class Exercise01 {
     
     public static void main (String[] args) {
+        
+        Student bob = new Student ("Bob", "Janssen", 4567890);
+        System.out.println(bob);
+        bob.setNaam("Bob", "de Bouwer"); 
+        System.out.println(bob);
+        
     }
 }
