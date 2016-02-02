@@ -1,2 +1,2 @@
-# oo-2016
-Object Oriëntatie 2016
+#oo-2016
+Object Orientatie 2016
