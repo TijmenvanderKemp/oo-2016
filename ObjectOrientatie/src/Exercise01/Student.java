@@ -23,4 +23,9 @@ public class Student {
         this.achternaam = achternaam;
         this.studentnr = studentnr;
     }
+    
+    @Override
+    public String toString () {
+        return voornaam + " " + achternaam;
+    }
 }
