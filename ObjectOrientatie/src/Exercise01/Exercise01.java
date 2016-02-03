@@ -13,15 +13,6 @@ package Exercise01;
 public class Exercise01 {
     
     public static void main (String[] args) {
-        
-        Student bob = new Student ("Bob", "Janssen", 4567890);
-        System.out.println(bob);
-        bob.setNaam("Bob", "de Bouwer"); 
-        System.out.println(bob);
-        
-        Groep g = new Groep (2);
-        for (int i = 0; i < 3; i ++) {
-            System.out.println(g.voegToe(bob));
-        }
+        Hoofdklasse hoofdklasse = new Hoofdklasse ();
     }
 }
