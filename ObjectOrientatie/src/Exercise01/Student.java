@@ -15,8 +15,11 @@ public class Student {
     private String achternaam;
     private int studentnr;
     
-    /*
-     * Default constructor.
+    /**
+     * Default constructor
+     * @param voornaam
+     * @param achternaam
+     * @param studentnr 
      */
     public Student (String voornaam, String achternaam, int studentnr) {
         this.voornaam = voornaam;
@@ -26,6 +29,11 @@ public class Student {
     
     @Override
     public String toString () {
-        return voornaam + " " + achternaam;
+        return voornaam + " " + achternaam + " s" + studentnr;
+    }
+    
+    public void setNaam (String voornaam, String achternaam) {
+        this.voornaam = voornaam;
+        this.achternaam = achternaam;
     }
 }
