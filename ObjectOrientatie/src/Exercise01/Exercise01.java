@@ -19,7 +19,7 @@ public class Exercise01 {
     }
     
     /**
-     * Default constructor
+     * Default constructor, handles I/O
      */
     public Exercise01 () {
         
@@ -54,10 +54,10 @@ public class Exercise01 {
                 System.out.println("Volgnummer van student?");
                 int volgnr = scanner.nextInt();
                 scanner.nextLine();
-                if (volgnr < 0) {
+                if (volgnr < 0) { // "If the volgnummer is negative, stop the program"
                     break;
                 }
-                if (volgnr >= aantal){
+                if (volgnr >= aantal){ // Index will be out of bounds
                     System.out.println("Volgnummer te hoog");
                     
                 }
