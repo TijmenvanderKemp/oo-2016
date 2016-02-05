@@ -6,7 +6,7 @@
 package Exercise01;
 
 /**
- *
+ * A student with a first name, surname and studentnr
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
@@ -17,9 +17,9 @@ public class Student {
     
     /**
      * Default constructor
-     * @param voornaam
-     * @param achternaam
-     * @param studentnr 
+     * @param voornaam first name of student
+     * @param achternaam surname of student
+     * @param studentnr studentnr of student
      */
     public Student (String voornaam, String achternaam, int studentnr) {
         this.voornaam = voornaam;
@@ -27,11 +27,20 @@ public class Student {
         this.studentnr = studentnr;
     }
     
+    /**
+     * standard toString function
+     * @return first name + surname + studentnr
+     */
     @Override
     public String toString () {
         return voornaam + " " + achternaam + " s" + studentnr;
     }
     
+    /**
+     * changes name of the studen
+     * @param voornaam new first name of the student
+     * @param achternaam new surname of the student
+     */
     public void setNaam (String voornaam, String achternaam) {
         this.voornaam = voornaam;
         this.achternaam = achternaam;
