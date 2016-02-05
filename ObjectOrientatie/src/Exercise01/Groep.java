@@ -6,7 +6,7 @@
 package Exercise01;
 
 /**
- * 
+ * Groep is a group of Students. The user can add students and set and get them.
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
@@ -22,6 +22,11 @@ public class Groep {
         studenten = new Student [aantal];
     }
     
+    /**
+     * Adds a student to the group.
+     * @param student
+     * @return whether the addition succeeded
+     */
     public boolean voegToe (Student student) {
         for (int i = 0; i < studenten.length; i ++) {
             if (studenten[i] == null) {
@@ -32,6 +37,11 @@ public class Groep {
         return false;
     }
     
+    /** 
+     * Returns the student at place i in the group
+     * @param i
+     * @return
+     */
     public Student getStudent (int i) {
         if (studenten[i] == null) {
             return null;
@@ -41,6 +51,12 @@ public class Groep {
         }
     }
     
+    /**
+     * Overwrites the student at place i to student s
+     * @param i the place
+     * @param s the new student
+     * @return true if i is within the bounds of the array
+     */
     public boolean setStudent (int i, Student s) {
         if (i >= 0 && i < studenten.length) {
             studenten[i] = s;
@@ -51,6 +67,10 @@ public class Groep {
         }
     }
     
+    /**
+     * Returns all the students in text form, each on a newline.
+     * @return 
+     */
     @Override
     public String toString () {
         String result = "";
