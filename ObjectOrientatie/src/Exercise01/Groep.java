@@ -6,7 +6,7 @@
 package Exercise01;
 
 /**
- * doei
+ * hoi
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
