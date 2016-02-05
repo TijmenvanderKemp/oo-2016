@@ -50,18 +50,23 @@ public class Hoofdklasse {
                 System.out.println("Volgnummer van student?");
                 int volgnr = scanner.nextInt();
                 scanner.nextLine();
-                if (volgnr < 0 || volgnr >= aantal) {
+                if (volgnr < 0) {
                     break;
                 }
-                
-                System.out.println("Voornaam van student?");
-                String voornaam = scanner.nextLine();
-                System.out.println("Achternaam van student?");
-                String achternaam = scanner.nextLine();
-                Student s = g.getStudent(volgnr);
-                if (s != null) {
-                    s.setNaam(voornaam, achternaam);
-                    g.setStudent(volgnr, s);
+                if (volgnr >= aantal){
+                    System.out.println("Volgnummer te hoog");
+                    
+                }
+                else{
+                    System.out.println("Voornaam van student?");
+                    String voornaam = scanner.nextLine();
+                    System.out.println("Achternaam van student?");
+                    String achternaam = scanner.nextLine();
+                    Student s = g.getStudent(volgnr);
+                    if (s != null) {
+                        s.setNaam(voornaam, achternaam);
+                        g.setStudent(volgnr, s);
+                    }
                 }
             }
         }
