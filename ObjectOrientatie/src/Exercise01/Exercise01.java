@@ -8,7 +8,7 @@ package Exercise01;
 import java.util.Scanner;
 
 /**
- *
+ * The main file; handles I/O and the main flow of the program
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
