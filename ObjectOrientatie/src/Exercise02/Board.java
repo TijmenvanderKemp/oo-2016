@@ -5,6 +5,8 @@
 
 package Exercise02;
 
+
+import java.util.ArrayList;
 /**
  * One chessboard with cells
  * @author Joep Veldhoven (s4456556)
@@ -65,5 +67,52 @@ public class Board {
         }
     }
     
-    public void move (Position currentposition, Move move)
+    public move (Position cur_pos, Move move){
+        ArrayList pos_moves = new ArrayList();
+        int cur_x = cur_pos.x;
+        int cur_y = cur_pos.y;
+        switch(move){
+            case NNE:
+                Position NNE_pos = new Position(cur_y + 1, cur_x - 2);
+                if(is_legal(NNE_pos)){
+                    pos_moves.add(NNE_pos);
+                }
+            case EEN:
+                Position EEN_pos = new Position(cur_y + 2, cur_x - 1);
+                if(is_legal(EEN_pos)){
+                    pos_moves.add(EEN_pos);
+                }
+            case EES:
+                Position EES_pos = new Position(cur_y + 2, cur_x + 1);
+                if(is_legal(EES_pos)){
+                    pos_moves.add(EES_pos);
+                }
+            case SSE:
+                Position SSE_pos = new Position(cur_y + 1, cur_x + 2);
+                if(is_legal(SSE_pos)){
+                    pos_moves.add(SSE_pos);
+                }
+            case SSW:
+                Position SSW_pos = new Position(cur_y - 1, cur_x + 2);
+                if(is_legal(SSW_pos)){
+                    pos_moves.add(SSW_pos);
+                }
+            case WWS:
+                Position WWS_pos = new Position(cur_y - 2, cur_x + 1);
+                if(is_legal(WWS_pos)){
+                    pos_moves.add(WWS_pos);
+                }
+            case WWN:
+                Position WWN_pos = new Position(cur_y - 2, cur_x - 1);
+                if(is_legal(WWN_pos)){
+                    pos_moves.add(WWN_pos);
+                }
+            case NNW:
+                Position NNW_pos = new Position(cur_y - 1, cur_x - 2);
+                if(is_legal(NNW_pos)){
+                    pos_moves.add(NNW_pos);
+                }
+            sort(pos_moves);
+        }
+    }
 }

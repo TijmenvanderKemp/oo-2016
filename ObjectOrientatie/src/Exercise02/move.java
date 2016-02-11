@@ -8,6 +8,6 @@ package Exercise02;
  *
  * @author Joep
  */
-public enum move {
-    
+public enum Move {   
+    NNE, EEN, EES, SSE, SSW, WWS, WWN, NNW
 }
