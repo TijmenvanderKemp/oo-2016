@@ -20,6 +20,7 @@ public class Exercise02 {
     }
     
     public Exercise02 () {
+        Scanner scanner = new Scanner(System.in);
         Board board = new Board(6, 6);
         board.printBoard();
         
@@ -27,15 +28,15 @@ public class Exercise02 {
         int moveCounter = 1;
         boolean fullTour = false;
         
-        recursiveSolve (board, currentPosition, moveCounter, fullTour);
+        recursiveSolve (board, currentPosition, moveCounter, fullTour, scanner);
         
         board.printBoard();
     }
     
-    public boolean recursiveSolve (Board board, Position currentPosition, int moveCounter, boolean fullTour) {
+    public boolean recursiveSolve (Board board, Position currentPosition, int moveCounter, boolean fullTour, Scanner scanner) {
         System.out.println("----------------------");
         board.printBoard();
-        String dummy = Scanner.nextLine();
+        String dummy = scanner.nextLine();
         
         if (!fullTour && moveCounter > board.getHeight() * board.getWidth()) {
             return true; // All squares are filled
@@ -55,7 +56,7 @@ public class Exercise02 {
         sortNextMoves (board, nextMoves);
         
         for (Position move : nextMoves) {
-            if (recursiveSolve (board, move, moveCounter + 1, fullTour)) {
+            if (recursiveSolve (board, move, moveCounter + 1, fullTour, scanner)) {
                 return true; // Found a solution in one of the following moves
             }
         }
