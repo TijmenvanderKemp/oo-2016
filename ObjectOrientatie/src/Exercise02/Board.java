@@ -65,4 +65,5 @@ public class Board {
         }
     }
     
+    public void move (Position currentposition, Move move)
 }
