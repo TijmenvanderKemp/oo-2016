@@ -25,8 +25,9 @@ public class Exercise02 {
         
         Position currentPosition = new Position (0, 0);
         int moveCounter = 1;
-        boolean fullTour = true;
-        
+        System.out.println("Do you want a full loop (y/N)");
+        String userInput = scanner.nextLine();
+        boolean fullTour = (userInput == "y");
         recursiveSolve (board, currentPosition, moveCounter, fullTour, scanner);
         
         board.printBoard();
@@ -41,7 +42,6 @@ public class Exercise02 {
         }
         
         if (fullTour && moveCounter >= board.getHeight() * board.getWidth()) {
-            ArrayList<Position> nextMoves = generateNextSteps (board, currentPosition);
             for (Move move : Move.values()) {
                 Position newPos = new Position(currentPosition.y + move.y, currentPosition.x + move.x);
                 if (board.isLegalPosition(newPos) && board.getCell(newPos) == 1)
