@@ -20,24 +20,76 @@ public class Exercise02 {
     }
     
     public Exercise02 () {
-        Board board = new Board(8, 8);
+        Board board = new Board(6, 6);
         board.printBoard();
         
-        Position currentPosition = new Position (0, 4);
+        Position currentPosition = new Position (0, 0);
+        int moveCounter = 1;
+        boolean fullTour = false;
         
-        ArrayList<Position> nextMoves = generateNextSteps (board, currentPosition);
-        for (Position p : nextMoves) {
-            System.out.println(p);
-        }
+        recursiveSolve (board, currentPosition, moveCounter, fullTour);
+        
+        board.printBoard();
     }
     
-    public ArrayList<Position> generateNextSteps (Board b, Position currentPosition){
+    public boolean recursiveSolve (Board board, Position currentPosition, int moveCounter, boolean fullTour) {
+        System.out.println("----------------------");
+        board.printBoard();
+        String dummy = Scanner.nextLine();
+        
+        if (!fullTour && moveCounter > board.getHeight() * board.getWidth()) {
+            return true; // All squares are filled
+        }
+        
+        if (fullTour && moveCounter > board.getHeight() * board.getWidth() /*&& something*/) {
+            return true; // All squares are filled and we are back at the start
+        }
+        
+        board.tryCell(currentPosition, moveCounter);
+        
+        ArrayList<Position> nextMoves = generateNextSteps (board, currentPosition);
+        if (nextMoves.isEmpty()) {
+            board.setCell(currentPosition, 0);
+            return false; // No next moves, dead end
+        }
+        sortNextMoves (board, nextMoves);
+        
+        for (Position move : nextMoves) {
+            if (recursiveSolve (board, move, moveCounter + 1, fullTour)) {
+                return true; // Found a solution in one of the following moves
+            }
+        }
+        
+        board.setCell(currentPosition, 0);
+        
+        return false; // All moves are a dead end
+    }
+    
+    public ArrayList<Position> generateNextSteps (Board board, Position currentPosition){
         ArrayList<Position> possibleMoves = new ArrayList();
         for (Move m : Move.values()) {
             Position newPosition = new Position (currentPosition.y + m.y, currentPosition.x + m.x);
-            if (b.isLegalPosition(newPosition) && b.tryCell(newPosition, 0)) // Check to see if the move is in the board and free
+            if (board.isLegalPosition(newPosition) && board.tryCell(newPosition, 0)) // Check to see if the move is in the board and free
                 possibleMoves.add(newPosition);
         }
         return possibleMoves;
+    }
+    
+    public void sortNextMoves (Board board, ArrayList<Position> nextMoves) {
+        int length = nextMoves.size();
+        // Standard bubble sort
+        for (int i = length - 1; i >=0 ; i --) {
+            for (int j = 0; j < i; j ++) {
+                if (board.calcDistance(nextMoves.get(j)) > board.calcDistance(nextMoves.get(j+1))){
+                    swapPositions (nextMoves, j, j+1);
+                }
+            }
+        }
+    }
+    
+    public void swapPositions (ArrayList<Position> nextMoves, int a, int b) {
+        Position temp = nextMoves.get(a);
+        nextMoves.set(a, nextMoves.get(b));
+        nextMoves.set(b, temp);
     }
 }
