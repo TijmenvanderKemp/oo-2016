@@ -19,4 +19,9 @@ public class Position {
         this.x = x;
     }
     
+    @Override
+    public String toString () {
+        return "(" + String.valueOf(y) + ", " + String.valueOf(x) + ")";
+    }
+    
 }

@@ -20,13 +20,14 @@ public class Exercise02 {
     }
     
     public Exercise02 () {
-        Board board = new Board(4, 4);
+        Board board = new Board(8, 8);
         board.printBoard();
         
-        Position currentPosition = new Position (0, 0);
+        Position currentPosition = new Position (0, 4);
         
-        while(true) {
-            ArrayList nextMoves = generateNextSteps (board, currentPosition);
+        ArrayList<Position> nextMoves = generateNextSteps (board, currentPosition);
+        for (Position p : nextMoves) {
+            System.out.println(p);
         }
     }
     
