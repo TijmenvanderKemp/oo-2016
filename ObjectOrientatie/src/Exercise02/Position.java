@@ -14,6 +14,11 @@ public class Position {
     
     public int y, x;
     
+    /**
+     * a constructor for the position.
+     * @param y y-coordinate
+     * @param x x-coordinate
+     */
     public Position (int y, int x) {
         this.y = y;
         this.x = x;
