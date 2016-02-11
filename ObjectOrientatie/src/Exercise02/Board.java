@@ -63,10 +63,11 @@ public class Board {
                     rowString += " "; // making sure spacing is correct
                 rowString += cell + " ";
             }
-            System.out.println(rowString + '\n');
+            System.out.println(rowString);
         }
     }
     
+<<<<<<< HEAD
     public move (Position cur_pos, Move move){
         ArrayList pos_moves = new ArrayList();
         int cur_x = cur_pos.x;
@@ -115,4 +116,10 @@ public class Board {
             sort(pos_moves);
         }
     }
+=======
+    public boolean isLegalPosition (Position p) {
+        return (p.y >= 0 && p.y < height && p.x >= 0 && p.x < width);
+    }
+    
+>>>>>>> origin/master
 }
