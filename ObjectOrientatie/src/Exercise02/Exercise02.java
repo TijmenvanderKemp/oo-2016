@@ -19,6 +19,7 @@ public class Exercise02 {
     }
     
     public Exercise02 () {
-        
+        Board b = new Board(4, 4);
+        b.printBoard();
     }
 }

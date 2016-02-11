@@ -53,4 +53,16 @@ public class Board {
         return dx + dy;
     }
     
+    public void printBoard () {
+        for (int[] row : board) {
+            String rowString = "";
+            for (int cell : row) {
+                if (cell < 10)
+                    rowString += " "; // making sure spacing is correct
+                rowString += cell + " ";
+            }
+            System.out.println(rowString + '\n');
+        }
+    }
+    
 }
