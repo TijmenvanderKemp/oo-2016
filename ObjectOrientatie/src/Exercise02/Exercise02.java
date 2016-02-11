@@ -5,6 +5,7 @@
 
 package Exercise02;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -19,7 +20,23 @@ public class Exercise02 {
     }
     
     public Exercise02 () {
-        Board b = new Board(4, 4);
-        b.printBoard();
+        Board board = new Board(4, 4);
+        board.printBoard();
+        
+        Position currentPosition = new Position (0, 0);
+        
+        while(true) {
+            ArrayList nextMoves = generateNextSteps (board, currentPosition);
+        }
+    }
+    
+    public ArrayList<Position> generateNextSteps (Board b, Position currentPosition){
+        ArrayList<Position> possibleMoves = new ArrayList();
+        for (Move m : Move.values()) {
+            Position newPosition = new Position (currentPosition.y + m.y, currentPosition.x + m.x);
+            if (b.isLegalPosition(newPosition) && b.tryCell(newPosition, 0)) // Check to see if the move is in the board and free
+                possibleMoves.add(newPosition);
+        }
+        return possibleMoves;
     }
 }
