@@ -22,11 +22,10 @@ public class Exercise02 {
     public Exercise02 () {
         Scanner scanner = new Scanner(System.in);
         Board board = new Board(6, 6);
-        board.printBoard();
         
         Position currentPosition = new Position (0, 0);
         int moveCounter = 1;
-        boolean fullTour = false;
+        boolean fullTour = true;
         
         recursiveSolve (board, currentPosition, moveCounter, fullTour, scanner);
         
@@ -34,19 +33,23 @@ public class Exercise02 {
     }
     
     public boolean recursiveSolve (Board board, Position currentPosition, int moveCounter, boolean fullTour, Scanner scanner) {
-        System.out.println("----------------------");
-        board.printBoard();
-        String dummy = scanner.nextLine();
         
-        if (!fullTour && moveCounter > board.getHeight() * board.getWidth()) {
+        board.tryCell(currentPosition, moveCounter);
+        
+        if (!fullTour && moveCounter >= board.getHeight() * board.getWidth()) {
             return true; // All squares are filled
         }
         
-        if (fullTour && moveCounter > board.getHeight() * board.getWidth() /*&& something*/) {
-            return true; // All squares are filled and we are back at the start
+        if (fullTour && moveCounter >= board.getHeight() * board.getWidth()) {
+            ArrayList<Position> nextMoves = generateNextSteps (board, currentPosition);
+            for (Move move : Move.values()) {
+                Position newPos = new Position(currentPosition.y + move.y, currentPosition.x + move.x);
+                if (board.isLegalPosition(newPos) && board.getCell(newPos) == 1)
+                    return true; // All squares are filled and we are back at the start
+            }
+            board.setCell(currentPosition, 0);
+            return false; // All squares are filled but we aren't back at the start
         }
-        
-        board.tryCell(currentPosition, moveCounter);
         
         ArrayList<Position> nextMoves = generateNextSteps (board, currentPosition);
         if (nextMoves.isEmpty()) {
