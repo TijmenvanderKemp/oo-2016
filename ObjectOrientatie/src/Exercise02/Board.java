@@ -61,8 +61,12 @@ public class Board {
                     rowString += " "; // making sure spacing is correct
                 rowString += cell + " ";
             }
-            System.out.println(rowString + '\n');
+            System.out.println(rowString);
         }
+    }
+    
+    public boolean isLegalPosition (Position p) {
+        return (p.y >= 0 && p.y < height && p.x >= 0 && p.x < width);
     }
     
 }
