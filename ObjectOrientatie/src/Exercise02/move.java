@@ -9,5 +9,21 @@ package Exercise02;
  * @author Joep
  */
 public enum Move {   
-    NNE, EEN, EES, SSE, SSW, WWS, WWN, NNW
+    NNE (-2, 1), 
+    ENE (-1, 2), 
+    ESE (1, 2), 
+    SSE (2, 1), 
+    SSW (2, -1), 
+    WSW (1, -2), 
+    WNW (-1, -2), 
+    NNW (-2, -1);
+    
+    public final int y;
+    public final int x;
+    
+    Move (int y, int x) {
+        this.y = y;
+        this.x = x;
+    }
+    
 }
