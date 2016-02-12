@@ -22,14 +22,17 @@ public class Exercise02 {
     public Exercise02 () {
         Scanner scanner = new Scanner(System.in);
         
+        // User defines the dimensions of the board.
         System.out.println("Board height and width? (e.g. \"8 8\")");
         int y = scanner.nextInt(); int x = scanner.nextInt(); scanner.nextLine();
         Board board = new Board(y, x);
         
+        // User defines the starting position.
         System.out.println("Starting position? (e.g. \"0 0\")");
         y = scanner.nextInt(); x = scanner.nextInt(); scanner.nextLine();
         Position currentPosition = new Position (y, x);
         
+        // User says if he wants a full tour or not.
         System.out.println("Do you want a full loop (y/N)");
         String userInput = scanner.nextLine();
         boolean fullTour = (userInput == "y");
@@ -40,6 +43,14 @@ public class Exercise02 {
         board.printBoard();
     }
     
+    /**
+     * The main solver function
+     * @param board The board with all the values in the cells.
+     * @param currentPosition The current position.
+     * @param moveCounter How manyeth move this is. It will fill the board with these numbers.
+     * @param fullTour Whether we want to end up at the begin square or not.
+     * @return returns whether it's a good path or a bad one.
+     */
     public boolean recursiveSolve (Board board, Position currentPosition, int moveCounter, boolean fullTour) {
         
         board.tryCell(currentPosition, moveCounter);
@@ -76,19 +87,31 @@ public class Exercise02 {
         return false; // All moves are a dead end
     }
     
+    /**
+     * Generates an ArrayList of steps that can be taken from here. The squares need to be on the board and also free.
+     * @param board The chessboard. Useful for looking up whether a move qualifies.
+     * @param currentPosition The current position.
+     * @return The ArrayList with the possible moves.
+     */
     public ArrayList<Position> generateNextSteps (Board board, Position currentPosition){
         ArrayList<Position> possibleMoves = new ArrayList();
         for (Move m : Move.values()) {
             Position newPosition = new Position (currentPosition.y + m.y, currentPosition.x + m.x);
-            if (board.isLegalPosition(newPosition) && board.tryCell(newPosition, 0)) // Check to see if the move is in the board and free
+            if (board.isLegalPosition(newPosition) && board.getCell(newPosition) == 0) // Check to see if the move is in the board and free
                 possibleMoves.add(newPosition);
         }
         return possibleMoves;
     }
     
+    /**
+     * Sorts the moves ascending to the "distance to wall"-heuristic
+     * @param board The chessboard. Needed for calculating the wall-distances.
+     * @param nextMoves The moves to be sorted. Sorts in-situ.
+     */
     public void sortNextMoves (Board board, ArrayList<Position> nextMoves) {
         int length = nextMoves.size();
         // Standard bubble sort
+        // TODO: replace by something more efficient
         for (int i = length - 1; i >=0 ; i --) {
             for (int j = 0; j < i; j ++) {
                 if (board.calcDistance(nextMoves.get(j)) > board.calcDistance(nextMoves.get(j+1))){
@@ -98,6 +121,12 @@ public class Exercise02 {
         }
     }
     
+    /**
+     * Swaps two positions in an ArrayList. Needed for bubblesort.
+     * @param nextMoves
+     * @param a
+     * @param b 
+     */
     public void swapPositions (ArrayList<Position> nextMoves, int a, int b) {
         Position temp = nextMoves.get(a);
         nextMoves.set(a, nextMoves.get(b));

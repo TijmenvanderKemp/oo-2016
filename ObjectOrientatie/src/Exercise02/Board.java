@@ -39,6 +39,13 @@ public class Board {
         board[position.y][position.x] = cellValue;
     }
     
+    /** 
+     * Tries to set a cell to a certain value. It can only do that when the original value was 0.
+     * Returns whether or not it succeeds.
+     * @param position
+     * @param cellValue
+     * @return 
+     */
     public boolean tryCell (Position position, int cellValue) {
         if (getCell(position) == 0) {
             setCell(position, cellValue);
@@ -49,6 +56,11 @@ public class Board {
         }
     }
     
+    /**
+     * The sum of the minimal y-distance and minimal x-distance to the walls.
+     * @param position
+     * @return 
+     */
     public int calcDistance (Position position) {
         int dx = Math.min(position.x, width - 1 - position.x);
         int dy = Math.min(position.y, height - 1 - position.y);
