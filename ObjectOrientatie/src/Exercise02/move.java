@@ -9,7 +9,9 @@ package Exercise02;
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
-public enum Move {   
+public enum Move {
+    // If this class keeps giving an error, rename it to Move.java instead of move.java
+    // It keeps reverting it, and we can't seem to fix it.
     NNE (-2, 1), 
     ENE (-1, 2), 
     ESE (1, 2), 

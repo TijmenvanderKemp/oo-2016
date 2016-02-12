@@ -21,19 +21,26 @@ public class Exercise02 {
     
     public Exercise02 () {
         Scanner scanner = new Scanner(System.in);
-        Board board = new Board(6, 6);
         
-        Position currentPosition = new Position (0, 0);
-        int moveCounter = 1;
+        System.out.println("Board height and width? (e.g. \"8 8\")");
+        int y = scanner.nextInt(); int x = scanner.nextInt(); scanner.nextLine();
+        Board board = new Board(y, x);
+        
+        System.out.println("Starting position? (e.g. \"0 0\")");
+        y = scanner.nextInt(); x = scanner.nextInt(); scanner.nextLine();
+        Position currentPosition = new Position (y, x);
+        
         System.out.println("Do you want a full loop (y/N)");
         String userInput = scanner.nextLine();
         boolean fullTour = (userInput == "y");
-        recursiveSolve (board, currentPosition, moveCounter, fullTour, scanner);
+        
+        int moveCounter = 1;
+        recursiveSolve (board, currentPosition, moveCounter, fullTour);
         
         board.printBoard();
     }
     
-    public boolean recursiveSolve (Board board, Position currentPosition, int moveCounter, boolean fullTour, Scanner scanner) {
+    public boolean recursiveSolve (Board board, Position currentPosition, int moveCounter, boolean fullTour) {
         
         board.tryCell(currentPosition, moveCounter);
         
@@ -59,7 +66,7 @@ public class Exercise02 {
         sortNextMoves (board, nextMoves);
         
         for (Position move : nextMoves) {
-            if (recursiveSolve (board, move, moveCounter + 1, fullTour, scanner)) {
+            if (recursiveSolve (board, move, moveCounter + 1, fullTour)) {
                 return true; // Found a solution in one of the following moves
             }
         }
