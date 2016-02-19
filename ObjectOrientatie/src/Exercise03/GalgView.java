@@ -32,23 +32,44 @@ public class GalgView {
     public char getLetter () { // Returns a letter to guess in Galg
         System.out.println("Please enter a letter to guess");
         String letter = s.nextLine();
-        return letter.charAt(0);
+        if (letter.isEmpty()){
+            return getLetter();
+        }
+        else {
+            return letter.charAt(0);
+        }
     }
     
-    public void rightLetter(int lives, StringBuilder currentString) { // Tells you if you have guessed a right letter
-        System.out.println("You guessed a correct letter!\nYou have" + lives + "left.\nYou currently have " + currentString);
+    public void printWord (StringBuilder word) {
+        System.out.println(word + "\n");
     }
     
-    public void wrongLetter(int lives, StringBuilder currentString) { // Tells you if you have guessed a wrong letter
-        System.out.println("You guessed a wrong letter!\nYou have" + lives + "left.\nYou currently have " + currentString);
+    public void printWord (String word) { 
+        System.out.println(word + "\n");
     }
     
-    public void winner(int lives, String toGuessString) { // Tells you if you won the game
-        System.out.println("You have won, you have guessed the word and you had" + lives + "left.\nThe word was: " + toGuessString);
+    public void printLives (int lives) {
+        System.out.println("You have " + lives + " lives left.");
     }
     
-    public void loser(String toGuessString) { // Tells you if you have lost the game
-        System.out.println("You are out of lives, you have not guessed the word.\nThe word was: " + toGuessString);
+    public void printWrongLetters (StringBuilder wrongLetters) {
+        System.out.println("You guessed these wrong letters: " + wrongLetters + "\n");
+    }
+    
+    public void rightLetter() { // Tells you if you have guessed a right letter
+        System.out.println("You guessed a correct letter!");
+    }
+    
+    public void wrongLetter() { // Tells you if you have guessed a wrong letter
+        System.out.println("You guessed a wrong letter!");
+    }
+    
+    public void winner() { // Tells you if you won the game
+        System.out.println("You have won, you have guessed the word!");
+    }
+    
+    public void loser() { // Tells you if you have lost the game
+        System.out.println("You are out of lives, and you have not guessed the word.");
     }
     
     

@@ -14,6 +14,7 @@ public class Galg {
     
     private StringBuilder currentWord = new StringBuilder ("");
     private String toGuessWord;
+    private StringBuilder wrongLetters = new StringBuilder ("");
     private int lives = 11;
     
     public Galg () {
@@ -32,7 +33,7 @@ public class Galg {
     }
     
     public Status getStatus () { // returns in what stage of the game it is
-        if (currentWord.equals(toGuessWord)) {
+        if (currentWord.indexOf(".") == -1) {
             return Status.WON;
         }
         if (lives == 0) {
@@ -48,6 +49,7 @@ public class Galg {
         }
         else if (!toGuessWord.contains(String.valueOf(c))) { // letter is wrong
             lives -= 1;
+            wrongLetters.append(c);
             return false;
         }
         else { // letter is guessed correctly
@@ -70,5 +72,9 @@ public class Galg {
     
     public String getToGuessWord () {
         return toGuessWord;
+    }
+    
+    public StringBuilder getWrongLetters () {
+        return wrongLetters;
     }
 }

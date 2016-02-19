@@ -29,23 +29,36 @@ public class Exercise03 {
         else {
             galg = new Galg(preferredWord);
         }
+        galgView.printWord(galg.getCurrentWord());
         
         while (galg.getStatus() == Status.ONGOING) {
             char c = galgView.getLetter();
             if (galg.raadLetter(c)) {
-                galgView.rightLetter(galg.getLives(), galg.getCurrentWord());
+                galgView.rightLetter();
+                galgView.printLives(galg.getLives());
+                galgView.printWrongLetters(galg.getWrongLetters());
+                galgView.printWord(galg.getCurrentWord());
             }
             else {
-                galgView.wrongLetter(galg.getLives(), galg.getCurrentWord());
+                galgView.wrongLetter();
+                galgView.printLives(galg.getLives());
+                galgView.printWrongLetters(galg.getWrongLetters());
+                galgView.printWord(galg.getCurrentWord());
             }
         }
         
         if (galg.getStatus() == Status.WON){
-            galgView.winner(galg.getLives(), galg.getToGuessWord());
+            galgView.winner();
+            galgView.printLives(galg.getLives());
+            galgView.printWrongLetters(galg.getWrongLetters());
+            galgView.printWord(galg.getToGuessWord());
         }
             
         if (galg.getStatus() == Status.HANGED){
-            galgView.loser(galg.getToGuessWord());
+            galgView.loser();
+            galgView.printLives(galg.getLives());
+            galgView.printWrongLetters(galg.getWrongLetters());
+            galgView.printWord(galg.getToGuessWord());
         }
     }
     
