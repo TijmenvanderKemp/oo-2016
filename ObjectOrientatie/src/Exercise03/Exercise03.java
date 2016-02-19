@@ -12,12 +12,16 @@ package Exercise03;
  */
 public class Exercise03 {
     
-    Galg galg;
+    Galg galg; // galg to play hangman on.
+    
     
     public static void main (String[] args) {
         Exercise03 exercise03 = new Exercise03();
     }
     
+    /**
+     * Lets the person play hangman
+     */
     public Exercise03 () {
         GalgView galgView = new GalgView();
         galgView.welcome();
