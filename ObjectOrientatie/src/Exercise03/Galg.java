@@ -35,6 +35,9 @@ public class Galg {
         if (currentWord.equals(toGuessWord)) {
             return Status.WON;
         }
+        if (lives == 0) {
+            return Status.HANGED;
+        }
         return Status.ONGOING;
     }
     
@@ -55,6 +58,10 @@ public class Galg {
             }
             return true;
         }
+    }
+    
+    public int getLives () {
+        return lives;
     }
     
     public StringBuilder getCurrentWord () {
