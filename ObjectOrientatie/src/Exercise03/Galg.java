@@ -13,26 +13,48 @@ package Exercise03;
 public class Galg {
     
     private StringBuilder currentWord = new StringBuilder ("");
+    private String toGuessWord;
+    private int lives = 11;
     
     public Galg () {
         WoordLezer w = new WoordLezer ("woorden.txt");
-        String word = w.geefWoord();
-        for (int i = 0; i < word.length(); i ++) {
+        toGuessWord = w.geefWoord();
+        for (int i = 0; i < toGuessWord.length(); i ++) {
             currentWord.append(".");
         }
     }
     
     public Galg (String s) {
-        
+        toGuessWord = s;
+        for (int i = 0; i < toGuessWord.length(); i ++) {
+            currentWord.append(".");
+        }
     }
     
     public Status getStatus () { // returns in what stage of the game it is
+        if (currentWord.equals(toGuessWord)) {
+            return Status.WON;
+        }
         return Status.ONGOING;
     }
     
-    public boolean raadLetter () { // returns whether the letter was correct or not
-                                   // and edits the current StringBuilder
-        return false;
+    public boolean raadLetter (char c) { // returns whether the letter was correct or not
+                                         // and edits the current StringBuilder
+        if (currentWord.indexOf(String.valueOf(c)) >= 0) { // letter is already guessed
+            return true;
+        }
+        else if (!toGuessWord.contains(String.valueOf(c))) { // letter is wrong
+            lives -= 1;
+            return false;
+        }
+        else { // letter is guessed correctly
+            for (int i = 0; i < toGuessWord.length(); i ++) { // replace all dots with correct letters
+                if (toGuessWord.charAt(i) == c) {
+                    currentWord.setCharAt(i, c);
+                }
+            }
+            return true;
+        }
     }
     
     public StringBuilder getCurrentWord () {
