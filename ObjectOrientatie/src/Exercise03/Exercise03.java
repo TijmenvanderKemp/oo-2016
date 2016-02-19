@@ -12,25 +12,41 @@ package Exercise03;
  */
 public class Exercise03 {
     
-    Galg g;
+    Galg galg;
     
     public static void main (String[] args) {
         Exercise03 exercise03 = new Exercise03();
     }
     
     public Exercise03 () {
-        GalgView gv = new GalgView();
-        gv.welcome();
+        GalgView galgView = new GalgView();
+        galgView.welcome();
         
-        String preferredWord = gv.getWord();
+        String preferredWord = galgView.getWord();
         if (preferredWord.equals("")) {
-            g = new Galg();
+            galg = new Galg();
         }
         else {
-            g = new Galg(preferredWord);
+            galg = new Galg(preferredWord);
         }
         
-        System.out.println(g.getCurrentWord());
+        while (galg.getStatus() == Status.ONGOING) {
+            char c = galgView.getLetter();
+            if (galg.raadLetter(c)) {
+                galgView.rightLetter(galg.getLives(), galg.getCurrentWord());
+            }
+            else {
+                galgView.wrongLetter(galg.getLives(), galg.getCurrentWord());
+            }
+        }
+        
+        if (galg.getStatus() == Status.WON){
+            galgView.won(galg.getToGuessWord());
+        }
+            
+        if (galg.getStatus() == Status.HANGED){
+            galgView.lost(galg.getToGuessWord());
+        }
     }
     
 }
