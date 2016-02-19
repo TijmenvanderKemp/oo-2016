@@ -8,7 +8,10 @@ package Exercise03;
 import java.util.Scanner;
 
 /**
- *
+ * GalgView is the I/O class of the program.
+ * We decided to include near to zero logic, because the exercise said 
+ * "This class could be replaced by a GUI." so that's why almost all the logic
+ * is in Exercise03 and not here.
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
@@ -29,7 +32,11 @@ public class GalgView {
         return s.nextLine();
     }
     
-    public char getLetter () { // Returns a letter to guess in Galg
+    /**
+     * Asks the user for a letter to guess. If it doesn't get a letter, it repeats.
+     * @return the guessed letter
+     */
+    public char getLetter () { 
         System.out.println("Please enter a letter to guess");
         String letter = s.nextLine();
         if (letter.isEmpty()){

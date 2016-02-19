@@ -6,7 +6,7 @@
 package Exercise03;
 
 /**
- *
+ * The galg is the main Model class. It holds the relevant information for the word, the wrong letters, the lives etc.
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
@@ -17,6 +17,9 @@ public class Galg {
     private StringBuilder wrongLetters = new StringBuilder ("");
     private int lives = 11;
     
+    /**
+     * Constructor without a word
+     */
     public Galg () {
         WoordLezer w = new WoordLezer ("woorden.txt");
         toGuessWord = w.geefWoord();
@@ -25,6 +28,10 @@ public class Galg {
         }
     }
     
+    /**
+     * Constructor with a word
+     * @param s 
+     */
     public Galg (String s) {
         toGuessWord = s;
         for (int i = 0; i < toGuessWord.length(); i ++) {
@@ -32,6 +39,10 @@ public class Galg {
         }
     }
     
+    /**
+     * Indicates whether the game has stopped, and in which way.
+     * @return the status of the game.
+     */
     public Status getStatus () { // returns in what stage of the game it is
         if (currentWord.indexOf(".") == -1) {
             return Status.WON;
@@ -42,8 +53,12 @@ public class Galg {
         return Status.ONGOING;
     }
     
-    public boolean raadLetter (char c) { // returns whether the letter was correct or not
-                                         // and edits the current StringBuilder
+    /**
+     * Edits the stringbuilder to replace dots with the guessed letter
+     * @param c the guessed letter
+     * @return Whether the letter was correct
+     */
+    public boolean raadLetter (char c) { 
         if (currentWord.indexOf(String.valueOf(c)) >= 0) { // letter is already guessed
             return true;
         }
