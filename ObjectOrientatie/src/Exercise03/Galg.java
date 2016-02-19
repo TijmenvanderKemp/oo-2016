@@ -20,4 +20,17 @@ public class Galg {
     public Galg (String s) {
         
     }
+    
+    public Status getStatus () { // returns in what stage of the game it is
+        return Status.ONGOING;
+    }
+    
+    public boolean raadLetter () { // returns whether the letter was correct or not
+                                   // and edits the current StringBuilder
+        return false;
+    }
+    
+    public StringBuilder getCurrentWord () {
+        return;
+    }
 }

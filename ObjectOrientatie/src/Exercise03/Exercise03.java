@@ -18,6 +18,17 @@ public class Exercise03 {
     
     public Exercise03 () {
         GalgView gv = new GalgView();
+        gv.welcome();
+        
+        String preferredWord = gv.getWord();
+        if (preferredWord.equals("")) {
+            Galg g = new Galg();
+        }
+        else {
+            Galg g = new Galg(preferredWord);
+        }
+        
+        
     }
     
 }
