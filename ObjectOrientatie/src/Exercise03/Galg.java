@@ -12,9 +12,14 @@ package Exercise03;
  */
 public class Galg {
     
+    private StringBuilder currentWord;
+    
     public Galg () {
         WoordLezer w = new WoordLezer ("woorden.txt");
         String word = w.geefWoord();
+        for (int i = 0; i < word.length(); i ++) {
+            currentWord.setCharAt(i, '.');
+        }
     }
     
     public Galg (String s) {
@@ -31,6 +36,6 @@ public class Galg {
     }
     
     public StringBuilder getCurrentWord () {
-        return;
+        return currentWord;
     }
 }

@@ -12,6 +12,8 @@ package Exercise03;
  */
 public class Exercise03 {
     
+    Galg g;
+    
     public static void main (String[] args) {
         Exercise03 exercise03 = new Exercise03();
     }
@@ -22,13 +24,13 @@ public class Exercise03 {
         
         String preferredWord = gv.getWord();
         if (preferredWord.equals("")) {
-            Galg g = new Galg();
+            g = new Galg();
         }
         else {
-            Galg g = new Galg(preferredWord);
+            g = new Galg(preferredWord);
         }
         
-        
+        System.out.println(g.getCurrentWord());
     }
     
 }
