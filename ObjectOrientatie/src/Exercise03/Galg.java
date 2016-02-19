@@ -12,13 +12,13 @@ package Exercise03;
  */
 public class Galg {
     
-    private StringBuilder currentWord;
+    private StringBuilder currentWord = new StringBuilder ("");
     
     public Galg () {
         WoordLezer w = new WoordLezer ("woorden.txt");
         String word = w.geefWoord();
         for (int i = 0; i < word.length(); i ++) {
-            currentWord.setCharAt(i, '.');
+            currentWord.append(".");
         }
     }
     
