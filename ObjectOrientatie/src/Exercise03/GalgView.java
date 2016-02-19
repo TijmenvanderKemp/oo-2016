@@ -21,11 +21,11 @@ public class GalgView {
     }
     
     public void welcome() {
-        System.out.println("Welcome to Hangman!\n\n");
+        System.out.println("Welcome to Hangman!\n");
     }
     
     public String getWord () {
-        System.out.println("Please enter a word to guess. Leave empty for a random word.\n");
+        System.out.println("Please enter a word to guess. Leave empty for a random word.");
         return s.nextLine();
     }
     
@@ -35,20 +35,20 @@ public class GalgView {
         return letter.charAt(0);
     }
     
-    public void rightLetter(int lives) { // Tells you if you have guessed a right letter
-        System.out.println("You guessed a correct letter, you have" + lives + "left");
+    public void rightLetter(int lives, StringBuilder currentString) { // Tells you if you have guessed a right letter
+        System.out.println("You guessed a correct letter!\nYou have" + lives + "left.\nYou currently have " + currentString);
     }
     
-    public void wrongLetter(int lives) { // Tells you if you have guessed a wrong letter
-        System.out.println("You guessed a wrong letter, you have" + lives + "left");
+    public void wrongLetter(int lives, StringBuilder currentString) { // Tells you if you have guessed a wrong letter
+        System.out.println("You guessed a wrong letter!\nYou have" + lives + "left.\nYou currently have " + currentString);
     }
     
-    public void winner(int lives) { // Tells you if you won the game
-        System.out.println("You have won, you have guess the word and you had" + lives + "left");
+    public void winner(int lives, String toGuessString) { // Tells you if you won the game
+        System.out.println("You have won, you have guessed the word and you had" + lives + "left.\nThe word was: " + toGuessString);
     }
     
-    public void loser() { // Tells you if you have lost the game
-        System.out.println("You are out of lives, you have not guessed the word");
+    public void loser(String toGuessString) { // Tells you if you have lost the game
+        System.out.println("You are out of lives, you have not guessed the word.\nThe word was: " + toGuessString);
     }
     
     

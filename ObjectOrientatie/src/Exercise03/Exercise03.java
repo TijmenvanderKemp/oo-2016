@@ -41,11 +41,11 @@ public class Exercise03 {
         }
         
         if (galg.getStatus() == Status.WON){
-            galgView.won(galg.getToGuessWord());
+            galgView.winner(galg.getLives(), galg.getToGuessWord());
         }
             
         if (galg.getStatus() == Status.HANGED){
-            galgView.lost(galg.getToGuessWord());
+            galgView.loser(galg.getToGuessWord());
         }
     }
     
