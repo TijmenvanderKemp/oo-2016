@@ -35,4 +35,21 @@ public class GalgView {
         return letter.charAt(0);
     }
     
+    public void rightLetter(int lives) { // Tells you if you have guessed a right letter
+        System.out.println("You guessed a correct letter, you have" + lives + "left");
+    }
+    
+    public void wrongLetter(int lives) { // Tells you if you have guessed a wrong letter
+        System.out.println("You guessed a wrong letter, you have" + lives + "left");
+    }
+    
+    public void winner(int lives) { // Tells you if you won the game
+        System.out.println("You have won, you have guess the word and you had" + lives + "left");
+    }
+    
+    public void loser() { // Tells you if you have lost the game
+        System.out.println("You are out of lives, you have not guessed the word");
+    }
+    
+    
 }
