@@ -67,4 +67,8 @@ public class Galg {
     public StringBuilder getCurrentWord () {
         return currentWord;
     }
+    
+    public String getToGuessWord () {
+        return toGuessWord;
+    }
 }
