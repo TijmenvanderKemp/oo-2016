@@ -17,7 +17,13 @@ public class GalgView {
     private Scanner s = new Scanner (System.in);
     
     public GalgView () {
-        
+        String preferredWord = getWord();
+        if (preferredWord.equals("")) {
+            Galg g = new Galg();
+        }
+        else {
+            Galg g = new Galg(preferredWord);
+        }
     }
     
     public void welcome() {
