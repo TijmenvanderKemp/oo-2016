@@ -30,7 +30,9 @@ public class GalgView {
     }
     
     public char getLetter () { // Returns a letter to guess in Galg
-        return ' ';
+        System.out.println("Please enter a letter to guess");
+        String letter = s.nextLine();
+        return letter.charAt(0);
     }
     
 }
