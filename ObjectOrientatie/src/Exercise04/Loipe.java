@@ -5,6 +5,8 @@
 
 package Exercise04;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Joep Veldhoven (s4456556)
@@ -15,7 +17,9 @@ public class Loipe {
     private int width;
     private int height;
     private Fragment [][] loipe;
+    private ArrayList<Punt> loipeList = new ArrayList();
     private Punt startPunt;
+    private int stepCounter;
     
     // grootte in oost−west richting
     public int getWidth( ) {
@@ -39,7 +43,10 @@ public class Loipe {
     
     // het volgende punt op de route
     public Punt stap( ) {
-        return new Punt(0, 0);
+        stepCounter ++;
+        if (stepCounter >= loipeList.size())
+            stepCounter = 0;
+        return loipeList.get(stepCounter);
     } 
     
     public Loipe (String pad) {
@@ -81,10 +88,11 @@ public class Loipe {
         height = maxY - minY;
         startPunt = new Punt(0 - minX, 0 - minY);
         
-        Fragment [][] loipe = new Fragment[height][width];
+        loipe = new Fragment[height][width];
         
         x = startPunt.getX();
         y = startPunt.getY();
+        stepCounter = 0;
         dir = 0; // 0 = E, 1 = N, 2 = W, 3 = S
         for (int i = 0; i < pad.length(); i ++) {
             switch (pad.charAt(i)) {
@@ -135,7 +143,7 @@ public class Loipe {
                     y += 1;
             }
             
-            
+            loipeList.add(new Punt(x, y));
         }
         
     }
