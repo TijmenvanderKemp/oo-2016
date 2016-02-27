@@ -25,8 +25,18 @@ public class LoipeView {
         
         Loipe l = new Loipe(loipeInput);
         
+        
+        System.out.println("Stepping through the Loipe. Type 'stop' to stop.");
         AsciiArt aa = new AsciiArt (l);
         aa.teken();
+        
+        while (!"stop".equals(s.nextLine())) {
+            aa.setPosition(l.stap());
+            aa.teken();
+        }
+        
+        LoipePlaatje lp = new LoipePlaatje (l);
+        lp.teken();
     }
     
 }

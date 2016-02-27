@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
-public class Loipe {
+public class Loipe implements InfoLoipe {
     
     private int width;
     private int height;
@@ -22,26 +22,31 @@ public class Loipe {
     private int stepCounter;
     
     // grootte in oost−west richting
+    @Override
     public int getWidth( ) {
         return width;
     } 
     
     // grootte in noord−zuid richting
+    @Override
     public int getHeight( ) {
         return height;
     }
     
     // fragment van de loipe op positie p
+    @Override
     public Fragment getFragment(Punt p) {
         return loipe[p.getX()][p.getY()];
     }
     
     // Het startpunt op de kaart
+    @Override
     public Punt start( ) {
         return startPunt;
     } 
     
     // het volgende punt op de route
+    @Override
     public Punt stap( ) {
         stepCounter ++;
         if (stepCounter >= loipeList.size())
@@ -61,10 +66,10 @@ public class Loipe {
         for (int i = 0; i < pad.length(); i ++) {
             switch (pad.charAt(i)) {
                 case 'l':
-                    dir = (dir + 1) % 4;
+                    dir = (dir + 3) % 4;
                     break;
                 case 'r':
-                    dir = (dir + 3) % 4;
+                    dir = (dir + 1) % 4;
                     break;
                 case 's':
                     break;
@@ -107,36 +112,36 @@ public class Loipe {
                 case 'l':
                     switch (dir) {
                         case 0:
-                            loipe[x][y] = Fragment.NO;
-                            break;
-                        case 1:
-                            loipe[x][y] = Fragment.ZO;
-                            break;
-                        case 2:
                             loipe[x][y] = Fragment.ZW;
                             break;
-                        case 3:
+                        case 1:
                             loipe[x][y] = Fragment.NW;
                             break;
+                        case 2:
+                            loipe[x][y] = Fragment.NO;
+                            break;
+                        case 3:
+                            loipe[x][y] = Fragment.ZO;
+                            break;
                     }
-                    dir = (dir + 1) % 4;
+                    dir = (dir + 3) % 4;
                     break;
                 case 'r':
                     switch (dir) {
                         case 0:
-                            loipe[x][y] = Fragment.NW;
-                            break;
-                        case 1:
-                            loipe[x][y] = Fragment.NO;
-                            break;
-                        case 2:
                             loipe[x][y] = Fragment.ZO;
                             break;
-                        case 3:
+                        case 1:
                             loipe[x][y] = Fragment.ZW;
                             break;
+                        case 2:
+                            loipe[x][y] = Fragment.NW;
+                            break;
+                        case 3:
+                            loipe[x][y] = Fragment.NO;
+                            break;
                     }
-                    dir = (dir + 3) % 4;
+                    dir = (dir + 1) % 4;
                     break;
                 case 's':
                     if (loipe[x][y] == Fragment.OW || loipe[x][y] == Fragment.NZ) {

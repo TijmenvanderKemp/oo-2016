@@ -9,20 +9,24 @@ package Exercise04;
  * @author Tijmen van der Kemp (s4446887)
  */
 public class AsciiArt implements TekenLoipe{
-    private Loipe loipe;
+    private final Loipe loipe;
+    private Punt currentPunt;
     
     public AsciiArt(Loipe loipe){
         this.loipe = loipe;
+        currentPunt = loipe.start();
     }
     
     
     @Override
     public void teken(){
-        for (int i = 0; i < loipe.getWidth(); i++){
+        for (int j = 0; j < loipe.getHeight(); j++){
             String outputString = "";
-            for (int j = 0; j < loipe.getHeight(); j++){
+            for (int i = 0; i < loipe.getWidth(); i++){
                 Fragment fragment = loipe.getFragment(new Punt(i, j));
-                if (fragment == null) {
+                if (currentPunt.getY() == j && currentPunt.getX() == i) {
+                    outputString += "*";
+                } else if (fragment == null) {
                     outputString += " ";
                 } else {
                     switch (fragment){
@@ -56,6 +60,6 @@ public class AsciiArt implements TekenLoipe{
     
     @Override
     public void setPosition(Punt p){
-        
+        currentPunt = p;
     }
 }
