@@ -93,6 +93,7 @@ public class Loipe {
         x = startPunt.getX();
         y = startPunt.getY();
         stepCounter = 0;
+        loipeList.add(new Punt(x, y));
         dir = 0; // 0 = E, 1 = N, 2 = W, 3 = S
         for (int i = 0; i < pad.length(); i ++) {
             switch (pad.charAt(i)) {
