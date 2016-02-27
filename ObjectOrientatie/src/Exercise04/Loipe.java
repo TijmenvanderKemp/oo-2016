@@ -57,7 +57,7 @@ public class Loipe {
         int maxY = 0;
         int x = 0;
         int y = 0;
-        int dir = 0; // 0 = E, 1 = N, 2 = W, 3 = S
+        int dir = 0; // 0 = N, 1 = O, 2 = Z, 3 = W
         for (int i = 0; i < pad.length(); i ++) {
             switch (pad.charAt(i)) {
                 case 'l':
@@ -72,16 +72,16 @@ public class Loipe {
             
             switch (dir) {
                 case 0:
-                    x += 1;
-                    break;
-                case 1:
                     y -= 1;
                     break;
+                case 1:
+                    x += 1;
+                    break;
                 case 2:
-                    x -= 1;
+                    y += 1;
                     break;
                 case 3:
-                    y += 1;
+                    x -= 1;
                     break;
             }
             
@@ -101,22 +101,22 @@ public class Loipe {
         y = startPunt.getY();
         stepCounter = 0;
         loipeList.add(new Punt(x, y));
-        dir = 0; // 0 = E, 1 = N, 2 = W, 3 = S
+        dir = 0; // 0 = N, 1 = O, 2 = Z, 3 = W
         for (int i = 0; i < pad.length(); i ++) {
             switch (pad.charAt(i)) {
                 case 'l':
                     switch (dir) {
                         case 0:
-                            loipe[x][y] = Fragment.NW;
+                            loipe[x][y] = Fragment.NO;
                             break;
                         case 1:
-                            loipe[x][y] = Fragment.ZW;
-                            break;
-                        case 2:
                             loipe[x][y] = Fragment.ZO;
                             break;
+                        case 2:
+                            loipe[x][y] = Fragment.ZW;
+                            break;
                         case 3:
-                            loipe[x][y] = Fragment.NO;
+                            loipe[x][y] = Fragment.NW;
                             break;
                     }
                     dir = (dir + 1) % 4;
@@ -124,16 +124,16 @@ public class Loipe {
                 case 'r':
                     switch (dir) {
                         case 0:
-                            loipe[x][y] = Fragment.ZW;
+                            loipe[x][y] = Fragment.NW;
                             break;
                         case 1:
-                            loipe[x][y] = Fragment.ZO;
-                            break;
-                        case 2:
                             loipe[x][y] = Fragment.NO;
                             break;
+                        case 2:
+                            loipe[x][y] = Fragment.ZO;
+                            break;
                         case 3:
-                            loipe[x][y] = Fragment.NW;
+                            loipe[x][y] = Fragment.ZW;
                             break;
                     }
                     dir = (dir + 3) % 4;
@@ -153,16 +153,16 @@ public class Loipe {
             
             switch (dir) {
                 case 0:
-                    x += 1;
-                    break;
-                case 1:
                     y -= 1;
                     break;
+                case 1:
+                    x += 1;
+                    break;
                 case 2:
-                    x -= 1;
+                    y += 1;
                     break;
                 case 3:
-                    y += 1;
+                    x -= 1;
                     break;
             }
             
