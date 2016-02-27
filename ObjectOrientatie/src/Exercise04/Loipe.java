@@ -71,10 +71,10 @@ public class Loipe {
                     y += 1;
             }
             
-            minX = Math.min(minX, x);
-            minY = Math.min(minY, y);
-            maxX = Math.max(maxX, x);
-            maxY = Math.max(maxY, y);
+            minX = (x < minX) ? x : minX;
+            minY = (y < minY) ? y : minY;
+            maxX = (x > maxX) ? x : maxX;
+            maxY = (y > maxY) ? y : maxY;
         }
         
         width = maxX - minX;
