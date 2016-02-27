@@ -107,13 +107,13 @@ public class Loipe {
                 case 'l':
                     switch (dir) {
                         case 0:
-                            loipe[y][x] = Fragment.NW;
+                            loipe[y][x] = Fragment.ZO;
                             break;
                         case 1:
                             loipe[y][x] = Fragment.ZW;
                             break;
                         case 2:
-                            loipe[y][x] = Fragment.ZO;
+                            loipe[y][x] = Fragment.NW;
                             break;
                         case 3:
                             loipe[y][x] = Fragment.NO;
@@ -143,10 +143,10 @@ public class Loipe {
                         loipe[y][x] = Fragment.KR;
                     }
                     else if (dir == 0 || dir == 2) {
-                        loipe[y][x] = Fragment.OW;
+                        loipe[y][x] = Fragment.NZ;
                     }
                     else {
-                        loipe[y][x] = Fragment.NZ;
+                        loipe[y][x] = Fragment.OW;
                     }
                     break;
             }

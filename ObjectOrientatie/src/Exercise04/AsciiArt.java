@@ -21,7 +21,7 @@ public class AsciiArt implements TekenLoipe{
         for (int i = 0; i < loipe.getWidth(); i++){
             String outputString = "";
             for (int j = 0; j < loipe.getHeight(); j++){
-                Fragment fragment = loipe.getFragment(new Punt(j, i));
+                Fragment fragment = loipe.getFragment(new Punt(i, j));
                 if (fragment == null) {
                     outputString += " ";
                 } else {
