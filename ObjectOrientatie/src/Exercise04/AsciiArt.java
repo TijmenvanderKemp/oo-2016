@@ -37,6 +37,7 @@ public class AsciiArt implements TekenLoipe{
                     case KR:
                       System.out.println("+");  
                 }
+                System.out.println('\n');
             }                
         }
     }
