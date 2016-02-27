@@ -84,8 +84,8 @@ public class Loipe {
             maxY = (y > maxY) ? y : maxY;
         }
         
-        width = maxX - minX;
-        height = maxY - minY;
+        width = maxX - minX + 1;
+        height = maxY - minY + 1;
         startPunt = new Punt(0 - minX, 0 - minY);
         
         loipe = new Fragment[height][width];

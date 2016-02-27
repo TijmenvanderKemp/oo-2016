@@ -24,6 +24,9 @@ public class LoipeView {
         String loipeInput = s.nextLine();
         
         Loipe l = new Loipe(loipeInput);
+        
+        AsciiArt aa = new AsciiArt (l);
+        aa.teken();
     }
     
 }
