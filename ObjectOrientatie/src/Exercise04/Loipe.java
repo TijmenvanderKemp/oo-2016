@@ -62,26 +62,33 @@ public class Loipe {
             switch (pad.charAt(i)) {
                 case 'l':
                     dir = (dir + 1) % 4;
+                    break;
                 case 'r':
-                    dir = (dir - 1) % 4;
+                    dir = (dir + 3) % 4;
+                    break;
                 case 's':
+                    break;
             }
             
             switch (dir) {
                 case 0:
                     x += 1;
+                    break;
                 case 1:
                     y -= 1;
+                    break;
                 case 2:
                     x -= 1;
+                    break;
                 case 3:
                     y += 1;
+                    break;
             }
             
-            minX = (x < minX) ? x : minX;
-            minY = (y < minY) ? y : minY;
-            maxX = (x > maxX) ? x : maxX;
-            maxY = (y > maxY) ? y : maxY;
+            minX = Math.min (x, minX);
+            minY = Math.min (y, minY);
+            maxX = Math.max (x, maxX);
+            maxY = Math.max (y, maxY);
         }
         
         width = maxX - minX + 1;
@@ -101,26 +108,36 @@ public class Loipe {
                     switch (dir) {
                         case 0:
                             loipe[y][x] = Fragment.NW;
+                            break;
                         case 1:
                             loipe[y][x] = Fragment.ZW;
+                            break;
                         case 2:
                             loipe[y][x] = Fragment.ZO;
+                            break;
                         case 3:
                             loipe[y][x] = Fragment.NO;
+                            break;
                     }
                     dir = (dir + 1) % 4;
+                    break;
                 case 'r':
                     switch (dir) {
                         case 0:
                             loipe[y][x] = Fragment.ZW;
+                            break;
                         case 1:
-                            loipe[y][x] = Fragment.NW;
+                            loipe[y][x] = Fragment.ZO;
+                            break;
                         case 2:
                             loipe[y][x] = Fragment.NO;
+                            break;
                         case 3:
-                            loipe[y][x] = Fragment.ZO;
+                            loipe[y][x] = Fragment.NW;
+                            break;
                     }
-                    dir = (dir - 1) % 4;
+                    dir = (dir + 3) % 4;
+                    break;
                 case 's':
                     if (loipe[y][x] == Fragment.OW || loipe[y][x] == Fragment.NZ) {
                         loipe[y][x] = Fragment.KR;
@@ -131,17 +148,22 @@ public class Loipe {
                     else {
                         loipe[y][x] = Fragment.NZ;
                     }
+                    break;
             }
             
             switch (dir) {
                 case 0:
                     x += 1;
+                    break;
                 case 1:
                     y -= 1;
+                    break;
                 case 2:
                     x -= 1;
+                    break;
                 case 3:
                     y += 1;
+                    break;
             }
             
             loipeList.add(new Punt(x, y));

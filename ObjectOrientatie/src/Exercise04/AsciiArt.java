@@ -19,26 +19,38 @@ public class AsciiArt implements TekenLoipe{
     @Override
     public void teken(){
         for (int i = 0; i < loipe.getWidth(); i++){
+            String outputString = "";
             for (int j = 0; j < loipe.getHeight(); j++){
-                Fragment fragment = loipe.getFragment(new Punt(i,j));
-                switch (fragment){
-                    case NZ:
-                      System.out.println("|") ;
-                    case OW:
-                      System.out.println("-");
-                    case NO:
-                      System.out.println("`");
-                    case NW:
-                      System.out.println("'");
-                    case ZO:
-                      System.out.println(",");
-                    case ZW:
-                      System.out.println("."); 
-                    case KR:
-                      System.out.println("+");  
+                Fragment fragment = loipe.getFragment(new Punt(j, i));
+                if (fragment == null) {
+                    outputString += " ";
+                } else {
+                    switch (fragment){
+                        case NZ:
+                            outputString += "|";
+                            break;
+                        case OW:
+                            outputString += "-";
+                            break;
+                        case NO:
+                            outputString += "`";
+                            break;
+                        case NW:
+                            outputString += "'";
+                            break;
+                        case ZO:
+                            outputString += ",";
+                            break;
+                        case ZW:
+                            outputString += ".";
+                            break; 
+                        case KR:
+                            outputString += "+";
+                            break; 
+                    }
                 }
-                System.out.println('\n');
-            }                
+            }
+            System.out.println(outputString);
         }
     }
     
