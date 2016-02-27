@@ -33,7 +33,7 @@ public class Loipe {
     
     // fragment van de loipe op positie p
     public Fragment getFragment(Punt p) {
-        return loipe[p.getY()][p.getX()];
+        return loipe[p.getX()][p.getY()];
     }
     
     // Het startpunt op de kaart
@@ -95,7 +95,7 @@ public class Loipe {
         height = maxY - minY + 1;
         startPunt = new Punt(0 - minX, 0 - minY);
         
-        loipe = new Fragment[height][width];
+        loipe = new Fragment[width][height];
         
         x = startPunt.getX();
         y = startPunt.getY();
@@ -107,16 +107,16 @@ public class Loipe {
                 case 'l':
                     switch (dir) {
                         case 0:
-                            loipe[y][x] = Fragment.ZO;
+                            loipe[x][y] = Fragment.NW;
                             break;
                         case 1:
-                            loipe[y][x] = Fragment.ZW;
+                            loipe[x][y] = Fragment.ZW;
                             break;
                         case 2:
-                            loipe[y][x] = Fragment.NW;
+                            loipe[x][y] = Fragment.ZO;
                             break;
                         case 3:
-                            loipe[y][x] = Fragment.NO;
+                            loipe[x][y] = Fragment.NO;
                             break;
                     }
                     dir = (dir + 1) % 4;
@@ -124,29 +124,29 @@ public class Loipe {
                 case 'r':
                     switch (dir) {
                         case 0:
-                            loipe[y][x] = Fragment.ZW;
+                            loipe[x][y] = Fragment.ZW;
                             break;
                         case 1:
-                            loipe[y][x] = Fragment.ZO;
+                            loipe[x][y] = Fragment.ZO;
                             break;
                         case 2:
-                            loipe[y][x] = Fragment.NO;
+                            loipe[x][y] = Fragment.NO;
                             break;
                         case 3:
-                            loipe[y][x] = Fragment.NW;
+                            loipe[x][y] = Fragment.NW;
                             break;
                     }
                     dir = (dir + 3) % 4;
                     break;
                 case 's':
-                    if (loipe[y][x] == Fragment.OW || loipe[y][x] == Fragment.NZ) {
-                        loipe[y][x] = Fragment.KR;
+                    if (loipe[x][y] == Fragment.OW || loipe[x][y] == Fragment.NZ) {
+                        loipe[x][y] = Fragment.KR;
                     }
                     else if (dir == 0 || dir == 2) {
-                        loipe[y][x] = Fragment.NZ;
+                        loipe[x][y] = Fragment.NZ;
                     }
                     else {
-                        loipe[y][x] = Fragment.OW;
+                        loipe[x][y] = Fragment.OW;
                     }
                     break;
             }
