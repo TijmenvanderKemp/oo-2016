@@ -8,7 +8,7 @@ package Exercise04;
 import java.util.ArrayList;
 
 /**
- *
+ * Holds the important information of the loipe. Basically the 2d array with all the pieces.
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
@@ -17,9 +17,11 @@ public class Loipe implements InfoLoipe {
     private int width;
     private int height;
     private Fragment [][] loipe;
+    // We made an ArrayList with which we fill the loipe. This is efficient
+    // because we need to loop through it and this way we avoid messy switches.
     private ArrayList<Punt> loipeList = new ArrayList();
     private Punt startPunt;
-    private int stepCounter;
+    private int stepCounter = 0;
     
     // grootte in oost−west richting
     @Override
@@ -54,15 +56,23 @@ public class Loipe implements InfoLoipe {
         return loipeList.get(stepCounter);
     } 
     
+    /**
+     * Constructor with the main logic.
+     * @param pad The text string that signifies the path. For example, "sssrssslrss"
+     */
     public Loipe (String pad) {
         
+        // Boundaries so we know the dimensions
         int minX = 0;
         int minY = 0;
         int maxX = 0;
         int maxY = 0;
         int x = 0;
         int y = 0;
-        int dir = 0; // 0 = N, 1 = O, 2 = Z, 3 = W
+        // 0 = N, 1 = O, 2 = Z, 3 = W
+        int dir = 0; 
+        // Loop through every letter of the path. First change direction,
+        // then take a step.
         for (int i = 0; i < pad.length(); i ++) {
             switch (pad.charAt(i)) {
                 case 'l':
@@ -90,25 +100,28 @@ public class Loipe implements InfoLoipe {
                     break;
             }
             
+            // Push out the boundaries if necessary.
             minX = Math.min (x, minX);
             minY = Math.min (y, minY);
             maxX = Math.max (x, maxX);
             maxY = Math.max (y, maxY);
         }
         
+        // Calculate the width, height and starting point of the loipe itself.
         width = maxX - minX + 1;
         height = maxY - minY + 1;
         startPunt = new Punt(0 - minX, 0 - minY);
         
         loipe = new Fragment[width][height];
         
+        // We can now start filling the loipe.
         x = startPunt.getX();
         y = startPunt.getY();
-        stepCounter = 0;
         loipeList.add(new Punt(x, y));
         dir = 0; // 0 = N, 1 = O, 2 = Z, 3 = W
         for (int i = 0; i < pad.length(); i ++) {
             switch (pad.charAt(i)) {
+                
                 case 'l':
                     switch (dir) {
                         case 0:
@@ -126,6 +139,7 @@ public class Loipe implements InfoLoipe {
                     }
                     dir = (dir + 3) % 4;
                     break;
+                
                 case 'r':
                     switch (dir) {
                         case 0:
@@ -143,6 +157,7 @@ public class Loipe implements InfoLoipe {
                     }
                     dir = (dir + 1) % 4;
                     break;
+                
                 case 's':
                     if (loipe[x][y] == Fragment.OW || loipe[x][y] == Fragment.NZ) {
                         loipe[x][y] = Fragment.KR;
@@ -154,6 +169,7 @@ public class Loipe implements InfoLoipe {
                         loipe[x][y] = Fragment.OW;
                     }
                     break;
+                    
             }
             
             switch (dir) {

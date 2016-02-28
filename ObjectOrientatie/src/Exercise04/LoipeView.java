@@ -8,7 +8,7 @@ package Exercise04;
 import java.util.Scanner;
 
 /**
- *
+ * The View part of the program.
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
@@ -25,16 +25,18 @@ public class LoipeView {
         
         Loipe l = new Loipe(loipeInput);
         
-        
+        // First print the picture with AsciiArt
         System.out.println("Stepping through the Loipe. Type 'stop' to stop.");
         AsciiArt aa = new AsciiArt (l);
         aa.teken();
         
+        // Loop through it until the user types 'stop'
         while (!"stop".equals(s.nextLine())) {
             aa.setPosition(l.stap());
             aa.teken();
         }
         
+        // Then display with the fancy drawing class
         LoipePlaatje lp = new LoipePlaatje (l);
         lp.teken();
     }
