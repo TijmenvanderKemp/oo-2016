@@ -13,6 +13,7 @@ package Exercise04;
 
 
 /**
+ * voorbeeld van een pad
  ssssrrrssslssrrsllssslsss
 
      ,.
@@ -26,7 +27,10 @@ package Exercise04;
  */
 
 public class LoipeMain {
-    
+    /**
+     * main van het programma, die de view aanmaakt
+     * @param args 
+     */
     public static void main (String[] args) {
         LoipeView lv = new LoipeView();
     }

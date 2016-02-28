@@ -9,15 +9,21 @@ package Exercise04;
  * @author Tijmen van der Kemp (s4446887)
  */
 public class AsciiArt implements TekenLoipe{
-    private final Loipe loipe;
-    private Punt currentPunt;
+    private final Loipe loipe; //loipe die getekend moet worden
+    private Punt currentPunt; //punt waar de wandelaar op dat moment is
     
+    /**
+     * maakt een object aan waarmee een loipe getekend kan worden
+     * @param loipe de loipe die getekend moet worden
+     */
     public AsciiArt(Loipe loipe){
         this.loipe = loipe;
         currentPunt = loipe.start();
     }
     
-    
+    /**
+     * tekent een loipe met asciiart
+     */
     @Override
     public void teken(){
         for (int j = 0; j < loipe.getHeight(); j++){
@@ -58,6 +64,10 @@ public class AsciiArt implements TekenLoipe{
         }
     }
     
+    /**
+     * zet de positie van de wandelaar
+     * @param p het punt waar de wandelaar op dat moment is.
+     */
     @Override
     public void setPosition(Punt p){
         currentPunt = p;
