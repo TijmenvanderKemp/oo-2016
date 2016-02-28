@@ -8,16 +8,21 @@ public class Punt {
     /**
      * de x- en y-coordinaat
      */
-    private int x, y;
+    private int x, y; // x- en y-coordinaat
 
     /**
-     * constructors
+     * maakt een punt aan
+     * @param x x-coordinaat van het punt
+     * @param y y-coordinaat van het punt
      */
     public Punt(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.x = x; 
+        this.y = y; 
     }
     
+    /**
+     * maakt een punt (0,0) aan als er geen coordinaten worden meegeven
+     */
     public Punt () {
         this(0, 0);
     }
