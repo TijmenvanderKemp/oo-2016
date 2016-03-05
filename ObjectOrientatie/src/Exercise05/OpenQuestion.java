@@ -66,12 +66,5 @@ public class OpenQuestion extends Question {
         return answer;
     }
     
-    /**
-     * duplicates the open question
-     * @return the same question
-     */
-    @Override
-    public OpenQuestion duplicate(){
-        return this;
-    }
+    
 }
