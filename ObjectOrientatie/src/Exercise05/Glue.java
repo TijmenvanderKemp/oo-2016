@@ -21,6 +21,8 @@ public class Glue {
         Controller controller = new Controller();
         controller.addModel(model);
         controller.addView(view);
+        
+        controller.run();
     }
     
 }
