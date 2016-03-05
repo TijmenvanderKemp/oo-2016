@@ -36,7 +36,7 @@ public class Model {
     
     public void addQuestion(Question q) {
         // For when the answer was wrong
-        questions.add(q);
+        questions.add(q.duplicate());
     }
     
     public int questionsLeft() {
