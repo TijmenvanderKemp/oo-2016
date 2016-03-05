@@ -6,6 +6,12 @@
 package Exercise05;
 
 /**
+ * Runs the quiz.
+ * In a cycle:
+ *   - gets a question from the model
+ *   - poses it to the user
+ *   - gets a response from the user
+ *   - checks the answer and adds it to the list again if it's incorrect
  * 
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
@@ -14,9 +20,7 @@ package Exercise05;
 
 public class Controller {
     
-    // Sends questions to the View to be displayed, gets answers from the View
-    // to check, sends requests to the Model for new questions, gets questions
-    // from the Model to pose to the View.
+    
     
     Model model;
     View view;
@@ -28,8 +32,11 @@ public class Controller {
         this.view = v;
     }
     
+    /**
+     * Run the quiz.
+     * Asks questions while there are questions left to ask.
+     */
     public void run() {
-        // Run the quiz
         while (model.questionsLeft() > 0) {
             Question nextQuestion = model.giveNextQuestion();
             view.poseQuestion(nextQuestion);

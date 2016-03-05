@@ -31,8 +31,11 @@ public class View {
         System.out.println(q.toString());
     }
     
+    /**
+     * Scans the next line of input and gives it back as a user answer.
+     * @return the user input
+     */
     public String giveAnswer() {
-        // Give answer to whomever asked.
         return scanner.nextLine();
     }
     
