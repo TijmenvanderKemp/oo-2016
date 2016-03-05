@@ -21,10 +21,12 @@ public class Model {
     // it has another Question.
     
     
-    private List<Question> questions = new LinkedList<>();
+    private final List<Question> questions = new LinkedList<>();
     
     public Model () {
-        // Add questions 
+        
+        addInitialQuestions();
+        
     }
     
     public Question giveNextQuestion() {
@@ -39,6 +41,88 @@ public class Model {
     
     public int questionsLeft() {
         return questions.size();
+    }
+    
+    private void addInitialQuestions() {
+        questions.add(new OpenQuestion(
+                "Wat is de complexiteit van binair zoeken?",
+                "O(log N)"
+                )
+        );
+        questions.add(new OpenQuestion(
+                "Hoe lees je in Java een integer i uit een scanner s?",
+                "i = s.nextInt();",
+                2
+                )
+        );
+        questions.add(new OpenQuestion(
+                "Is er verschil tussen een interface en een abstracte klasse?",
+                "Ja",
+                5
+                )
+        );
+        questions.add(new OpenQuestion(
+                "Hoeveel constructoren moet je minstens maken bij een klasse in Java?",
+                "0",
+                2
+                )
+        );
+        questions.add(new OpenQuestion(
+                "Is er een maximum aantal constructoren van een klasse in Java?",
+                "Nee"
+                )
+        );
+        questions.add(new MCQuestion(
+                "Wat is de complexiteit van slim in situ sorteren?",
+                new String [] {
+                    "O(N^2)",
+                    "O(N log N)",
+                    "O(N)",
+                    "O(log N)"},
+                1,
+                4
+                )
+        );
+        questions.add(new MCQuestion(
+                "Hoe print je \"Hello world\" op een regel in Java?",
+                new String [] {
+                    "System.out.print(\"Hello world\");",
+                    "System.out.println(\"Hello world\");",
+                    "cout << \"Hello world\";"},
+                1
+                )
+        );
+        questions.add(new MCQuestion(
+                "Hoe lees je in Java een niet leeg woord uit scanner s?",
+                new String [] {
+                    "s.nextline()",
+                    "s.next(\"\\S+\")",
+                    "s.next(\"\\a*\")",
+                    "s.next(\"\\S*\")",
+                    "s.next(\"\\\\s+\")",
+                    "s.next(\"\\s+\")",
+                    "s.nextString(\"\\s*\")",
+                    "s.next(\"\\\\S+\")",
+                    "s.nextString()"},
+                7,
+                1
+                )
+        );
+        questions.add(new TCQuestion(
+                "Een rij heeft in Java een vaste grootte",
+                "Goed",
+                "Fout",
+                0
+                )
+        );
+        questions.add(new TCQuestion(
+                "Een lijst heeft in Java een vaste grootte",
+                "Goed",
+                "Fout",
+                1
+                )
+        );
+        
     }
     
 }

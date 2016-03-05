@@ -18,19 +18,16 @@ public abstract class Question {
     protected final String question;
     
     public Question(String v, int w){
-        question = v;
+        this.question = v;
         if(1 <= w && w <= 5){
             weight = w;
         }
         else
             weight = 3;
     }
-            
     
     @Override
-    public String toString() {
-        return "";
-    }
+    public abstract String toString();
     
     public abstract boolean isCorrect(String answer);           
     

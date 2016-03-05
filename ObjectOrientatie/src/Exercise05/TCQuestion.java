@@ -14,10 +14,6 @@ package Exercise05;
 
 public class TCQuestion extends MCQuestion{
     
-    private String question;
-    private String[] answers;
-    private int correct;
-    private int weight;
     
     public TCQuestion(String question, String answer1, String answer2, int correct, int weight){
         super(question, new String[]{answer1,answer2}, correct, weight);
@@ -29,7 +25,7 @@ public class TCQuestion extends MCQuestion{
     
     @Override
     public String toString(){
-        return answers[1] + "or" +answers[2] + ":" + question;
+        return answers[0] + " or " +answers[1] + ":" + question;
     }
     
     @Override

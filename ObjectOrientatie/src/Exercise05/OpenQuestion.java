@@ -12,9 +12,7 @@ package Exercise05;
  */
 
 public class OpenQuestion extends Question {
-    private String question;
-    private String answer;
-    private int weight;
+    protected String answer;
     
     public OpenQuestion(String question, String answer, int weight){
         super(question, weight);

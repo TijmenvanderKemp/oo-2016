@@ -42,10 +42,10 @@ public class Controller {
             view.poseQuestion(nextQuestion);
             String answer = view.giveAnswer();
             if (nextQuestion.isCorrect(answer)) {
-                view.print("That's the correct answer!");
+                view.print("That's the correct answer!\n");
             }
             else {
-                view.print("That's the incorrect answer!");
+                view.print("That's the incorrect answer!\n");
                 // Add to the end of the list.
                 model.addQuestion(nextQuestion);
             }

@@ -13,10 +13,8 @@ package Exercise05;
 
 public class MCQuestion extends Question {
     
-    private String question;
-    private String[] answers;
-    private int correct;
-    private int weight;
+    protected String[] answers;
+    protected int correct;
     
     public MCQuestion(String question, String[] answers, int correct, int weight){
         super(question, weight);
@@ -43,7 +41,7 @@ public class MCQuestion extends Question {
     
     @Override
     public boolean isCorrect(String answer){
-        return(answer.equalsIgnoreCase(answers[correct]));
+        return Integer.parseInt(answer) == correct;
     }
     
     @Override
