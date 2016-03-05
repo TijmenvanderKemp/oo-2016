@@ -12,9 +12,7 @@ package Exercise05;
  */
 
 public class OpenQuestion extends Question {
-    private String question; // the question
-    private String answer; // the answer
-    private int weight; //weight of the question
+    private final String answer; // the answer
     
     /**
      * constructor for open question

@@ -78,7 +78,7 @@ public class Controller {
             else {
                 view.print("That's the incorrect answer!\n");
                 // Add to the end of the list, if it's the first time you are answering the question.
-                if (rotation == 2) {
+                if (rotation == 1) {
                     model.addQuestion(nextQuestion);
                 }
             }

@@ -12,10 +12,7 @@ package Exercise05;
  */
 
 
-public class TCQuestion extends MCQuestion{
-    
-    private String[] answers;
-    private int correct;
+public class TCQuestion extends MCQuestion {
     
     /**
      * constructor of an two choice question
