@@ -24,16 +24,12 @@ public class TCQuestion extends MCQuestion{
     }
     
     public TCQuestion(String question, String answer1, String answer2, int correct){
-        this.question = question;
-        this.answer1 = answer1;
-        this.answer2 = answer2;
-        this.correct = correct;
-        this.weight = 3;
+        super(question, new String []{answer1, answer2}, correct);
     }
     
     @Override
     public String toString(){
-        return question;
+        return answers[1] + "or" +answers[2] + ":" + question;
     }
     
     @Override
