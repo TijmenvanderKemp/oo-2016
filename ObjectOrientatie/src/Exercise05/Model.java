@@ -21,24 +21,43 @@ public class Model {
     // it has another Question.
     
     
+<<<<<<< HEAD
     private List<Question> questions = new LinkedList<>();
+=======
+    private final List<Question> questions = new LinkedList<>();
+    private final List<Question> secondTryQuestions = new LinkedList<>();
+>>>>>>> origin/master
     
     public Model () {
         // Add questions 
     }
     
-    public Question giveNextQuestion() {
+    public Question giveNextQuestion(boolean secondRun) {
         // Give the question and simultaneously remove it from the list.
-        return questions.remove(0);
+        if (!secondRun) {
+            return questions.remove(0);
+        }
+        else {
+            return secondTryQuestions.remove(0);
+        }
     }
     
     public void addQuestion(Question q) {
         // For when the answer was wrong
+<<<<<<< HEAD
         questions.add(q);
+=======
+        secondTryQuestions.add(q.duplicate());
+>>>>>>> origin/master
     }
     
-    public int questionsLeft() {
-        return questions.size();
+    public int questionsLeft(boolean secondRun) {
+        if (!secondRun) {
+            return questions.size();
+        }
+        else {
+            return secondTryQuestions.size();
+        }
     }
     
 }

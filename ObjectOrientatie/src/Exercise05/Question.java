@@ -40,4 +40,8 @@ public abstract class Question {
         return this;
     }
     
+    public int getPoints() {
+        return weight;
+    }
+    
 }
