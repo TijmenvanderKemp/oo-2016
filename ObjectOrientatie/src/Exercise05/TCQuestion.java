@@ -20,7 +20,7 @@ public class TCQuestion extends MCQuestion{
     private int weight;
     
     public TCQuestion(String question, String answer1, String answer2, int correct, int weight){
-        super(question,String[] as = [answer1,answer2],correct,weight);
+        super(question, new String[]{answer1,answer2}, correct, weight);
     }
     
     public TCQuestion(String question, String answer1, String answer2, int correct){
