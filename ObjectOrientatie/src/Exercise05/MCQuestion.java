@@ -13,4 +13,6 @@ package Exercise05;
 
 public class MCQuestion {
     
+    // Subclass of Question
+    
 }

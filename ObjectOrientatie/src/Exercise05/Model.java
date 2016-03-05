@@ -11,9 +11,10 @@ package Exercise05;
  * @author Tijmen van der Kemp (s4446887)
  */
 
-
-public class View {
+public class Model extends java.util.Observable {
     
-    // Poses questions to the user, gives user input back to the Controller.
+    // When this class gets requests for questions, it will pick one of the
+    // questions from the Question classes. It will then notify the Model that
+    // it has another Question.
     
 }

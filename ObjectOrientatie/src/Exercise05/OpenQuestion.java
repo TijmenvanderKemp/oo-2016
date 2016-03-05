@@ -13,4 +13,6 @@ package Exercise05;
 
 public class OpenQuestion {
     
+    // Subclass of Question
+    
 }

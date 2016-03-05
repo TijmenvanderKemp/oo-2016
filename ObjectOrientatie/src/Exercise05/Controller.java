@@ -12,8 +12,10 @@ package Exercise05;
  */
 
 
-public class View {
+public class Controller {
     
-    // Poses questions to the user, gives user input back to the Controller.
+    // Sends questions to the View to be displayed, gets answers from the View
+    // to check, sends requests to the Model for new questions, gets questions
+    // from the Model to pose to the View.
     
 }

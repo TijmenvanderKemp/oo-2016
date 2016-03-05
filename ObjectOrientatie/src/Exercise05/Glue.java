@@ -12,8 +12,8 @@ package Exercise05;
  */
 
 
-public class View {
+public class Glue {
     
-    // Poses questions to the user, gives user input back to the Controller.
+    // Link the MVCs together
     
 }

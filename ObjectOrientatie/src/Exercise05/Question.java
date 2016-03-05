@@ -14,4 +14,17 @@ package Exercise05;
 
 public class Question {
     
+    @Override
+    public String toString() {
+        return "";
+    }
+    
+    public boolean isCorrect(String answer) {
+        return false;
+    }
+    
+    public String correctAnswer() {
+        return "";
+    }
+    
 }

@@ -14,4 +14,6 @@ package Exercise05;
 
 public class TCQuestion {
     
+    // Subclass of MCQuestion
+    
 }
