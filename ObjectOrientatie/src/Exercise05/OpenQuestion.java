@@ -11,8 +11,34 @@ package Exercise05;
  * @author Tijmen van der Kemp (s4446887)
  */
 
-public class OpenQuestion {
+public class OpenQuestion extends Question {
+    private String question;
+    private String answer;
+    private int weight;
     
-    // Subclass of Question
+    public OpenQuestion(String question, String answer, int weight){
+        super(question, weight);
+        this.answer = answer;
+        
+    }
     
+    public OpenQuestion(String question, String answer){
+        super(question, 3);
+        this.answer = answer;
+    }
+    
+    @Override
+    public String toString(){
+        return question;
+    }
+    
+    @Override
+    public boolean isCorrect(String answer){
+        return(answer.equalsIgnoreCase(this.answer));
+    }
+    
+    @Override
+    public String correctAnswer() {
+        return answer;
+    }
 }

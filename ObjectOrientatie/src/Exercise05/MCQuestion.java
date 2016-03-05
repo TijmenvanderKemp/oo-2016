@@ -11,8 +11,44 @@ package Exercise05;
  * @author Tijmen van der Kemp (s4446887)
  */
 
-public class MCQuestion {
+public class MCQuestion extends Question {
     
-    // Subclass of Question
+    private String question;
+    private String[] answers;
+    private int correct;
+    private int weight;
+    
+    public MCQuestion(String question, String[] answers, int correct, int weight){
+        super(question, weight);
+        this.answers = answers;
+        this.correct = correct;
+        
+    }
+    
+    public MCQuestion(String question, String[] answers, int correct){
+        super(question, 3);
+        this.answers = answers;
+        this.correct = correct;
+        
+    }
+    
+    @Override
+    public String toString(){
+        String output = question;
+        for(String answer:answers){
+            output += '\n' + answer;
+        }
+        return output;
+    }
+    
+    @Override
+    public boolean isCorrect(String answer){
+        return(answer.equalsIgnoreCase(answers[correct]));
+    }
+    
+    @Override
+    public String correctAnswer() {
+        return answers[correct];
+    }
     
 }
