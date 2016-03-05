@@ -45,7 +45,7 @@ public class MCQuestion extends Question {
     
     @Override
     public boolean isCorrect(String answer){
-        return(answer.equalsIgnoreCase(answers[correct]));
+        return Integer.parseInt(answer) == correct;
     }
     
     @Override
