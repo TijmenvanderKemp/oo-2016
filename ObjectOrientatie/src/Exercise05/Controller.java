@@ -18,4 +18,28 @@ public class Controller {
     // to check, sends requests to the Model for new questions, gets questions
     // from the Model to pose to the View.
     
+    Model model;
+    View view;
+    
+    public void addModel (Model m) {
+        this.model = m;
+    }
+    public void addView (View v) {
+        this.view = v;
+    }
+    
+    public void run() {
+        // Run the quiz
+        while (model.questionsLeft() > 0) {
+            Question nextQuestion = model.giveNextQuestion();
+            view.poseQuestion(nextQuestion);
+            String answer = view.giveAnswer();
+            // If answer == rightanswer
+            // Correct answer!
+            // Else
+            // Not the correct answer!
+            // Add this question to end of list.
+        }
+    }
+    
 }
