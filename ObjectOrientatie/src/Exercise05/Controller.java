@@ -65,15 +65,7 @@ public class Controller {
             Question nextQuestion = model.giveNextQuestion(secondRun);
             view.poseQuestion(nextQuestion);
             String answer = view.giveAnswer();
-<<<<<<< HEAD
-            if (nextQuestion.isCorrect(answer)) {
-                view.print("That's the correct answer!");
-            }
-            else {
-                view.print("That's the incorrect answer!");
-                // Add to the end of the list.
-                model.addQuestion(nextQuestion);
-=======
+            
             // Use 42 if you want to cheat. Useful for saving time.
             if (nextQuestion.isCorrect(answer) || answer.equals("42")) {
                 view.print("That's the correct answer!\n");
@@ -90,7 +82,6 @@ public class Controller {
                 if (!secondRun) {
                     model.addQuestion(nextQuestion);
                 }
->>>>>>> origin/master
             }
         }
         

@@ -5,7 +5,6 @@
 
 package Exercise05;
 
-import java.util.Observable;
 import java.util.Scanner;
 
 /**
@@ -17,7 +16,7 @@ import java.util.Scanner;
 
 public class View {
 
-    private Scanner scanner;
+    private final Scanner scanner;
     
     public View () {
         scanner = new Scanner (System.in);

@@ -29,7 +29,7 @@ public class TCQuestion extends MCQuestion{
     
     @Override
     public String toString(){
-        return answers[1] + "or" +answers[2] + ":" + question;
+        return answers[0] + "or" +answers[1] + ":" + question;
     }
     
     @Override
@@ -40,11 +40,6 @@ public class TCQuestion extends MCQuestion{
     @Override
     public String correctAnswer() {
         return answers[correct];
-    }
-    
-    @Override
-    public TCQuestion duplicate(){
-        return this;
     }
     
 }
