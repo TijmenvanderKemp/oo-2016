@@ -15,10 +15,8 @@ import java.util.Random;
 
 public class MCQuestion extends Question {
     
-    private String question; // the question
-    private String[] answers; // the possible answers
-    private int correct; // the number of the correct answer
-    private int weight; // weight of the question
+    protected String[] answers; // the possible answers
+    protected int correct; // the number of the correct answer
     
     /**
      * constructor for multiple choice question

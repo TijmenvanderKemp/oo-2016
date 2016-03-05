@@ -14,10 +14,8 @@ package Exercise05;
 
 public class TCQuestion extends MCQuestion{
     
-    private String question; // dit kan weg geloof ik, dus geen javadoc
     private String[] answers;
     private int correct;
-    private int weight;
     
     /**
      * constructor of an two choice question

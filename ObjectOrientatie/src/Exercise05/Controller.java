@@ -20,7 +20,6 @@ package Exercise05;
 
 public class Controller {
     
-    
     int cakePoints = 0;
     int cakePoints2 = 0;
     Model model;
@@ -39,37 +38,37 @@ public class Controller {
      */
     public void run() {
         
+        int rotation = 1;
         view.print("Answer all the questions correctly and you will get cake!");
         
-        askQuestions(/*second run =*/ false);
+        askQuestions(rotation);
         
-        if (model.questionsLeft(true) == 0) {
-            cakePoints2 = -1; // Disable this so we don't display it later.
-        }
+        rotation = 2;
+        boolean secondRoundNecessary = (model.questionsLeft(rotation) >= 1);
         
-        askQuestions(/*second run =*/ true);
+        askQuestions(rotation);
         
         view.print("The cake was a lie!\nBut you scored "
                     + String.valueOf(cakePoints)
                     + " points!\n");
-        if (cakePoints2 > -1) {
+        if (secondRoundNecessary) {
             view.print("You scored "
                     + String.valueOf(cakePoints2)
                     + " points on your second try.");
         }
     }
     
-    private void askQuestions (boolean secondRun) {
-        while (model.questionsLeft(secondRun) > 0) {
+    private void askQuestions (int rotation) {
+        while (model.questionsLeft(rotation) > 0) {
             
-            Question nextQuestion = model.giveNextQuestion(secondRun);
+            Question nextQuestion = model.giveNextQuestion(rotation);
             view.poseQuestion(nextQuestion);
             String answer = view.giveAnswer();
             
             // Use 42 if you want to cheat. Useful for saving time.
             if (nextQuestion.isCorrect(answer) || answer.equals("42")) {
                 view.print("That's the correct answer!\n");
-                if (!secondRun) {
+                if (rotation == 1) {
                     cakePoints += nextQuestion.getPoints();
                 }
                 else {
@@ -79,7 +78,7 @@ public class Controller {
             else {
                 view.print("That's the incorrect answer!\n");
                 // Add to the end of the list, if it's the first time you are answering the question.
-                if (!secondRun) {
+                if (rotation == 2) {
                     model.addQuestion(nextQuestion);
                 }
             }

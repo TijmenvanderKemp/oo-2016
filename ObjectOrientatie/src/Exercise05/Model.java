@@ -29,9 +29,9 @@ public class Model {
         // Add questions 
     }
     
-    public Question giveNextQuestion(boolean secondRun) {
+    public Question giveNextQuestion(int rotation) {
         // Give the question and simultaneously remove it from the list.
-        if (!secondRun) {
+        if (rotation == 1) {
             return questions.remove(0);
         }
         else {
@@ -45,8 +45,8 @@ public class Model {
         secondTryQuestions.add(q.duplicate());
     }
     
-    public int questionsLeft(boolean secondRun) {
-        if (!secondRun) {
+    public int questionsLeft(int rotation) {
+        if (rotation == 1) {
             return questions.size();
         }
         else {
