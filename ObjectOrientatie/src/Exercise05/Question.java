@@ -12,19 +12,32 @@ package Exercise05;
  */
 
 
-public class Question {
+public abstract class Question {
+    
+    public final int weight;
+    protected final String question;
+    
+    public Question(String v, int w){
+        question = v;
+        if(1 <= w && w <= 5){
+            weight = w;
+        }
+        else
+            weight = 3;
+    }
+            
     
     @Override
     public String toString() {
         return "";
     }
     
-    public boolean isCorrect(String answer) {
-        return false;
-    }
+    public abstract boolean isCorrect(String answer);           
     
-    public String correctAnswer() {
-        return "";
+    public abstract String correctAnswer();
+    
+    public Question duplicate(){
+        return this;
     }
     
 }

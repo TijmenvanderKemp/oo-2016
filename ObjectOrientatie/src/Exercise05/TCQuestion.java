@@ -12,8 +12,38 @@ package Exercise05;
  */
 
 
-public class TCQuestion {
+public class TCQuestion extends MCQuestion{
     
-    // Subclass of MCQuestion
+    private String question;
+    private String[] answers;
+    private int correct;
+    private int weight;
+    
+    public TCQuestion(String question, String answer1, String answer2, int correct, int weight){
+        super(question,String[] as = [answer1,answer2],correct,weight);
+    }
+    
+    public TCQuestion(String question, String answer1, String answer2, int correct){
+        this.question = question;
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.correct = correct;
+        this.weight = 3;
+    }
+    
+    @Override
+    public String toString(){
+        return question;
+    }
+    
+    @Override
+    public boolean isCorrect(String answer){
+        return(answer.equalsIgnoreCase(answers[correct]));
+    }
+    
+    @Override
+    public String correctAnswer() {
+        return answers[correct];
+    }
     
 }
