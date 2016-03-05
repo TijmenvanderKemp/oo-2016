@@ -41,4 +41,9 @@ public class OpenQuestion extends Question {
     public String correctAnswer() {
         return answer;
     }
+    
+    @Override
+    public OpenQuestion duplicate(){
+        return this;
+    }
 }

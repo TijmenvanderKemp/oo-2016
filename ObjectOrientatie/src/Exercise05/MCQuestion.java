@@ -5,6 +5,7 @@
 
 package Exercise05;
 
+import java.util.Random;
 /**
  * 
  * @author Joep Veldhoven (s4456556)
@@ -51,4 +52,10 @@ public class MCQuestion extends Question {
         return answers[correct];
     }
     
+    @Override
+    public MCQuestion duplicate(){
+        Random random = new Random() ;
+        int shift = random.nextInt(answers.length) ;
+        
+    }
 }
