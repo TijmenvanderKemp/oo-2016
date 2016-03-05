@@ -20,9 +20,11 @@ public class View {
     private Scanner scanner;
     
     public View () {
-        
         scanner = new Scanner (System.in);
-        
+    }
+    
+    public void print(String s) {
+        System.out.println(s);
     }
 
     public void poseQuestion(Question q) {

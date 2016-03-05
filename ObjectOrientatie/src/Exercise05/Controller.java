@@ -34,11 +34,14 @@ public class Controller {
             Question nextQuestion = model.giveNextQuestion();
             view.poseQuestion(nextQuestion);
             String answer = view.giveAnswer();
-            // If answer == rightanswer
-            // Correct answer!
-            // Else
-            // Not the correct answer!
-            // Add this question to end of list.
+            if (nextQuestion.isCorrect(answer)) {
+                view.print("That's the correct answer!");
+            }
+            else {
+                view.print("That's the incorrect answer!");
+                // Add to the end of the list.
+                model.addQuestion(nextQuestion);
+            }
         }
     }
     
