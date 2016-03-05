@@ -38,4 +38,9 @@ public class TCQuestion extends MCQuestion{
         return answers[correct];
     }
     
+    @Override
+    public TCQuestion duplicate(){
+        return this;
+    }
+    
 }

@@ -22,6 +22,7 @@ public class Model {
     
     
     private final List<Question> questions = new LinkedList<>();
+    private final List<Question> secondTryQuestions = new LinkedList<>();
     
     public Model () {
         
@@ -29,18 +30,28 @@ public class Model {
         
     }
     
-    public Question giveNextQuestion() {
+    public Question giveNextQuestion(boolean secondRun) {
         // Give the question and simultaneously remove it from the list.
-        return questions.remove(0);
+        if (!secondRun) {
+            return questions.remove(0);
+        }
+        else {
+            return secondTryQuestions.remove(0);
+        }
     }
     
     public void addQuestion(Question q) {
         // For when the answer was wrong
-        questions.add(q.duplicate());
+        secondTryQuestions.add(q.duplicate());
     }
     
-    public int questionsLeft() {
-        return questions.size();
+    public int questionsLeft(boolean secondRun) {
+        if (!secondRun) {
+            return questions.size();
+        }
+        else {
+            return secondTryQuestions.size();
+        }
     }
     
     private void addInitialQuestions() {
