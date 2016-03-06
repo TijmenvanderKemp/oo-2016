@@ -47,6 +47,11 @@ public class Model {
         secondTryQuestions.add(q.duplicate());
     }
     
+    /**
+     * gives how many questions are left
+     * @param rotation whether you are in the first or second round
+     * @return the anount of questions left according to the current rotation
+     */
     public int questionsLeft(int rotation) {
         if (rotation == 1) {
             return questions.size();
@@ -56,6 +61,9 @@ public class Model {
         }
     }
     
+    /**
+     * add the questions to the list
+     */
     private void addNewQuestions () {
         questions.add(new OpenQuestion (
             "Wat is de complexiteit van binair zoeken?",

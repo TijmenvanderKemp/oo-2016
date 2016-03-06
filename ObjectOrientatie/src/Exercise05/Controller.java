@@ -20,10 +20,10 @@ package Exercise05;
 
 public class Controller {
     
-    int cakePoints = 0;
-    int cakePoints2 = 0;
-    Model model;
-    View view;
+    int cakePoints = 0; // points for questions answered in 1 try
+    int cakePoints2 = 0; //points for questions answered in 2 tries
+    Model model; //model
+    View view; //view
     
     public void addModel (Model m) {
         this.model = m;
@@ -58,6 +58,10 @@ public class Controller {
         }
     }
     
+    /**
+     * asks the questions that are left 
+     * @param rotation the integer which round of questions you are in
+     */
     private void askQuestions (int rotation) {
         while (model.questionsLeft(rotation) > 0) {
             
