@@ -65,7 +65,12 @@ public class MCQuestion extends Question {
      */
     @Override
     public boolean isCorrect(String answer){
-        return Integer.parseInt(answer) == correct;
+        try{
+            return Integer.parseInt(answer) == correct;
+        }
+        catch(NumberFormatException nfe){
+            return false;
+        }
     }
     
     /**
