@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 
@@ -22,7 +23,7 @@ public class Solver
     List<Node<Configuration>> path;
 
     public Solver( Configuration g ) {
-        toExamine = new LinkedList<>(); // Make this Priotiry Queue when MHD is implemented
+        toExamine = new PriorityQueue<>();
         toExamine.add(g);
         
         examined = new HashSet();

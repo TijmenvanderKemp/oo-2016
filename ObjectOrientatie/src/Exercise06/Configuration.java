@@ -23,4 +23,14 @@ public interface Configuration extends Comparable<Configuration>
      * For marking final / solution configurations.
      */
     public boolean isSolution();
+    
+    /**
+     * For comparing manhattans.
+     */
+    public int getManhattan();
+    
+    /**
+     * For setting manhattans.
+     */
+    public void setManhattan(int m);
 }

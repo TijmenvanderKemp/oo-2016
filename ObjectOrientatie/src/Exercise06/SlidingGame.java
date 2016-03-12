@@ -20,6 +20,7 @@ public class SlidingGame implements Configuration
      */
     private int[][] board;
     private int holeX, holeY;
+    private int manhattan;
 
     /**
      * A constructor that initializes the board with the specified array
@@ -100,6 +101,7 @@ public class SlidingGame implements Configuration
         
         for (Direction dir : Direction.values()) {
             Configuration possibleSuccessor = successor(dir);
+            
             if (possibleSuccessor != null) {
                 successors.add(possibleSuccessor);
 //                System.out.println("Added successor: " + dir.toString() + "\n" + possibleSuccessor.toString());
@@ -118,12 +120,15 @@ public class SlidingGame implements Configuration
             return null;
         }
         
+        int manhattanOffset = 0; 
+        
         int[] numberArray = new int[N*N];
         for (int row = 0; row < N; row ++){
             for (int col = 0; col < N; col ++){
                 // New hole position
                 if (row == holeY + dir.getDY() && col == holeX + dir.getDX()){
                     numberArray[N * row + col] = HOLE;
+                    manhattanOffset = calculateManhattanOffset(dir, row, col);
                 }
                 // Previous hole position
                 else if (row == holeY && col == holeX) {
@@ -136,12 +141,71 @@ public class SlidingGame implements Configuration
             }
         }
         
-        return new SlidingGame(numberArray);
+        SlidingGame returnGame = new SlidingGame(numberArray);
+        returnGame.setManhattan(manhattan + manhattanOffset);
+        System.out.println(manhattan + manhattanOffset);
+        return returnGame;
+    }
+    
+            
+    public int calculateManhattanOffset (Direction dir, int row, int col) {
+        // This piece is going to get moved, so the manhattan distance
+        // will shift by one. Determine which way it shifts.
+        switch(dir) {
+            case EAST:{
+                if (board[row][col] % N >= col)
+                    return 1;
+                else
+                    return -1;
+            }
+            case WEST:{
+                if (board[row][col] % N > col)
+                    return -1;
+                else
+                    return 1;
+            }
+            case NORTH:{
+                if (board[row][col] / N > row)
+                    return -1;
+                else
+                    return 1;
+            }
+            case SOUTH:{
+                if (board[row][col] / N >= row)
+                    return 1;
+                else
+                    return -1;
+            }
+
+        }
+        return 0;
+    }
+    
+    public void calculateManhattan () {
+        manhattan = 0;
+        for (int row = 0; row < N; row ++) {
+            for (int col = 0; col < N; col ++) {
+                int value = board[row][col];
+                
+                if (value != HOLE) {
+                    manhattan += Math.abs(row - value / N);
+                    manhattan += Math.abs(col - value % N);
+                }
+            }
+        }
+    }
+    
+    public int getManhattan () {
+        return manhattan;
+    }
+    
+    public void setManhattan (int m) {
+        manhattan = m;
     }
 
     @Override
     public int compareTo(Configuration g) {
-        throw new UnsupportedOperationException("compareTo : not supported yet.");
+        return this.manhattan - g.getManhattan();
     }
     
     @Override
