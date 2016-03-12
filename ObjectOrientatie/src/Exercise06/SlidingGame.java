@@ -143,5 +143,10 @@ public class SlidingGame implements Configuration
     public int compareTo(Configuration g) {
         throw new UnsupportedOperationException("compareTo : not supported yet.");
     }
+    
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 
 }

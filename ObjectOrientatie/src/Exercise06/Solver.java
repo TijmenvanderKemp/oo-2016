@@ -1,6 +1,7 @@
 package Exercise06;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -24,7 +25,7 @@ public class Solver
         toExamine = new LinkedList<>(); // Make this Priotiry Queue when MHD is implemented
         toExamine.add(g);
         
-        examined = new LinkedList<>();
+        examined = new HashSet<>();
         
         path = new LinkedList<>();
         path.add(new Node<> (null, g));
@@ -38,7 +39,7 @@ public class Solver
     public String solve() {
         while ( ! toExamine.isEmpty() ) {
             Configuration next = toExamine.remove();
-            examined.add(next);
+            examined.add(next.hashCode(),next);
             if ( next.isSolution() ) {
                 return getCurrentNode(next).toString();
             } else {
