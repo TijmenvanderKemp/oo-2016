@@ -1,6 +1,8 @@
 package Exercise06;
 
 import java.util.Collection;
+import java.util.ArrayList;
+
 
 /**
  * @author Pieter Koopman, Sjaak Smetsers
@@ -83,12 +85,92 @@ public class SlidingGame implements Configuration
 
     @Override
     public boolean isSolution() {
-        throw new UnsupportedOperationException("isGoal : not supported yet.");
+        for(int j = 0; j < N; j++){
+            for(int i = 0; i < N; i++){
+                if(board[i][j] != N*j + i + 1)
+                    return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public Collection<Configuration> successors() {
-        throw new UnsupportedOperationException("successors : not supported yet.");
+        ArrayList<Configuration> successors = new ArrayList<>();
+        if(holeY - 1 > 0){
+            int[] north = new int[N*N];
+            for(int j = 0; j < N; j++){
+                for(int i = 0; i < N; i++){
+                    if(i == holeX && j == holeY-1){
+                        north[N*j+i] = N*N;
+                    }
+                    else{
+                        if(i == holeX && j == holeY)
+                            north[N*j+i] = board[i][holeY-1];
+                        else
+                            north[N*j+i]=board[i][j];
+                    }
+                }
+            }
+            Configuration successornorth = new SlidingGame(north);
+            successors.add(successornorth);
+        }
+        if(holeX + 1 < N){
+            int[] east = new int[N*N];
+            for(int j = 0; j < N; j++){
+                for(int i = 0; i < N; i++){
+                    if(i == holeX + 1 && j == holeY){
+                        east[N*j+i] = N*N;
+                    }
+                    else{
+                        if(i == holeX && j == holeY)
+                            east[N*j+i] = board[holeX+1][j];
+                        else
+                            east[N*j+i]=board[i][j];
+                    }
+                }
+            }
+            Configuration successoreast = new SlidingGame(east);
+            successors.add(successoreast);
+        }
+        if(holeY + 1 < N){
+            int[] south = new int[N*N];
+            for(int j = 0; j < N; j++){
+                for(int i = 0; i < N; i++){
+                    if(i == holeX && j == holeY+1){
+                        south[N*j+i] = N*N;
+                    }
+                    else{
+                        if(i == holeX && j == holeY)
+                            south[N*j+i] = board[i][holeY+1];
+                        else
+                            south[N*j+i]=board[i][j];
+                    }
+                }
+            }
+            Configuration successorsouth = new SlidingGame(south);
+            successors.add(successorsouth);
+        }
+        if(holeX - 1 >0){
+            int[] west = new int[N*N];
+            for(int j = 0; j < N; j++){
+                for(int i = 0; i < N; i++){
+                    if(i == holeX - 1 && j == holeY){
+                        west[N*j+i] = N*N;
+                    }
+                    else{
+                        if(i == holeX && j == holeY)
+                            west[N*j+i] = board[holeX - 1][j];
+                        else
+                            west[N*j+i]=board[i][j];
+                    }
+                }
+            }
+            Configuration successorwest = new SlidingGame(west);
+            successors.add(successorwest);
+        }
+        return successors;
+        
     }
 
     @Override
