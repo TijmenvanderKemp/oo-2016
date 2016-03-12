@@ -25,7 +25,7 @@ public class Solver
         toExamine = new LinkedList<>(); // Make this Priotiry Queue when MHD is implemented
         toExamine.add(g);
         
-        examined = new HashSet<>();
+        examined = new HashSet();
         
         path = new LinkedList<>();
         path.add(new Node<> (null, g));
@@ -39,7 +39,8 @@ public class Solver
     public String solve() {
         while ( ! toExamine.isEmpty() ) {
             Configuration next = toExamine.remove();
-            examined.add(next.hashCode());
+            examined.add(next);
+            System.out.println(examined);
             if ( next.isSolution() ) {
                 return getCurrentNode(next).toString();
             } else {
