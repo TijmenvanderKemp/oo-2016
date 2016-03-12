@@ -57,10 +57,14 @@ public class Solver
         return "Failure!";
     }
     
+    /**
+     * gives the node equivalent to the node of the current configuration
+     * @param next the configuration of which you should find the equivalent node
+     * @return the equivalent nod to the configuration
+     */
     private Node<Configuration> getCurrentNode (Configuration next) {
         Node currentNode = null;
         // Find the node equivalent to the current configuration
-        // Improve this with hash
         for (Node n : path) {
             if (next.equals(n.getItem()))
                 currentNode = n;
