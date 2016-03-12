@@ -1,3 +1,5 @@
+// Part of Exercise 6 by Joep Veldhoven (s4456556) and Tijmen van der Kemp (s4446887)
+
 package Exercise06;
 
 import java.util.Collection;
