@@ -40,7 +40,6 @@ public class Solver
         while ( ! toExamine.isEmpty() ) {
             Configuration next = toExamine.remove();
             examined.add(next);
-            System.out.println(examined);
             if ( next.isSolution() ) {
                 return getCurrentNode(next).toString();
             } else {

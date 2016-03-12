@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise05/Glue.java</file>
-            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise05/Main.java</file>
-            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise05/OpenQuestion.java</file>
-            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise05/Model.java</file>
-            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise05/TCQuestion.java</file>
-            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise05/Controller.java</file>
-            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise05/MCQuestion.java</file>
+            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise06/Configuration.java</file>
+            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise06/Solver.java</file>
+            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise06/Direction.java</file>
+            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise06/Main.java</file>
+            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise06/Node.java</file>
+            <file>file:/C:/Users/Tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise06/SlidingGame.java</file>
         </group>
     </open-files>
 </project-private>
