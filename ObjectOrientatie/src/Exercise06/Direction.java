@@ -11,10 +11,10 @@ package Exercise06;
  */
 public enum Direction
 {
-    NORTH (0,-1), EAST (1,0), SOUTH(0,1), WEST(-1,0);
+    NORTH (-1, 0), EAST (0, 1), SOUTH(1, 0), WEST(0, -1);
     
     private final int dx, dy;
-    private Direction (int dx, int dy) {
+    private Direction (int dy, int dx) {
         this.dx = dx;
         this.dy = dy;
     }

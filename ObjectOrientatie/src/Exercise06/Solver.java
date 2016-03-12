@@ -1,5 +1,6 @@
 package Exercise06;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 
@@ -16,7 +17,8 @@ public class Solver
     Queue<Configuration> toExamine;
 
     public Solver( Configuration g ) {
-        throw new UnsupportedOperationException( "Solver: not supported yet." );
+        toExamine = new LinkedList<>(); // Make this Priotiry Queue when MHD is implemented
+        toExamine.add(g);
     }
 
     /**

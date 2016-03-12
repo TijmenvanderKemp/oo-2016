@@ -33,7 +33,7 @@ public class SlidingGame implements Configuration
         assert start.length == N * N : "Length of specified board incorrect";
 
         for (int p = 0; p < start.length; p++) {
-            board[p % N][p / N] = start[p];
+            board[p / N][p % N] = start[p];
             if (start[p] == HOLE) {
                 holeX = p % N;
                 holeY = p / N;
@@ -52,7 +52,7 @@ public class SlidingGame implements Configuration
         StringBuilder buf = new StringBuilder();
         for (int row = 0; row < N; row++) {
             for (int col = 0; col < N; col++) {
-                int puzzel = board[col][row];
+                int puzzel = board[row][col];
                 buf.append(puzzel == HOLE ? "  " : puzzel + " ");
             }
             buf.append("\n");
@@ -74,7 +74,7 @@ public class SlidingGame implements Configuration
             SlidingGame other_puzzle = (SlidingGame) o;
             for (int row = 0; row < N; row++) {
                 for (int col = 0; col < N; col++) {
-                    if (board[col][row] != other_puzzle.board[col][row]) {
+                    if (board[row][col] != other_puzzle.board[row][col]) {
                         return false;
                     }
                 }
@@ -85,9 +85,9 @@ public class SlidingGame implements Configuration
 
     @Override
     public boolean isSolution() {
-        for(int j = 0; j < N; j++){
-            for(int i = 0; i < N; i++){
-                if(board[i][j] != N*j + i + 1)
+        for(int row = 0; row < N; row ++){
+            for(int col = 0; col < N; col ++){
+                if(board[row][col] != N * row + col + 1)
                     return false;
             }
         }
@@ -100,8 +100,10 @@ public class SlidingGame implements Configuration
         
         for (Direction dir : Direction.values()) {
             Configuration possibleSuccessor = successor(dir);
-            if (possibleSuccessor != null)
+            if (possibleSuccessor != null) {
                 successors.add(possibleSuccessor);
+//                System.out.println("Added successor: " + dir.toString() + "\n" + possibleSuccessor.toString());
+            }
         }
         
         return successors;
