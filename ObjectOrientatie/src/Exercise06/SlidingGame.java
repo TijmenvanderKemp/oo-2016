@@ -97,80 +97,44 @@ public class SlidingGame implements Configuration
     @Override
     public Collection<Configuration> successors() {
         ArrayList<Configuration> successors = new ArrayList<>();
-        if(holeY - 1 > 0){
-            int[] north = new int[N*N];
-            for(int j = 0; j < N; j++){
-                for(int i = 0; i < N; i++){
-                    if(i == holeX && j == holeY-1){
-                        north[N*j+i] = N*N;
-                    }
-                    else{
-                        if(i == holeX && j == holeY)
-                            north[N*j+i] = board[i][holeY-1];
-                        else
-                            north[N*j+i]=board[i][j];
-                    }
-                }
-            }
-            Configuration successornorth = new SlidingGame(north);
-            successors.add(successornorth);
+        
+        for (Direction dir : Direction.values()) {
+            Configuration possibleSuccessor = successor(dir);
+            if (possibleSuccessor != null)
+                successors.add(possibleSuccessor);
         }
-        if(holeX + 1 < N){
-            int[] east = new int[N*N];
-            for(int j = 0; j < N; j++){
-                for(int i = 0; i < N; i++){
-                    if(i == holeX + 1 && j == holeY){
-                        east[N*j+i] = N*N;
-                    }
-                    else{
-                        if(i == holeX && j == holeY)
-                            east[N*j+i] = board[holeX+1][j];
-                        else
-                            east[N*j+i]=board[i][j];
-                    }
-                }
-            }
-            Configuration successoreast = new SlidingGame(east);
-            successors.add(successoreast);
-        }
-        if(holeY + 1 < N){
-            int[] south = new int[N*N];
-            for(int j = 0; j < N; j++){
-                for(int i = 0; i < N; i++){
-                    if(i == holeX && j == holeY+1){
-                        south[N*j+i] = N*N;
-                    }
-                    else{
-                        if(i == holeX && j == holeY)
-                            south[N*j+i] = board[i][holeY+1];
-                        else
-                            south[N*j+i]=board[i][j];
-                    }
-                }
-            }
-            Configuration successorsouth = new SlidingGame(south);
-            successors.add(successorsouth);
-        }
-        if(holeX - 1 >0){
-            int[] west = new int[N*N];
-            for(int j = 0; j < N; j++){
-                for(int i = 0; i < N; i++){
-                    if(i == holeX - 1 && j == holeY){
-                        west[N*j+i] = N*N;
-                    }
-                    else{
-                        if(i == holeX && j == holeY)
-                            west[N*j+i] = board[holeX - 1][j];
-                        else
-                            west[N*j+i]=board[i][j];
-                    }
-                }
-            }
-            Configuration successorwest = new SlidingGame(west);
-            successors.add(successorwest);
-        }
+        
         return successors;
         
+    }
+    
+    private Configuration successor (Direction dir) {
+        
+        if (holeX + dir.getDX() < 0 || holeX + dir.getDX() >= N
+                || holeY + dir.getDY() < 0 || holeY + dir.getDY() >= N) {
+            
+            return null;
+        }
+        
+        int[] numberArray = new int[N*N];
+        for (int row = 0; row < N; row ++){
+            for (int col = 0; col < N; col ++){
+                // New hole position
+                if (row == holeY + dir.getDY() && col == holeX + dir.getDX()){
+                    numberArray[N * row + col] = HOLE;
+                }
+                // Previous hole position
+                else if (row == holeY && col == holeX) {
+                    numberArray[N * row + col] = board[row + dir.getDY()][col + dir.getDX()];
+                }
+                // Proceed as normal
+                else {
+                    numberArray[N * row + col] = board[row][col];
+                }
+            }
+        }
+        
+        return new SlidingGame(numberArray);
     }
 
     @Override
