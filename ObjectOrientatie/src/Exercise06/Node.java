@@ -1,6 +1,6 @@
 package Exercise06;
 
-/**
+ /**
  * For maintaining lists of T-elements enabling
  * a structure suited for backwards traversal
  * @author Pieter Koopman, Sjaak Smetsers
@@ -60,6 +60,12 @@ public class Node<T>
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("toString : not supported yet.");
+        String returnString = "";
+        if (this.getPrevious() != null) {
+            returnString = this.getPrevious().toString();
+        }
+        returnString += String.valueOf(this.length() - 1) + ": \n";
+        returnString += item.toString();
+        return returnString;
     }
 }
