@@ -39,7 +39,7 @@ public class Solver
     public String solve() {
         while ( ! toExamine.isEmpty() ) {
             Configuration next = toExamine.remove();
-            examined.add(next.hashCode(),next);
+            examined.add(next.hashCode());
             if ( next.isSolution() ) {
                 return getCurrentNode(next).toString();
             } else {

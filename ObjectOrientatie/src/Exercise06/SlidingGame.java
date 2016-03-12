@@ -146,7 +146,13 @@ public class SlidingGame implements Configuration
     
     @Override
     public int hashCode() {
-        return 0;
+        int hash = 0;
+        for(int row = 0; row < N; row++){
+            for(int col = 0; col < N; col ++){
+                hash+=board[row][col]*31^(row+col*N);
+            }
+        }
+        return hash;
     }
 
 }
