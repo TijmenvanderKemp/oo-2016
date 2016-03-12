@@ -60,12 +60,12 @@ public class Node<T>
 
     @Override
     public String toString() {
-        String returnString = "";
-        if (this.getPrevious() != null) {
-            returnString = this.getPrevious().toString();
+        StringBuilder buf = new StringBuilder("");
+        if (getPrevious() != null) {
+            buf.append(getPrevious().toString());
         }
-        returnString += String.valueOf(this.length() - 1) + ": \n";
-        returnString += item.toString();
-        return returnString;
+        buf.append(String.valueOf(this.length() - 1)).append(": \n");
+        buf.append(item.toString());
+        return buf.toString();
     }
 }
