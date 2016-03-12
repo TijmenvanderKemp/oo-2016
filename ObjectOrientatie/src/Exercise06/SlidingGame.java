@@ -84,6 +84,10 @@ public class SlidingGame implements Configuration
         }
     }
 
+    /**
+     * Checks if this configuration is the correct solution.
+     * @return whether every number is in the correct place or not
+     */
     @Override
     public boolean isSolution() {
         for(int row = 0; row < N; row ++){
@@ -95,6 +99,10 @@ public class SlidingGame implements Configuration
         return true;
     }
 
+    /**
+     * Calculates which successors are possible.
+     * @return a collection of possible successors.
+     */
     @Override
     public Collection<Configuration> successors() {
         ArrayList<Configuration> successors = new ArrayList<>();
@@ -112,6 +120,13 @@ public class SlidingGame implements Configuration
         
     }
     
+    /**
+     * Calculates if a move in a particular direction results in a legal position,
+     * constructs the new Configuration, and also calculates the new sum of
+     * the Manhattans.
+     * @param dir
+     * @return null if it's an illegal position, the Configuration if it's legal
+     */
     private Configuration successor (Direction dir) {
         
         if (holeX + dir.getDX() < 0 || holeX + dir.getDX() >= N
@@ -147,7 +162,14 @@ public class SlidingGame implements Configuration
         return returnGame;
     }
     
-            
+    /**
+     * Calculates whether the new manhattan distance is one more, or one less than
+     * the previous manhattan distance.
+     * @param dir The direction that the next piece is being pulled from
+     * @param row The position of that piece
+     * @param col ...
+     * @return 
+     */
     public int calculateManhattanOffset (Direction dir, int row, int col) {
         // This piece is going to get moved, so the manhattan distance
         // will shift by one. Determine which way it shifts.
@@ -181,6 +203,9 @@ public class SlidingGame implements Configuration
         return 0;
     }
     
+    /**
+     * Calculate the total manhattan distance.
+     */
     public void calculateManhattan () {
         manhattan = 0;
         for (int row = 0; row < N; row ++) {
@@ -195,19 +220,30 @@ public class SlidingGame implements Configuration
         }
     }
     
+    @Override
     public int getManhattan () {
         return manhattan;
     }
     
+    @Override
     public void setManhattan (int m) {
         manhattan = m;
     }
 
+    /**
+     * The heuristic for the priority queue.
+     * @param g
+     * @return 
+     */
     @Override
     public int compareTo(Configuration g) {
         return this.manhattan - g.getManhattan();
     }
     
+    /**
+     * The hashcode function for the hashtable.
+     * @return 
+     */
     @Override
     public int hashCode() {
         int hash = 0;
