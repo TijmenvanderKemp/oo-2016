@@ -24,21 +24,22 @@ public class LoipeView {
         String loipeInput = s.nextLine();
         
         Loipe l = new Loipe(loipeInput);
+        TekenLoipe tl; // The drawing interface
         
         // First print the picture with AsciiArt
         System.out.println("Stepping through the Loipe. Type 'stop' to stop.");
-        AsciiArt aa = new AsciiArt (l);
-        aa.teken();
+        tl = new AsciiArt (l);
+        tl.teken();
         
         // Loop through it until the user types 'stop'
         while (!"stop".equals(s.nextLine())) {
-            aa.setPosition(l.stap());
-            aa.teken();
+            tl.setPosition(l.stap());
+            tl.teken();
         }
         
         // Then display with the fancy drawing class
-        LoipePlaatje lp = new LoipePlaatje (l);
-        lp.teken();
+        tl = new LoipePlaatje (l);
+        tl.teken();
     }
     
 }
