@@ -62,6 +62,25 @@ public class Loipe implements InfoLoipe {
      */
     public Loipe (String pad) {
         
+        int [] boundaries = calculateBoundaries (pad);
+        int minX = boundaries[0],
+            minY = boundaries[1],
+            maxX = boundaries[2],
+            maxY = boundaries[3];
+        
+        // Calculate the width, height and starting point of the loipe itself.
+        width = maxX - minX + 1;
+        height = maxY - minY + 1;
+        startPunt = new Punt(0 - minX, 0 - minY);
+        
+        loipe = new Fragment[width][height];
+        
+        // We can now start filling the loipe.
+        fillLoipe(pad);
+        
+    }
+    
+    private int [] calculateBoundaries (String pad) {
         // Boundaries so we know the dimensions
         int minX = 0, minY = 0, maxX = 0, maxY = 0, x = 0, y =0;
         // 0 = N, 1 = O, 2 = Z, 3 = W
@@ -102,23 +121,19 @@ public class Loipe implements InfoLoipe {
             maxY = Math.max (y, maxY);
         }
         
-        // Calculate the width, height and starting point of the loipe itself.
-        width = maxX - minX + 1;
-        height = maxY - minY + 1;
-        startPunt = new Punt(0 - minX, 0 - minY);
-        
-        loipe = new Fragment[width][height];
-        
-        // We can now start filling the loipe.
-        fillLoipe(pad, dir);
-        
+        return new int[]{
+            minX,
+            minY,
+            maxX,
+            maxY
+        };
     }
     
-    private void fillLoipe(String pad, int dir){
+    private void fillLoipe(String pad){
         int x = startPunt.getX();
         int y = startPunt.getY();
         loipeList.add(new Punt(x, y));
-        dir = 0; // 0 = N, 1 = O, 2 = Z, 3 = W
+        int dir = 0; // 0 = N, 1 = O, 2 = Z, 3 = W
         for (int i = 0; i < pad.length(); i ++) {
             switch (pad.charAt(i)) {
                 
