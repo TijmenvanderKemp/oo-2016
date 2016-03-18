@@ -63,12 +63,7 @@ public class Loipe implements InfoLoipe {
     public Loipe (String pad) {
         
         // Boundaries so we know the dimensions
-        int minX = 0;
-        int minY = 0;
-        int maxX = 0;
-        int maxY = 0;
-        int x = 0;
-        int y = 0;
+        int minX = 0, minY = 0, maxX = 0, maxY = 0, x = 0, y =0;
         // 0 = N, 1 = O, 2 = Z, 3 = W
         int dir = 0; 
         // Loop through every letter of the path. First change direction,
@@ -115,8 +110,13 @@ public class Loipe implements InfoLoipe {
         loipe = new Fragment[width][height];
         
         // We can now start filling the loipe.
-        x = startPunt.getX();
-        y = startPunt.getY();
+        fillLoipe(pad, dir);
+        
+    }
+    
+    private void fillLoipe(String pad, int dir){
+        int x = startPunt.getX();
+        int y = startPunt.getY();
         loipeList.add(new Punt(x, y));
         dir = 0; // 0 = N, 1 = O, 2 = Z, 3 = W
         for (int i = 0; i < pad.length(); i ++) {
@@ -189,7 +189,6 @@ public class Loipe implements InfoLoipe {
             
             loipeList.add(new Punt(x, y));
         }
-        
     }
 
 }
