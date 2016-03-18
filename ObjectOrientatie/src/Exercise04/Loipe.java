@@ -82,37 +82,17 @@ public class Loipe implements InfoLoipe {
     
     private int [] calculateBoundaries (String pad) {
         // Boundaries so we know the dimensions
-        int minX = 0, minY = 0, maxX = 0, maxY = 0, x = 0, y =0;
+        int minX = 0, minY = 0, maxX = 0, maxY = 0;
+        int x = 0, y = 0;
         // 0 = N, 1 = O, 2 = Z, 3 = W
         int dir = 0; 
         // Loop through every letter of the path. First change direction,
         // then take a step.
         for (int i = 0; i < pad.length(); i ++) {
-            switch (pad.charAt(i)) {
-                case 'l':
-                    dir = (dir + 3) % 4;
-                    break;
-                case 'r':
-                    dir = (dir + 1) % 4;
-                    break;
-                case 's':
-                    break;
-            }
-            
-            switch (dir) {
-                case 0:
-                    y -= 1;
-                    break;
-                case 1:
-                    x += 1;
-                    break;
-                case 2:
-                    y += 1;
-                    break;
-                case 3:
-                    x -= 1;
-                    break;
-            }
+            int[] positionInfo = stepLoipe(x, y, dir, pad.charAt(i));
+            x = positionInfo[0];
+            y = positionInfo[1];
+            dir = positionInfo[2];
             
             // Push out the boundaries if necessary.
             minX = Math.min (x, minX);
@@ -152,7 +132,6 @@ public class Loipe implements InfoLoipe {
                             loipe[x][y] = Fragment.ZO;
                             break;
                     }
-                    dir = (dir + 3) % 4;
                     break;
                 
                 case 'r':
@@ -170,7 +149,6 @@ public class Loipe implements InfoLoipe {
                             loipe[x][y] = Fragment.NO;
                             break;
                     }
-                    dir = (dir + 1) % 4;
                     break;
                 
                 case 's':
@@ -187,23 +165,47 @@ public class Loipe implements InfoLoipe {
                     
             }
             
-            switch (dir) {
-                case 0:
-                    y -= 1;
-                    break;
-                case 1:
-                    x += 1;
-                    break;
-                case 2:
-                    y += 1;
-                    break;
-                case 3:
-                    x -= 1;
-                    break;
-            }
+            int[] positionInfo = stepLoipe(x, y, dir, pad.charAt(i));
+            x = positionInfo[0];
+            y = positionInfo[1];
+            dir = positionInfo[2];
+            
             
             loipeList.add(new Punt(x, y));
         }
+    }
+    
+    private int [] stepLoipe (int x, int y, int dir, char dirChar) {
+        
+        // Update the direction we are going in
+        switch (dirChar) {
+            case 'l':
+                dir = (dir + 3) % 4;
+                break;
+            case 'r':
+                dir = (dir + 1) % 4;
+                break;
+            case 's':
+                break;
+        }
+        
+        // Take a step in the new direction
+        switch (dir) {
+            case 0:
+                y -= 1;
+                break;
+            case 1:
+                x += 1;
+                break;
+            case 2:
+                y += 1;
+                break;
+            case 3:
+                x -= 1;
+                break;
+        }
+        return new int[] {x, y, dir};
+        
     }
 
 }
