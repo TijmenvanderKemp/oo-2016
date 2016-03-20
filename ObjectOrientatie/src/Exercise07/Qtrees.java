@@ -12,6 +12,8 @@ import java.io.Writer;
 public class Qtrees {
 
     public static void main(String[] args) {
+        // The idea is to convert a string of bits to a bitmap and back again.
+        // This is an easy way to verify the correctness of all four conversions.
         String test_tekst = "10011010001010010001010101100011000101000000";
         StringReader input = new StringReader(test_tekst);
         QTree qt = new QTree( input );
