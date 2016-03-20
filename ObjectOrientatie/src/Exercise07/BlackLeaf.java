@@ -4,6 +4,10 @@
  */
 package Exercise07;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+
 /**
  *
  * @author Joep
@@ -20,5 +24,11 @@ public class BlackLeaf implements QTNode{
                 bitmap.setBit(x, y, false);
             }
         }
+    }
+    
+    public void writeNode(Writer Out){
+        try{
+          Out.append("00");  
+        }catch(IOException e){}
     }
 }
