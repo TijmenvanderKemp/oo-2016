@@ -9,8 +9,8 @@ import java.io.Reader;
 import java.io.Writer;
 
 /**
- *
- * @author Joep
+ * @author Tijmen van der Kemp (s4446887)
+ * @author Joep Veldhoven (s4456556)
  */
 public class BlackLeaf implements QTNode{
     public BlackLeaf(){
