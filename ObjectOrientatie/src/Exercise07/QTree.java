@@ -23,7 +23,9 @@ public class QTree {
     }
     
     private static QTNode readQTree( Reader input ) {
-        return null;
+        QTNode tempRoot = new WhiteLeaf();
+        
+        return tempRoot;
     }
     
     public static QTNode bitmap2QTree( int x, int y, int width, Bitmap bitmap ) {

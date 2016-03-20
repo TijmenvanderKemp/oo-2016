@@ -17,6 +17,7 @@ public class GreyNode implements QTNode{
     public GreyNode(QTNode[] c){
         children = c;
     }
+    @Override
     public void fillBitmap(int x, int y, int width, Bitmap bitmap){
         children[0].fillBitmap(x, y, width/2, bitmap);
         children[1].fillBitmap(x+width/2, y, width/2, bitmap);
@@ -24,6 +25,7 @@ public class GreyNode implements QTNode{
         children[3].fillBitmap(x, y+width/2, width/2, bitmap);
     }
     
+    @Override
     public void writeNode(Writer Out){
         try{
           Out.append("1");  

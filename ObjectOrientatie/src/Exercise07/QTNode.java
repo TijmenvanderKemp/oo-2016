@@ -1,5 +1,5 @@
 
-package exercise07;
+package Exercise07;
 
 import java.io.IOException;
 import java.io.Reader;

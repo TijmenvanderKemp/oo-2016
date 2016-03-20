@@ -18,14 +18,16 @@ public class BlackLeaf implements QTNode{
     } 
     
     
+    @Override
     public void fillBitmap(int x, int y, int width, Bitmap bitmap){
         for(int i = x; i < x + width; i++){
             for(int j = y; j < y +width; j++){
-                bitmap.setBit(x, y, false);
+                bitmap.setBit(i, j, false);
             }
         }
     }
     
+    @Override
     public void writeNode(Writer Out){
         try{
           Out.append("00");  
