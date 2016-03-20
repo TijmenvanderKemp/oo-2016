@@ -8,6 +8,17 @@ package Exercise07;
  *
  * @author Joep
  */
-public class BlackLeaf {
+public class BlackLeaf implements QTNode{
+    public BlackLeaf(){
+        
+    } 
     
+    
+    public void fillBitmap(int x, int y, int width, Bitmap bitmap){
+        for(int i = x; i < x + width; i++){
+            for(int j = y; j < y +width; j++){
+                bitmap.setBit(x, y, false);
+            }
+        }
+    }
 }
