@@ -13,11 +13,20 @@ import java.io.Writer;
  * @author Joep Veldhoven (s4456556)
  */
 public class BlackLeaf implements QTNode{
+    /**
+     * empty constructor, because the leaf doesn't have any attributes
+     */
     public BlackLeaf(){
         
     } 
     
-    
+    /**
+     * fills a bitmap with a black leaf, so all black
+     * @param x left top x-coordinate of the area you want to color
+     * @param y left top y-coordinate of the area you want to color
+     * @param width width of the area you want to color
+     * @param bitmap bitmap you want to color
+     */
     @Override
     public void fillBitmap(int x, int y, int width, Bitmap bitmap){
         for(int i = x; i < x + width; i++){
@@ -27,6 +36,10 @@ public class BlackLeaf implements QTNode{
         }
     }
     
+    /**
+     * writes the correct characters to a writer based on a black leaf
+     * @param Out the writer to write to
+     */
     @Override
     public void writeNode(Writer Out){
         try{

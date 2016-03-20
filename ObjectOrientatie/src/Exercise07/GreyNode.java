@@ -13,10 +13,23 @@ import java.io.Writer;
  * @author Joep Veldhoven (s4456556)
  */
 public class GreyNode implements QTNode{
-    QTNode[] children;
+    QTNode[] children; //list of its children
+    
+    /**
+     * constructor for a greynode
+     * @param c the list of children
+     */
     public GreyNode(QTNode[] c){
         children = c;
     }
+    
+    /**
+     * recursively fills a bitmap based on the children of the grey node
+     * @param x left top x-coordinate of the area you want to color
+     * @param y left top y-coordinate of the area you want to color
+     * @param width width of the area you want to color
+     * @param bitmap bitmap you want to color
+     */
     @Override
     public void fillBitmap(int x, int y, int width, Bitmap bitmap){
         children[0].fillBitmap(x, y, width/2, bitmap);
@@ -25,6 +38,10 @@ public class GreyNode implements QTNode{
         children[3].fillBitmap(x, y+width/2, width/2, bitmap);
     }
     
+    /**
+     * Recursively writes the correct characters to a writer based on the children of the grey node
+     * @param Out the writer to write to
+     */
     @Override
     public void writeNode(Writer Out){
         try{
