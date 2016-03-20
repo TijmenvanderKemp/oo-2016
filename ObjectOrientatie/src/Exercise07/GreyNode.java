@@ -25,6 +25,9 @@ public class GreyNode implements QTNode{
     }
     
     public void writeNode(Writer Out){
+        try{
+          Out.append("1");  
+        }catch(IOException e){}
         children[0].writeNode(Out);
         children[1].writeNode(Out);
         children[2].writeNode(Out);
