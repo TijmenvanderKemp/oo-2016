@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class Winkelwagen {
     List<Artikel> winkelwagen = new LinkedList<>();
+    Betalingsstrategie strategie = new IdealBetaling("","",0);
     
     public void voegToe(Artikel a){
         winkelwagen.add(a);
@@ -28,6 +29,10 @@ public class Winkelwagen {
         }
     }
     
+    public void veranderBetalingsstrategie(Betalingsstrategie b){
+        strategie = b;
+    }
+    
     public double totaalPrijs(){
         double totaal = 0;
         for(Artikel a : winkelwagen)
@@ -35,5 +40,8 @@ public class Winkelwagen {
         return totaal;
     }
    
-
+    public boolean betaal(double prijs){
+        return strategie.betaal(prijs);
+    }
+    
 }
