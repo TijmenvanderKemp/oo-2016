@@ -15,5 +15,9 @@ public abstract class Artikel {
     protected String beschrijving;
     protected double prijs;
     
+    public double getPrijs(){
+        return prijs;
+    }
+    
     public abstract double verzendKosten();
 }
