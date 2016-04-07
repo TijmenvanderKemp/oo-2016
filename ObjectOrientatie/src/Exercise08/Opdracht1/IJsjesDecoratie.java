@@ -10,15 +10,17 @@ package Exercise08.Opdracht1;
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
-public abstract class IJsje {
+public abstract class IJsjesDecoratie extends IJsje {
     
-    protected String beschrijving;
+    protected final IJsje ijsje;
     
-    public IJsje () {
-        beschrijving = "onbekend ijsje";
+    public IJsjesDecoratie (IJsje ijsje) {
+        this.ijsje = ijsje;
     }
     
-    public String geefBeschrijving () {return beschrijving;}
-    public abstract int prijs ();
-
+    @Override
+    public int prijs () { 
+        return ijsje.prijs(); 
+    }
+    
 }
