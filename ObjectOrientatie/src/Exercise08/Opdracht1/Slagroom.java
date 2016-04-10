@@ -6,7 +6,7 @@
 package Exercise08.Opdracht1;
 
 /**
- *
+ * De slagroom klasse. Een subklasse van IJsjesDecoratie
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
