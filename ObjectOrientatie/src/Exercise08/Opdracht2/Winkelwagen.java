@@ -35,8 +35,16 @@ public class Winkelwagen {
     
     public double totaalPrijs(){
         double totaal = 0;
-        for(Artikel a : winkelwagen)
+        List<Double> verzendkosten = new LinkedList<>();
+            for(Artikel a : winkelwagen){
             totaal += a.getPrijs();
+            double vk = a.verzendKosten();
+            if(!verzendkosten.contains(vk)){
+                verzendkosten.add(vk);
+            }
+        } 
+        for(double vk : verzendkosten)  
+            totaal += vk;
         return totaal;
     }
    
