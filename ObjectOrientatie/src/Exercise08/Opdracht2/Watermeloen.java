@@ -6,6 +6,7 @@
 package Exercise08.Opdracht2;
 
 /**
+ * Een watermeloen artikel
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
