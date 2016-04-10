@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Winkelwagen {
     List<Artikel> winkelwagen = new LinkedList<>();
-    Betalingsstrategie strategie = new IdealBetaling("","",0);
+    Betalingsstrategie strategie = new IdealBetaling("",0,0);
     
     public void voegToe(Artikel a){
         winkelwagen.add(a);
@@ -25,6 +25,7 @@ public class Winkelwagen {
         for(int i = 0; i < winkelwagen.size(); i ++){
             if(winkelwagen.get(i).getClass() == a.getClass()){
                 winkelwagen.remove(i);
+                break;
             }    
         }
     }

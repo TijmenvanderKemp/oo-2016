@@ -8,10 +8,11 @@ package Exercise08.Opdracht2;
 
 
 public class IdealBetaling implements Betalingsstrategie{
-    private String bank, rekeningnummer;
-    private int pincode;
+    private final String bank;
+    private final int rekeningnummer;
+    private final int pincode;
     
-    public IdealBetaling(String b, String rn, int p){
+    public IdealBetaling(String b, int rn, int p){
         bank = b;
         rekeningnummer = rn;
         pincode = p;
