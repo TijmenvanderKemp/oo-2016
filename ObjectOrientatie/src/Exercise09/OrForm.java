@@ -33,6 +33,6 @@ public class OrForm implements Form{
     }
     
     public String toString(){
-        return leftOperand.toString() + "∨" + rightOperand.toString();
+        return "(" + leftOperand.toString() + ")∨(" + rightOperand.toString() + ")" ;
     }
 }
