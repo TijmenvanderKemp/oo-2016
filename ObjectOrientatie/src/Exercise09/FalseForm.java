@@ -1,5 +1,5 @@
 
-package Exercies09;
+package Exercise09;
 
 /**
  *
@@ -7,12 +7,12 @@ package Exercies09;
  */
 
 
-public class TrueForm implements Form {
+public class FalseForm implements Form{
     public void accept( FormVisitor v ) {
         v.visit(this);
     }
     
     public String toString(){
-        return "True";
+        return "false";
     }
 }

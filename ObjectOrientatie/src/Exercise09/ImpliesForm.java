@@ -1,5 +1,5 @@
 
-package Exercies09;
+package Exercise09;
 
 /**
  *
@@ -7,10 +7,10 @@ package Exercies09;
  */
 
 
-public class AndForm implements Form{
+public class ImpliesForm implements Form {
     private Form leftOperand;
     private Form rightOperand;
-    public AndForm( Form left, Form right ) {
+    public ImpliesForm( Form left, Form right ) {
         this.leftOperand = left;
         this.rightOperand = right;
     }
@@ -28,6 +28,6 @@ public class AndForm implements Form{
     }
     
     public String toString(){
-        return leftOperand.toString() + "∧" + rightOperand.toString();
+        return leftOperand.toString() + "⇒" + rightOperand.toString();
     }
 }
