@@ -24,6 +24,6 @@ public class NotForm implements Form{
     }
     
     public String toString(){
-        return "¬" + Operand.toString();
+        return "¬(" + Operand.toString() + ")";
     }
 }

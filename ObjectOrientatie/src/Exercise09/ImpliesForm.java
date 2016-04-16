@@ -32,6 +32,6 @@ public class ImpliesForm implements Form {
     }
     
     public String toString(){
-        return leftOperand.toString() + "⇒" + rightOperand.toString();
+        return "(" + leftOperand.toString() + ")⇒(" + rightOperand.toString() + ")";
     }
 }

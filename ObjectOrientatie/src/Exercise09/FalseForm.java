@@ -18,6 +18,6 @@ public class FalseForm implements Form{
     }
     
     public String toString(){
-        return "false";
+        return "False";
     }
 }
