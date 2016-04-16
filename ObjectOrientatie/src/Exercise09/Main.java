@@ -15,6 +15,10 @@ public class Main {
     
     public static void main ( String [] args ) {
         
+        Form expr1 = new AndForm(new TrueForm(), new FalseForm());
+        Form expr2 = new ImpliesForm(new NotForm(new FormulaForm("a")), new FormulaForm("b"));
+        Form expr3 = new OrForm(new FormulaForm("c"), new AndForm(new TrueForm(), new TrueForm()));
+        
     }
     
 }
