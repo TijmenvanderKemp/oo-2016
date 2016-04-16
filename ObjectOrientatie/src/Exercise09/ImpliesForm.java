@@ -12,6 +12,8 @@ package Exercise09;
  */
 
 public class ImpliesForm implements Form {
+    private final ParenthesesCalculator pc = new ParenthesesCalculator();
+    
     private Form leftOperand;
     private Form rightOperand;
     public ImpliesForm( Form left, Form right ) {
@@ -32,6 +34,14 @@ public class ImpliesForm implements Form {
     }
     
     public String toString(){
-        return "(" + leftOperand.toString() + ")⇒(" + rightOperand.toString() + ")";
+        boolean leftP = pc.parenthesesNeeded(ImpliesForm.class, leftOperand.getClass());
+        boolean rightP = pc.parenthesesNeeded(ImpliesForm.class, rightOperand.getClass());
+        return    (leftP ? "(" : "")
+                + leftOperand.toString()
+                + (leftP ? ")" : "")
+                + "⇒"
+                + (rightP ? "(" : "")
+                + rightOperand.toString()
+                + (rightP ? ")" : "");
     }
 }

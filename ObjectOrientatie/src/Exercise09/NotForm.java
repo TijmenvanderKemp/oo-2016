@@ -13,6 +13,8 @@ package Exercise09;
 
 
 public class NotForm implements Form{
+    private final ParenthesesCalculator pc = new ParenthesesCalculator();
+    
     private Form Operand;
             
     public NotForm(Form o){
@@ -28,6 +30,10 @@ public class NotForm implements Form{
     }
     
     public String toString(){
-        return "¬(" + Operand.toString() + ")";
+        boolean p = pc.parenthesesNeeded(NotForm.class, Operand.getClass());
+        return    "¬"
+                + (p ? "(" : "")
+                + Operand.toString()
+                + (p? ")" : "");
     }
 }

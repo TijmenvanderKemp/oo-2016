@@ -13,6 +13,8 @@ package Exercise09;
 
 
 public class AndForm implements Form{
+    private final ParenthesesCalculator pc = new ParenthesesCalculator();
+    
     private Form leftOperand;
     private Form rightOperand;
     public AndForm( Form left, Form right ) {
@@ -33,6 +35,14 @@ public class AndForm implements Form{
     }
     
     public String toString(){
-        return "(" + leftOperand.toString() + ")∧(" + rightOperand.toString() + ")";
+        boolean leftP = pc.parenthesesNeeded(AndForm.class, leftOperand.getClass());
+        boolean rightP = pc.parenthesesNeeded(AndForm.class, rightOperand.getClass());
+        return    (leftP ? "(" : "")
+                + leftOperand.toString()
+                + (leftP ? ")" : "")
+                + "∧"
+                + (rightP ? "(" : "")
+                + rightOperand.toString()
+                + (rightP ? ")" : "");
     }
 }
