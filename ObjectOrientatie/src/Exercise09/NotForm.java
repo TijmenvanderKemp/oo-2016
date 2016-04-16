@@ -18,6 +18,10 @@ public class NotForm implements Form{
     public NotForm(Form o){
         Operand = o;
     }
+    
+    public Form getOperand () {
+        return Operand;
+    }
             
     public void accept( FormVisitor v ) {
         v.visit(this);
