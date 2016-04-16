@@ -13,5 +13,12 @@ package Exercise09;
 
 
 public interface FormVisitor {
-    void visit( Form form );
+    void visit( AndForm andForm );
+    void visit( FalseForm falseForm );
+    void visit( FormulaForm formulaForm );
+    void visit( ImpliesForm impliesForm );
+    void visit( NotForm notForm );
+    void visit( OrForm orForm );
+    void visit( TrueForm trueForm );
+    
 }
