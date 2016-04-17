@@ -30,19 +30,13 @@ public class AndForm implements Form{
         return rightOperand;
     }
 
-    public void accept( FormVisitor v ) {
-        v.visit(this);
+    @Override
+    public <R> R accept( FormVisitor<R> v ) {
+        return v.visit(this);
     }
     
+    @Override
     public String toString(){
-        boolean leftP = pc.parenthesesNeeded(AndForm.class, leftOperand.getClass());
-        boolean rightP = pc.parenthesesNeeded(AndForm.class, rightOperand.getClass());
-        return    (leftP ? "(" : "")
-                + leftOperand.toString()
-                + (leftP ? ")" : "")
-                + "∧"
-                + (rightP ? "(" : "")
-                + rightOperand.toString()
-                + (rightP ? ")" : "");
+        return "";
     }
 }

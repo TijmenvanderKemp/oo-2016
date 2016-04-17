@@ -13,46 +13,77 @@ package Exercise09;
 
 
 public class PrintFormVisitor implements FormVisitor {
-
-    private String totalString = "";
     
-    public String getTotalString () {
-        return totalString;
-    }
+    private final ParenthesesCalculator pc = new ParenthesesCalculator();
     
     @Override
-    public void visit(AndForm andForm) {
-        totalString = andForm.toString();
+    public String visit(AndForm andForm) {
+        Form leftOperand = andForm.getLeft();
+        Form rightOperand = andForm.getRight();
+        boolean leftP = pc.parenthesesNeeded(AndForm.class, leftOperand.getClass());
+        boolean rightP = pc.parenthesesNeeded(AndForm.class, rightOperand.getClass());
+        return    (leftP ? "(" : "")
+                + leftOperand.toString()
+                + (leftP ? ")" : "")
+                + "∧"
+                + (rightP ? "(" : "")
+                + rightOperand.toString()
+                + (rightP ? ")" : "");
     }
 
     @Override
-    public void visit(FalseForm falseForm) {
-        totalString = falseForm.toString();
+    public String visit(FalseForm falseForm) {
+        return "False";
     }
 
     @Override
-    public void visit(FormulaForm formulaForm) {
-        totalString = formulaForm.toString();
+    public String visit(FormulaForm formulaForm) {
+        return formulaForm.Formula;
     }
 
     @Override
-    public void visit(ImpliesForm impliesForm) {
-        totalString = impliesForm.toString();
+    public String visit(ImpliesForm impliesForm) {
+        Form leftOperand = impliesForm.getLeft();
+        Form rightOperand = impliesForm.getRight();
+        boolean leftP = pc.parenthesesNeeded(ImpliesForm.class, leftOperand.getClass());
+        boolean rightP = pc.parenthesesNeeded(ImpliesForm.class, rightOperand.getClass());
+        return    (leftP ? "(" : "")
+                + leftOperand.toString()
+                + (leftP ? ")" : "")
+                + "⇒"
+                + (rightP ? "(" : "")
+                + rightOperand.toString()
+                + (rightP ? ")" : "");
     }
 
     @Override
-    public void visit(NotForm notForm) {
-        totalString = notForm.toString();
+    public String visit(NotForm notForm) {
+        Form Operand = notForm.getOperand();
+        boolean p = pc.parenthesesNeeded(NotForm.class, Operand.getClass());
+        return    "¬"
+                + (p ? "(" : "")
+                + Operand.accept(this)
+                + (p ? ")" : "");
     }
 
     @Override
-    public void visit(OrForm orForm) {
-        totalString = orForm.toString();
+    public String visit(OrForm orForm) {
+        Form leftOperand = orForm.getLeft();
+        Form rightOperand = orForm.getRight();
+        boolean leftP = pc.parenthesesNeeded(OrForm.class, leftOperand.getClass());
+        boolean rightP = pc.parenthesesNeeded(OrForm.class, rightOperand.getClass());
+        return    (leftP ? "(" : "")
+                + leftOperand.accept(this)
+                + (leftP ? ")" : "")
+                + "∨"
+                + (rightP ? "(" : "")
+                + rightOperand.accept(this)
+                + (rightP ? ")" : "");
     }
 
     @Override
-    public void visit(TrueForm trueForm) {
-        totalString = trueForm.toString();
+    public String visit(TrueForm trueForm) {
+        return "True";
     }
     
     

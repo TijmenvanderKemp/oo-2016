@@ -13,11 +13,13 @@ package Exercise09;
 
 
 public class FalseForm implements Form{
-    public void accept( FormVisitor v ) {
-        v.visit(this);
+    @Override
+    public <R> R accept( FormVisitor<R> v ) {
+        return v.visit(this);
     }
     
+    @Override
     public String toString(){
-        return "False";
+        return "";
     }
 }

@@ -13,10 +13,8 @@ package Exercise09;
 
 
 public class OrForm implements Form{
-    private final ParenthesesCalculator pc = new ParenthesesCalculator();
-    
-    private Form leftOperand;
-    private Form rightOperand;
+    private final Form leftOperand;
+    private final Form rightOperand;
     public OrForm( Form left, Form right ) {
         this.leftOperand = left;
         this.rightOperand = right;
@@ -30,19 +28,13 @@ public class OrForm implements Form{
         return rightOperand;
     }
 
-    public void accept( FormVisitor v ) {
-        v.visit(this);
+    @Override
+    public <R> R accept( FormVisitor<R> v ) {
+        return v.visit(this);
     }
     
+    @Override
     public String toString(){
-        boolean leftP = pc.parenthesesNeeded(OrForm.class, leftOperand.getClass());
-        boolean rightP = pc.parenthesesNeeded(OrForm.class, rightOperand.getClass());
-        return    (leftP ? "(" : "")
-                + leftOperand.toString()
-                + (leftP ? ")" : "")
-                + "∨"
-                + (rightP ? "(" : "")
-                + rightOperand.toString()
-                + (rightP ? ")" : "");
+        return "";
     }
 }

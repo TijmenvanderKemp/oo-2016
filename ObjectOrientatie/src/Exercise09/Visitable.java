@@ -13,5 +13,5 @@ package Exercise09;
 
 
 public interface Visitable {
-    void accept( FormVisitor visitor ) ;
+    public <R> R accept( FormVisitor<R> visitor ) ;
 }

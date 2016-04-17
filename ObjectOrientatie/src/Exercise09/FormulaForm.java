@@ -19,11 +19,13 @@ public class FormulaForm implements Form {
         Formula = f;
     }
     
-    public void accept( FormVisitor v ) {
-        v.visit(this);
+    @Override
+    public <R> R accept( FormVisitor<R> v ) {
+        return v.visit(this);
     }
     
+    @Override
     public String toString(){
-        return Formula;
+        return "";
     }
 }

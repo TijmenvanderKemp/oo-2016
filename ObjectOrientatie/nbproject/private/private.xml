@@ -3,14 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise08/Opdracht1/IJsje.java</file>
-            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise08/Opdracht1/YoghurtIJs.java</file>
-            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise08/Opdracht1/VanilleIJs.java</file>
-            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise08/Opdracht1/Beschrijvingen.java</file>
-            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise08/Opdracht1/Slagroom.java</file>
-            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise08/Opdracht1/Spikkels.java</file>
-            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise08/Opdracht1/Chocodip.java</file>
-            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise08/Opdracht1/IJsjesDecoratie.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/PrintFormVisitor.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/FormVisitor.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/NotForm.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/TrueForm.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/FalseForm.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/AndForm.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/ParenthesesCalculator.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/Main.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/Form.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/OrForm.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/FormulaForm.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/Visitable.java</file>
+            <file>file:/C:/Users/tijmen/Documents/GitHub/oo-2016/ObjectOrientatie/src/Exercise09/ImpliesForm.java</file>
         </group>
     </open-files>
 </project-private>

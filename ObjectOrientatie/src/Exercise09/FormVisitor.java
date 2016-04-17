@@ -12,13 +12,13 @@ package Exercise09;
  */
 
 
-public interface FormVisitor {
-    void visit( AndForm andForm );
-    void visit( FalseForm falseForm );
-    void visit( FormulaForm formulaForm );
-    void visit( ImpliesForm impliesForm );
-    void visit( NotForm notForm );
-    void visit( OrForm orForm );
-    void visit( TrueForm trueForm );
+public interface FormVisitor<R> {
+    R visit( AndForm andForm );
+    R visit( FalseForm falseForm );
+    R visit( FormulaForm formulaForm );
+    R visit( ImpliesForm impliesForm );
+    R visit( NotForm notForm );
+    R visit( OrForm orForm );
+    R visit( TrueForm trueForm );
     
 }

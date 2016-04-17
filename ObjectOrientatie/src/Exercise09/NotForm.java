@@ -15,7 +15,7 @@ package Exercise09;
 public class NotForm implements Form{
     private final ParenthesesCalculator pc = new ParenthesesCalculator();
     
-    private Form Operand;
+    private final Form Operand;
             
     public NotForm(Form o){
         Operand = o;
@@ -25,15 +25,13 @@ public class NotForm implements Form{
         return Operand;
     }
             
-    public void accept( FormVisitor v ) {
-        v.visit(this);
+    @Override
+    public <R> R accept( FormVisitor<R> v ) {
+        return v.visit(this);
     }
     
+    @Override
     public String toString(){
-        boolean p = pc.parenthesesNeeded(NotForm.class, Operand.getClass());
-        return    "¬"
-                + (p ? "(" : "")
-                + Operand.toString()
-                + (p? ")" : "");
+        return "";
     }
 }
