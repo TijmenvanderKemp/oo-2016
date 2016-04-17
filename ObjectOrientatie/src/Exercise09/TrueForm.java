@@ -6,7 +6,7 @@
 package Exercise09;
 
 /**
- * 
+ * A formula that is always true
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */

@@ -6,16 +6,14 @@
 package Exercise09;
 
 /**
- * 
+ * A formula based on a Not-construction
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
 
 
 public class NotForm implements Form{
-    private final ParenthesesCalculator pc = new ParenthesesCalculator();
-    
-    private final Form Operand;
+    private final Form Operand;//The operand of the Not
             
     public NotForm(Form o){
         Operand = o;

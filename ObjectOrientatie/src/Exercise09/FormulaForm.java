@@ -6,14 +6,14 @@
 package Exercise09;
 
 /**
- * 
+ * A formula based on a String
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
 
 
 public class FormulaForm implements Form {
-    String Formula;
+    String Formula; // The formula
     
     FormulaForm(String f){
         Formula = f;
