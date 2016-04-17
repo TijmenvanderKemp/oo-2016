@@ -23,11 +23,11 @@ public class PrintFormVisitor implements FormVisitor {
         boolean leftP = pc.parenthesesNeeded(AndForm.class, leftOperand.getClass());
         boolean rightP = pc.parenthesesNeeded(AndForm.class, rightOperand.getClass());
         return    (leftP ? "(" : "")
-                + leftOperand.toString()
+                + leftOperand.accept(this)
                 + (leftP ? ")" : "")
                 + "∧"
                 + (rightP ? "(" : "")
-                + rightOperand.toString()
+                + rightOperand.accept(this)
                 + (rightP ? ")" : "");
     }
 
@@ -48,11 +48,11 @@ public class PrintFormVisitor implements FormVisitor {
         boolean leftP = pc.parenthesesNeeded(ImpliesForm.class, leftOperand.getClass());
         boolean rightP = pc.parenthesesNeeded(ImpliesForm.class, rightOperand.getClass());
         return    (leftP ? "(" : "")
-                + leftOperand.toString()
+                + leftOperand.accept(this)
                 + (leftP ? ")" : "")
                 + "⇒"
                 + (rightP ? "(" : "")
-                + rightOperand.toString()
+                + rightOperand.accept(this)
                 + (rightP ? ")" : "");
     }
 

@@ -15,45 +15,45 @@ package Exercise09;
 public class EvalFormVisitor implements FormVisitor {
 
     @Override
-    public Form visit(AndForm andForm) {
-        boolean leftValue = (andForm.getLeft().accept(this).getClass() == TrueForm.class);
-        boolean rightValue = (andForm.getRight().accept(this).getClass() == TrueForm.class);
-        return (leftValue && rightValue ? new TrueForm() : new FalseForm ());
+    public Boolean visit(AndForm andForm) {
+        Boolean leftValue = (Boolean) andForm.getLeft().accept(this);
+        Boolean rightValue = (Boolean) andForm.getRight().accept(this);
+        return leftValue && rightValue;
     }
 
     @Override
-    public Form visit(FalseForm falseForm) {
-        return "False";
+    public Boolean visit(FalseForm falseForm) {
+        return false;
     }
 
     @Override
-    public Form visit(FormulaForm formulaForm) {
-        return formulaForm.Formula;
+    public Boolean visit(FormulaForm formulaForm) {
+        return null;
     }
 
     @Override
-    public Form visit(ImpliesForm impliesForm) {
-        Form leftOperand = impliesForm.getLeft();
-        Form rightOperand = impliesForm.getRight();
-        return
+    public Boolean visit(ImpliesForm impliesForm) {
+        Boolean leftValue = (Boolean) impliesForm.getLeft().accept(this);
+        Boolean rightValue = (Boolean) impliesForm.getRight().accept(this);
+        return !leftValue || rightValue;
     }
 
     @Override
-    public Form visit(NotForm notForm) {
-        Form Operand = notForm.getOperand();
-        return
+    public Boolean visit(NotForm notForm) {
+        Boolean value = (Boolean) notForm.getOperand().accept(this);
+        return !value;
     }
 
     @Override
-    public Form visit(OrForm orForm) {
-        Form leftOperand = orForm.getLeft();
-        Form rightOperand = orForm.getRight();
-        return
+    public Boolean visit(OrForm orForm) {
+        Boolean leftValue = (Boolean) orForm.getLeft().accept(this);
+        Boolean rightValue = (Boolean) orForm.getRight().accept(this);
+        return leftValue || rightValue;
     }
 
     @Override
-    public Form visit(TrueForm trueForm) {
-        return "True";
+    public Boolean visit(TrueForm trueForm) {
+        return true;
     }
     
 }

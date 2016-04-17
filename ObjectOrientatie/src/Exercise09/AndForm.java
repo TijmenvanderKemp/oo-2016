@@ -13,10 +13,8 @@ package Exercise09;
 
 
 public class AndForm implements Form{
-    private final ParenthesesCalculator pc = new ParenthesesCalculator();
-    
-    private Form leftOperand;
-    private Form rightOperand;
+    private final Form leftOperand;
+    private final Form rightOperand;
     public AndForm( Form left, Form right ) {
         this.leftOperand = left;
         this.rightOperand = right;
