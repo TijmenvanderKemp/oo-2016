@@ -6,7 +6,8 @@
 package Exercise09;
 
 /**
- * 
+ * This returns the formula that it visits, as a String. 
+ * It uses recursion to do so (sort of).
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
@@ -18,11 +19,15 @@ public class PrintFormVisitor implements FormVisitor {
     
     @Override
     public String visit(AndForm andForm) {
+        // Get the left and right operands from the andForm
         Form leftOperand = andForm.getLeft();
         Form rightOperand = andForm.getRight();
+        // Check if they need parentheses
         boolean leftP = pc.parenthesesNeeded(AndForm.class, leftOperand.getClass());
         boolean rightP = pc.parenthesesNeeded(AndForm.class, rightOperand.getClass());
+                  // This line adds in parentheses if needed
         return    (leftP ? "(" : "")
+                  // This line evaluates the left operand to a String
                 + leftOperand.accept(this)
                 + (leftP ? ")" : "")
                 + "∧"

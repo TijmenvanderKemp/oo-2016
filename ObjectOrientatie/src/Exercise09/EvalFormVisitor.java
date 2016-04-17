@@ -6,7 +6,10 @@
 package Exercise09;
 
 /**
- * 
+ * This returns the value of a formula that it visits, as a Boolean. 
+ * It uses recursion to do so (sort of).
+ * We had to use the Boolean class instead of the primitive because generics
+ * expects an object.
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
@@ -16,6 +19,9 @@ public class EvalFormVisitor implements FormVisitor {
 
     @Override
     public Boolean visit(AndForm andForm) {
+        // Fetch the value of the two operands. (This is where recursion happens.)
+        // The value is always of the type Boolean but this class only knows
+        // that it's an Object so cast it to Boolean.
         Boolean leftValue = (Boolean) andForm.getLeft().accept(this);
         Boolean rightValue = (Boolean) andForm.getRight().accept(this);
         return leftValue && rightValue;
