@@ -6,15 +6,16 @@
 package Exercise09;
 
 /**
- * 
+ * A formula based on an Or-construction
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
 
 
 public class OrForm implements Form{
-    private final Form leftOperand;
-    private final Form rightOperand;
+    private final Form leftOperand;//left operand of the Or
+    private final Form rightOperand;//right operand of the Or
+    
     public OrForm( Form left, Form right ) {
         this.leftOperand = left;
         this.rightOperand = right;
