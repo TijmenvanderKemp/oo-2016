@@ -6,7 +6,7 @@
 package Exercise09;
 
 /**
- * 
+ * Describes which classes every Visitor needs to visit.
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */

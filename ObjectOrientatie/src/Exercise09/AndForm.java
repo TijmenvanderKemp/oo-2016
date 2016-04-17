@@ -6,7 +6,7 @@
 package Exercise09;
 
 /**
- * 
+ * Basic structure: [leftOperand] AND [rightOperand]
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
