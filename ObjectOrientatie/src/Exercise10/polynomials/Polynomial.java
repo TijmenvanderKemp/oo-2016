@@ -73,15 +73,25 @@ public class Polynomial {
             for(Term t2 : b.terms){
                 if (t1.getExp() == t2.getExp()){
                     t1.plus(t2);
+                    if (t1.getCoef() == 0) {
+                        terms.remove(t1);
+                    }
                 }
             }
                 
         }
         for(Term t3 : b.terms){
+            boolean t3HasMatch = false; // Used to check if t3 from polynomial b
+                                        // has a corresponding term in this
+                                        // polynomial with the same exponent
             for(Term t4 : terms){
                 if (t3.getExp() == t4.getExp()){
+                    t3HasMatch = true;  // Does have a match in this polynomial
                     break;
                 }
+            }
+            if (!t3HasMatch) {
+                terms.add(t3);
             }
                 
         }
@@ -89,15 +99,13 @@ public class Polynomial {
 
 
     public void minus(Polynomial b) {
-        for(Term t1 : terms){
-            for(Term t2 : b.terms){
-                if (t1.getExp() == t2.getExp()){
-                    Term t3 = new Term(-t2.getCoef(), t2.getExp());
-                    t1.plus(t3);
-                }
-            }
-                
+        List<String> newTerms = new LinkedList<>();
+        for (Term t : b.terms) {
+            newTerms.add(new Term( 0-t.getCoef(), t.getExp() ).toString());
         }
+        String newTermsString = String.join(" + ", newTerms);
+        Polynomial negativeB = new Polynomial(newTermsString);
+        this.plus(negativeB);
     }
 
 
