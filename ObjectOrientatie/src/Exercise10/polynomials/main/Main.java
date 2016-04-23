@@ -1,6 +1,6 @@
-package main;
+package Exercise10.polynomials.main;
 
-import polynomial.Polynomial;
+import Exercise10.polynomials.polynomial.Polynomial;
 
 /**
  *
