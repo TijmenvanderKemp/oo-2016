@@ -1,5 +1,9 @@
- Error reading included file Templates/UnitTests/Templates/Licenses/license-object-orientation.txtreading included file Templates/UnitTests/Templates/Licenses/license-object-orientation.txt
-package Exercise10.polynomials.polynomial;
+/*
+ * Created by Joep Veldhoven and Tijmen van der Kemp for the course Object Orientation 2016
+ * Joep Veldhoven - s4456556
+ * Tijmen van der Kemp - s4446887
+ */
+package Exercise10.polynomials;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -10,10 +14,8 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Joep
+ * @author tijmen
  */
-
-
 public class PolynomialTest {
     
     public PolynomialTest() {
@@ -38,7 +40,7 @@ public class PolynomialTest {
     /**
      * Test of toString method, of class Polynomial.
      */
-    @org.junit.Test
+    @Test
     public void testToString() {
         System.out.println("toString");
         Polynomial instance = new Polynomial();
@@ -52,7 +54,7 @@ public class PolynomialTest {
     /**
      * Test of plus method, of class Polynomial.
      */
-    @org.junit.Test
+    @Test
     public void testPlus() {
         System.out.println("plus");
         Polynomial b = null;
@@ -65,7 +67,7 @@ public class PolynomialTest {
     /**
      * Test of minus method, of class Polynomial.
      */
-    @org.junit.Test
+    @Test
     public void testMinus() {
         System.out.println("minus");
         Polynomial b = null;
@@ -78,7 +80,7 @@ public class PolynomialTest {
     /**
      * Test of times method, of class Polynomial.
      */
-    @org.junit.Test
+    @Test
     public void testTimes() {
         System.out.println("times");
         Polynomial b = null;
@@ -91,7 +93,7 @@ public class PolynomialTest {
     /**
      * Test of divide method, of class Polynomial.
      */
-    @org.junit.Test
+    @Test
     public void testDivide() {
         System.out.println("divide");
         Polynomial b = null;
@@ -104,7 +106,7 @@ public class PolynomialTest {
     /**
      * Test of equals method, of class Polynomial.
      */
-    @org.junit.Test
+    @Test
     public void testEquals() {
         System.out.println("equals");
         Object other_poly = null;

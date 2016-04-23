@@ -1,15 +1,11 @@
- Error reading included file Templates/UnitTests/Templates/Licenses/license-object-orientation.txt
-package Exercise10.polynomials.polynomial;
+/*
+ * Created by Joep Veldhoven and Tijmen van der Kemp for the course Object Orientation 2016
+ * Joep Veldhoven - s4456556
+ * Tijmen van der Kemp - s4446887
+ */
+package Exercise10.polynomials;
 
 import java.util.Scanner;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;reading included file Templates/UnitTests/Templates/Licenses/license-object-orientation.txt
-package Exercise10.polynomials.polynomial;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,10 +15,8 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Joep
+ * @author tijmen
  */
-
-
 public class TermTest {
     
     public TermTest() {
@@ -47,7 +41,7 @@ public class TermTest {
     /**
      * Test of getExp method, of class Term.
      */
-    @org.junit.Test
+    @Test
     public void testGetExp() {
         System.out.println("getExp");
         Term instance = null;
@@ -61,7 +55,7 @@ public class TermTest {
     /**
      * Test of getCoef method, of class Term.
      */
-    @org.junit.Test
+    @Test
     public void testGetCoef() {
         System.out.println("getCoef");
         Term instance = null;
@@ -75,7 +69,7 @@ public class TermTest {
     /**
      * Test of plus method, of class Term.
      */
-    @org.junit.Test
+    @Test
     public void testPlus() {
         System.out.println("plus");
         Term t = null;
@@ -88,7 +82,7 @@ public class TermTest {
     /**
      * Test of times method, of class Term.
      */
-    @org.junit.Test
+    @Test
     public void testTimes() {
         System.out.println("times");
         Term t = null;
@@ -101,7 +95,7 @@ public class TermTest {
     /**
      * Test of toString method, of class Term.
      */
-    @org.junit.Test
+    @Test
     public void testToString() {
         System.out.println("toString");
         Term instance = null;
@@ -115,7 +109,7 @@ public class TermTest {
     /**
      * Test of equals method, of class Term.
      */
-    @org.junit.Test
+    @Test
     public void testEquals() {
         System.out.println("equals");
         Object may_be_term = null;
@@ -130,7 +124,7 @@ public class TermTest {
     /**
      * Test of scanTerm method, of class Term.
      */
-    @org.junit.Test
+    @Test
     public void testScanTerm() {
         System.out.println("scanTerm");
         Scanner s = null;

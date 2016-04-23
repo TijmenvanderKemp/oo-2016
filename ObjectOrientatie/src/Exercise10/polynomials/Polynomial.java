@@ -1,4 +1,4 @@
-package Exercise10.polynomials.polynomial;
+package Exercise10.polynomials;
 
 import java.util.LinkedList;
 import java.util.List;

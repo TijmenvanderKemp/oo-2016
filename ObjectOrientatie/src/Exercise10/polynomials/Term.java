@@ -1,4 +1,4 @@
-package Exercise10.polynomials.polynomial;
+package Exercise10.polynomials;
 
 import java.util.Scanner;
 
@@ -82,12 +82,13 @@ public class Term {
      */
     @Override
     public String toString() {
-        if (exponent == 0) {
-            return String.format("%f", coefficient);
-        } else if (exponent == 1) {
-            return String.format("%fx", coefficient);
-        } else {
-            return String.format("%fx^%d", coefficient, exponent);
+        switch (exponent) {
+            case 0:
+                return String.format("%f", coefficient);
+            case 1:
+                return String.format("%fx", coefficient);
+            default:
+                return String.format("%fx^%d", coefficient, exponent);
         }
     }
 
