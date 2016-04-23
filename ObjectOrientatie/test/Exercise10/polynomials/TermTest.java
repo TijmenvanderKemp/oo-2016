@@ -72,11 +72,29 @@ public class TermTest {
     @Test
     public void testPlus() {
         System.out.println("plus");
-        Term t = null;
-        Term instance = null;
-        instance.plus(t);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Term t1 = new Term(2,3);
+        Term t2 = new Term(3,3);
+        Term t3 = new Term(5,3);
+        Term t4 = new Term(t1);
+        Term t5 = new Term(t2);
+        Term t6 = new Term(t3);
+        Term t7 = new Term(t1);
+        Term t8 = new Term(t1);
+        Term t9 = new Term(t1);
+        Term t10 = new Term(t2);
+        Term t11 = new Term (t2);
+        t1.plus(t2);
+        assertEquals(t1,t3);
+        t4.plus(t2);
+        t4.plus(t3);
+        t5.plus(t6);
+        t7.plus(t5);
+        assertEquals(t4,t7);
+        t8.plus(t10);
+        t11.plus(t9);
+        assertEquals(t8,t11);
+        
+        
     }
 
     /**
@@ -85,11 +103,27 @@ public class TermTest {
     @Test
     public void testTimes() {
         System.out.println("times");
-        Term t = null;
-        Term instance = null;
-        instance.times(t);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Term t1 = new Term(2,3);
+        Term t2 = new Term(3,3);
+        Term t3 = new Term(6,6);
+        Term t4 = new Term(t1);
+        Term t5 = new Term(t2);
+        Term t6 = new Term(t3);
+        Term t7 = new Term(t1);
+        Term t8 = new Term(t1);
+        Term t9 = new Term(t1);
+        Term t10 = new Term(t2);
+        Term t11 = new Term (t2);
+        t1.times(t2);
+        assertEquals(t1,t3);
+        t4.times(t2);
+        t4.times(t3);
+        t5.times(t6);
+        t7.times(t5);
+        assertEquals(t4,t7);
+        t8.times(t10);
+        t11.times(t9);
+        assertEquals(t8,t11);
     }
 
     /**

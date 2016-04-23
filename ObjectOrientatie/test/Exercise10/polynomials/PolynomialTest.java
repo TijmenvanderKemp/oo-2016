@@ -57,11 +57,29 @@ public class PolynomialTest {
     @Test
     public void testPlus() {
         System.out.println("plus");
-        Polynomial b = null;
-        Polynomial instance = new Polynomial();
-        instance.plus(b);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Polynomial p1 = new Polynomial("1 + x^2");
+        Polynomial p2 = new Polynomial("3 + 4x");
+        Polynomial p3 = new Polynomial("4 + 4x + x^2");
+        Polynomial p4 = new Polynomial(p1);
+        Polynomial p5 = new Polynomial(p2);
+        Polynomial p6 = new Polynomial(p3);
+        Polynomial p7 = new Polynomial(p1);
+        Polynomial p8 = new Polynomial(p2);
+        Polynomial p9 = new Polynomial(p3);
+        Polynomial p10 = new Polynomial(p1);
+        Polynomial p11 = new Polynomial(p2);
+        Polynomial p12 = new Polynomial(p1);
+        Polynomial p13 = new Polynomial(p2);
+        p1.plus(p2);
+        assertEquals(p1,p3);
+        p4.plus(p5);
+        p4.plus(p6);
+        p8.plus(p9);
+        p7.plus(p8);
+        assertEquals(p4,p7);
+        p10.plus(p11);
+        p13.plus(p12);
+        assertEquals(p13,p11);
     }
 
     /**
@@ -70,11 +88,12 @@ public class PolynomialTest {
     @Test
     public void testMinus() {
         System.out.println("minus");
-        Polynomial b = null;
-        Polynomial instance = new Polynomial();
-        instance.minus(b);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Polynomial p1 = new Polynomial("4 + 4x + x^2");
+        Polynomial p2 = new Polynomial("1 + x^2");
+        Polynomial p3 = new Polynomial("3 + 4x");
+        p1.minus(p2);
+        assertEquals(p1,p3);
+        
     }
 
     /**
@@ -83,11 +102,29 @@ public class PolynomialTest {
     @Test
     public void testTimes() {
         System.out.println("times");
-        Polynomial b = null;
-        Polynomial instance = new Polynomial();
-        instance.times(b);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Polynomial p1 = new Polynomial("1 + x^2");
+        Polynomial p2 = new Polynomial("3 + 4x");
+        Polynomial p3 = new Polynomial("3 + 4x + 3x^2 + 4x^3");
+        Polynomial p4 = new Polynomial(p1);
+        Polynomial p5 = new Polynomial(p2);
+        Polynomial p6 = new Polynomial(p3);
+        Polynomial p7 = new Polynomial(p1);
+        Polynomial p8 = new Polynomial(p2);
+        Polynomial p9 = new Polynomial(p3);
+        Polynomial p10 = new Polynomial(p1);
+        Polynomial p11 = new Polynomial(p2);
+        Polynomial p12 = new Polynomial(p1);
+        Polynomial p13 = new Polynomial(p2);
+        p1.times(p2);
+        assertEquals(p1,p3);
+        p4.times(p5);
+        p4.times(p6);
+        p8.times(p9);
+        p7.times(p8);
+        assertEquals(p4,p7);
+        p10.times(p11);
+        p13.times(p12);
+        assertEquals(p13,p11);
     }
 
     /**
