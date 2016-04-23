@@ -155,4 +155,27 @@ public class PolynomialTest {
         fail("The test case is a prototype.");
     }
     
+    /**
+     * Test of distributivity.
+     */
+    @Test
+    public void testDistributivity() {
+        System.out.println("distributivity");
+        Polynomial p1 = new Polynomial("1 + x^2");
+        Polynomial p2 = new Polynomial("3 + 4x");
+        Polynomial p3 = new Polynomial("3x + 5x^2");
+        
+        Polynomial pa = new Polynomial(p1);
+        pa.plus(p2);
+        pa.times(p3);
+        
+        Polynomial px = new Polynomial(p3);
+        px.times(p1);
+        Polynomial py = new Polynomial(p3);
+        py.times(p2);
+        px.plus(py);
+        
+        assertEquals(pa, px);
+    }
+    
 }
