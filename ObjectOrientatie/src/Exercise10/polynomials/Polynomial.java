@@ -61,14 +61,43 @@ public class Polynomial {
      */
     @Override
     public String toString() {
-        return null;
+        String polynomial = "";
+        for(Term t : terms){
+            polynomial += t.toString();
+        }
+        return polynomial;
     }
 
     public void plus(Polynomial b) {
+        for(Term t1 : terms){
+            for(Term t2 : b.terms){
+                if (t1.getExp() == t2.getExp()){
+                    t1.plus(t2);
+                }
+            }
+                
+        }
+        for(Term t3 : b.terms){
+            for(Term t4 : terms){
+                if (t3.getExp() == t4.getExp()){
+                    break;
+                }
+            }
+                
+        }
     }
 
 
     public void minus(Polynomial b) {
+        for(Term t1 : terms){
+            for(Term t2 : b.terms){
+                if (t1.getExp() == t2.getExp()){
+                    Term t3 = new Term(-t2.getCoef(), t2.getExp());
+                    t1.plus(t3);
+                }
+            }
+                
+        }
     }
 
 
