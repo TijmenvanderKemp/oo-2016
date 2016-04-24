@@ -57,9 +57,9 @@ public class PolynomialTest {
     @Test
     public void testPlus() {
         System.out.println("plus");
-        Polynomial p1 = new Polynomial("1 + x^2");
-        Polynomial p2 = new Polynomial("3 + 4x");
-        Polynomial p3 = new Polynomial("4 + 4x + x^2");
+        Polynomial p1 = new Polynomial("1 0 1 2");
+        Polynomial p2 = new Polynomial("3 0 4 1");
+        Polynomial p3 = new Polynomial("4 0 4 1 1 2");
         Polynomial p4 = new Polynomial(p1);
         Polynomial p5 = new Polynomial(p2);
         Polynomial p6 = new Polynomial(p3);
@@ -88,9 +88,9 @@ public class PolynomialTest {
     @Test
     public void testMinus() {
         System.out.println("minus");
-        Polynomial p1 = new Polynomial("4 + 4x + x^2");
-        Polynomial p2 = new Polynomial("1 + x^2");
-        Polynomial p3 = new Polynomial("3 + 4x");
+        Polynomial p1 = new Polynomial("4 0 4 1 1 2");
+        Polynomial p2 = new Polynomial("1 0 1 2");
+        Polynomial p3 = new Polynomial("3 0 4 1");
         p1.minus(p2);
         assertEquals(p1,p3);
         
@@ -102,9 +102,9 @@ public class PolynomialTest {
     @Test
     public void testTimes() {
         System.out.println("times");
-        Polynomial p1 = new Polynomial("1 + x^2");
-        Polynomial p2 = new Polynomial("3 + 4x");
-        Polynomial p3 = new Polynomial("3 + 4x + 3x^2 + 4x^3");
+        Polynomial p1 = new Polynomial("1 0 1 2");
+        Polynomial p2 = new Polynomial("3 0 4 1");
+        Polynomial p3 = new Polynomial("3 0 4 1 3 2 4 3");
         Polynomial p4 = new Polynomial(p1);
         Polynomial p5 = new Polynomial(p2);
         Polynomial p6 = new Polynomial(p3);
@@ -161,9 +161,9 @@ public class PolynomialTest {
     @Test
     public void testDistributivity() {
         System.out.println("distributivity");
-        Polynomial p1 = new Polynomial("1 + x^2");
-        Polynomial p2 = new Polynomial("3 + 4x");
-        Polynomial p3 = new Polynomial("3x + 5x^2");
+        Polynomial p1 = new Polynomial("1 0 1 2");
+        Polynomial p2 = new Polynomial("3 0 4 1");
+        Polynomial p3 = new Polynomial("3 1 5 2");
         
         Polynomial pa = new Polynomial(p1);
         pa.plus(p2);

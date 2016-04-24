@@ -1,5 +1,7 @@
 package Exercise10.polynomials;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -38,6 +40,7 @@ public class Polynomial {
         for (Term t = Term.scanTerm(scan); t != null; t = Term.scanTerm(scan)) {
             terms.add(t);
         }
+        Collections.sort(terms, (Term o1, Term o2) -> o1.getExp() - o2.getExp());
     }
 
     /**
@@ -51,6 +54,7 @@ public class Polynomial {
         for (Term t : p.terms) {
             terms.add(new Term(t));
         }
+        Collections.sort(terms, (Term o1, Term o2) -> o1.getExp() - o2.getExp());
     }
     
     /**
@@ -61,51 +65,54 @@ public class Polynomial {
      */
     @Override
     public String toString() {
+        // Add " + " to each term and reduce to one big string
         String polynomial = "";
-        for(Term t : terms){
-            polynomial += t.toString();
+        polynomial = terms.stream().map((t) -> t.toString() + " + ").reduce(polynomial, String::concat);
+        
+        // Strip the last " + "
+        if (polynomial.length() >= 3) {
+            polynomial = polynomial.substring(0, polynomial.length()-3);
         }
+        
         return polynomial;
     }
 
     public void plus(Polynomial b) {
-        for(Term t1 : terms){
-            for(Term t2 : b.terms){
-                if (t1.getExp() == t2.getExp()){
-                    t1.plus(t2);
-                    if (t1.getCoef() == 0) {
-                        terms.remove(t1);
-                    }
-                }
+        // Add up all the terms with the same coefficient
+        terms.stream().forEach((termThis) -> {
+            b.terms.stream().filter((termB) -> (termThis.getExp() == termB.getExp())).forEach((termB) -> {
+                termThis.plus(termB);
+            });
+        });
+        
+        // Add all terms from B without a match in This to This
+        b.terms.stream().forEach((termB) -> {
+            if(terms.stream().noneMatch((termThis) -> (termThis.getExp() == termB.getExp()))) {
+                terms.add(termB);
             }
-                
-        }
-        for(Term t3 : b.terms){
-            boolean t3HasMatch = false; // Used to check if t3 from polynomial b
-                                        // has a corresponding term in this
-                                        // polynomial with the same exponent
-            for(Term t4 : terms){
-                if (t3.getExp() == t4.getExp()){
-                    t3HasMatch = true;  // Does have a match in this polynomial
-                    break;
-                }
-            }
-            if (!t3HasMatch) {
-                terms.add(t3);
-            }
-                
-        }
+        });
+        
+        // Remove all terms from This with a coefficient of 0
+        terms.stream().filter((tThis) -> (tThis.getCoef() == 0)).forEach((tThis) -> {
+            terms.remove(tThis);
+        });
+        
+        // Sort the polynomial
+        Collections.sort(terms, (Term o1, Term o2) -> o1.getExp() - o2.getExp());
     }
 
 
     public void minus(Polynomial b) {
         List<String> newTerms = new LinkedList<>();
-        for (Term t : b.terms) {
-            newTerms.add(new Term( 0-t.getCoef(), t.getExp() ).toString());
-        }
-        String newTermsString = String.join(" + ", newTerms);
+        b.terms.stream().forEach((t) -> {
+            newTerms.add(0-t.getCoef() + " " + t.getExp());
+        });
+        String newTermsString = String.join(" ", newTerms);
         Polynomial negativeB = new Polynomial(newTermsString);
+        System.out.println(negativeB);
+        System.out.println(this);
         this.plus(negativeB);
+        System.out.println(this);
     }
 
 
