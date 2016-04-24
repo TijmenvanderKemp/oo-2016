@@ -40,6 +40,7 @@ public class Polynomial {
         for (Term t = Term.scanTerm(scan); t != null; t = Term.scanTerm(scan)) {
             terms.add(t);
         }
+        // Sort the polynomial
         Collections.sort(terms, (Term o1, Term o2) -> o1.getExp() - o2.getExp());
     }
 
@@ -54,6 +55,7 @@ public class Polynomial {
         for (Term t : p.terms) {
             terms.add(new Term(t));
         }
+        // Sort the polynomial
         Collections.sort(terms, (Term o1, Term o2) -> o1.getExp() - o2.getExp());
     }
     
@@ -103,16 +105,13 @@ public class Polynomial {
 
 
     public void minus(Polynomial b) {
-        List<String> newTerms = new LinkedList<>();
+        List<String> negativeTerms = new LinkedList<>();
         b.terms.stream().forEach((t) -> {
-            newTerms.add(0-t.getCoef() + " " + t.getExp());
+            negativeTerms.add(0-t.getCoef() + " " + t.getExp());
         });
-        String newTermsString = String.join(" ", newTerms);
-        Polynomial negativeB = new Polynomial(newTermsString);
-        System.out.println(negativeB);
-        System.out.println(this);
+        Polynomial negativeB = new Polynomial(String.join(" ", negativeTerms));
         this.plus(negativeB);
-        System.out.println(this);
+        // Polynomial is already sorted since this.plus() was called
     }
 
 

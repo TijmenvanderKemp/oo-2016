@@ -14,6 +14,7 @@ public class Main {
         Polynomial p3 = new Polynomial( "4 0 -5 3" );
         Polynomial p4 = new Polynomial( "6 1" );
         
+        p1.minus(p2);
 
         System.out.println( p1 );
         System.out.println( p2 );

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="7" hostname="bimble" name="Exercise10.polynomials.PolynomialTest" skipped="0" tests="7" time="0.09" timestamp="2016-04-24T11:35:24">
+<testsuite errors="1" failures="5" hostname="bimble" name="Exercise10.polynomials.PolynomialTest" skipped="0" tests="7" time="0.121" timestamp="2016-04-24T14:50:00">
   <properties>
     <property name="netbeans.autoupdate.country" value="GB" />
     <property name="nb.wait.for.caches" value="true" />
@@ -40,7 +40,7 @@
     <property name="user.name" value="tijmen" />
     <property name="copylibs.rebase" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Exercise10.polynomials.PolynomialTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\tijmen\Documents\GitHub\oo-2016\ObjectOrientatie\build\test\results\TEST-Exercise10.polynomials.PolynomialTest.xml crashfile=C:\Users\tijmen\Documents\GitHub\oo-2016\ObjectOrientatie\build\junitvmwatcher2134016047168465997.properties propsfile=C:\Users\tijmen\Documents\GitHub\oo-2016\ObjectOrientatie\build\junit728262621782766840.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Exercise10.polynomials.PolynomialTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\tijmen\Documents\GitHub\oo-2016\ObjectOrientatie\build\test\results\TEST-Exercise10.polynomials.PolynomialTest.xml crashfile=C:\Users\tijmen\Documents\GitHub\oo-2016\ObjectOrientatie\build\junitvmwatcher5530296752592074204.properties propsfile=C:\Users\tijmen\Documents\GitHub\oo-2016\ObjectOrientatie\build\junit3525761172513961909.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -307,48 +307,49 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testMinus" time="0.015">
-    <failure message="expected:&lt;3.000000 + 4.000000x + -1.000000x^2&gt; but was:&lt;3.000000 + 4.000000x&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;3.000000 + 4.000000x + -1.000000x^2&gt; but was:&lt;3.000000 + 4.000000x&gt;
-	at Exercise10.polynomials.PolynomialTest.testMinus(PolynomialTest.java:95)
-</failure>
+  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testMinus" time="0.055">
+    <error type="java.util.ConcurrentModificationException">java.util.ConcurrentModificationException
+	at java.util.LinkedList$LLSpliterator.forEachRemaining(LinkedList.java:1239)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:418)
+	at Exercise10.polynomials.Polynomial.plus(Polynomial.java:98)
+	at Exercise10.polynomials.Polynomial.minus(Polynomial.java:116)
+	at Exercise10.polynomials.PolynomialTest.testMinus(PolynomialTest.java:94)
+</error>
   </testcase>
   <testcase classname="Exercise10.polynomials.PolynomialTest" name="testTimes" time="0.004">
     <failure message="expected:&lt;1.000000 + 1.000000x^2&gt; but was:&lt;3.000000 + 4.000000x + 3.000000x^2 + 4.000000x^3&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;1.000000 + 1.000000x^2&gt; but was:&lt;3.000000 + 4.000000x + 3.000000x^2 + 4.000000x^3&gt;
 	at Exercise10.polynomials.PolynomialTest.testTimes(PolynomialTest.java:119)
 </failure>
   </testcase>
-  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testPlus" time="0.005">
-    <failure message="expected:&lt;4.000000 + 1.000000x^2 + 4.000000x&gt; but was:&lt;4.000000 + 4.000000x + 1.000000x^2&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;4.000000 + 1.000000x^2 + 4.000000x&gt; but was:&lt;4.000000 + 4.000000x + 1.000000x^2&gt;
+  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testPlus" time="0.003">
+    <failure message="expected: Exercise10.polynomials.Polynomial&lt;4.000000 + 4.000000x + 1.000000x^2&gt; but was: Exercise10.polynomials.Polynomial&lt;4.000000 + 4.000000x + 1.000000x^2&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected: Exercise10.polynomials.Polynomial&lt;4.000000 + 4.000000x + 1.000000x^2&gt; but was: Exercise10.polynomials.Polynomial&lt;4.000000 + 4.000000x + 1.000000x^2&gt;
 	at Exercise10.polynomials.PolynomialTest.testPlus(PolynomialTest.java:74)
 </failure>
   </testcase>
-  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testToString" time="0.002">
+  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testToString" time="0.0">
     <failure message="The test case is a prototype." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: The test case is a prototype.
 	at Exercise10.polynomials.PolynomialTest.testToString(PolynomialTest.java:51)
 </failure>
   </testcase>
-  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testDistributivity" time="0.004">
-    <failure message="expected:&lt;4.000000 + 1.000000x^2 + 4.000000x&gt; but was:&lt;6.000000x + 10.000000x^2&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;4.000000 + 1.000000x^2 + 4.000000x&gt; but was:&lt;6.000000x + 10.000000x^2&gt;
-	at Exercise10.polynomials.PolynomialTest.testDistributivity(PolynomialTest.java:178)
+  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testDistributivity" time="0.003">
+    <failure message="expected:&lt;4.000000 + 4.000000x + 1.000000x^2&gt; but was:&lt;6.000000x + 10.000000x^2&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;4.000000 + 4.000000x + 1.000000x^2&gt; but was:&lt;6.000000x + 10.000000x^2&gt;
+	at Exercise10.polynomials.PolynomialTest.testDistributivity(PolynomialTest.java:174)
 </failure>
   </testcase>
-  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testDivide" time="0.001">
-    <failure message="The test case is a prototype." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: The test case is a prototype.
-	at Exercise10.polynomials.PolynomialTest.testDivide(PolynomialTest.java:140)
-</failure>
-  </testcase>
-  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testEquals" time="0.001">
-    <failure message="The test case is a prototype." type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: The test case is a prototype.
-	at Exercise10.polynomials.PolynomialTest.testEquals(PolynomialTest.java:155)
+  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testDivide" time="0.0" />
+  <testcase classname="Exercise10.polynomials.PolynomialTest" name="testEquals" time="0.002">
+    <failure message="expected:&lt;true&gt; but was:&lt;false&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;true&gt; but was:&lt;false&gt;
+	at Exercise10.polynomials.PolynomialTest.testEquals(PolynomialTest.java:150)
 </failure>
   </testcase>
   <system-out><![CDATA[minus
----
-4.000000 + 4.000000x + 1.000000x^2
-1.000000 + 1.000000x^2
 -1.000000 + -1.000000x^2
 4.000000 + 4.000000x + 1.000000x^2
-3.000000 + 4.000000x + -1.000000x^2
 times
 plus
 toString
