@@ -1,10 +1,12 @@
 package Exercise10.polynomials;
 
+import static java.lang.Math.pow;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  * A skeleton class for representing Polynomials
@@ -95,9 +97,7 @@ public class Polynomial {
         });
         
         // Remove all terms from This with a coefficient of 0
-        terms.stream().filter((tThis) -> (tThis.getCoef() == 0)).forEach((tThis) -> {
-            terms.remove(tThis);
-        });
+        terms = terms.stream().filter((tThis) -> (tThis.getCoef() != 0)).collect(Collectors.toList());
         
         // Sort the polynomial
         Collections.sort(terms, (Term o1, Term o2) -> o1.getExp() - o2.getExp());
@@ -116,6 +116,30 @@ public class Polynomial {
 
 
     public void times(Polynomial b) {
+        List<Polynomial> polyList = new LinkedList<>();
+        
+        // Multiply each term from this polynomial with the whole list of terms of b.
+        terms.stream().forEach((termThis) -> {
+            List<Term> termList = new LinkedList<>();
+            b.terms.stream().forEach((termB) -> {
+               termList.add(new Term(termThis.getCoef() * termB.getCoef(),
+                                     termThis.getExp()  + termB.getExp()));
+            });
+            Polynomial newPoly = new Polynomial();
+            newPoly.terms = termList;
+            polyList.add(newPoly);
+        });
+        
+        // Reduce the list of polynomials to 1 polynomial by adding them together.
+        Polynomial finalPolynomial = new Polynomial();
+        polyList.stream().forEach((p) -> {
+            finalPolynomial.plus(p);
+        });
+        
+        this.terms = finalPolynomial.terms;
+        
+        // Sort the polynomial
+        Collections.sort(terms, (Term o1, Term o2) -> o1.getExp() - o2.getExp());
     }
 
     public void divide(Polynomial b) {
@@ -123,7 +147,15 @@ public class Polynomial {
 
     @Override
     public boolean equals(Object other_poly) {
-        return false;
+        return this.toString().equals(other_poly.toString());
+    }
+    
+    public double apply (double in) {
+        double result = 0;
+        for (Term t : terms) {
+            result += t.getCoef()*pow(in, t.getExp());
+        }
+        return result;
     }
 
 }

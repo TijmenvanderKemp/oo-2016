@@ -43,12 +43,10 @@ public class PolynomialTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        Polynomial instance = new Polynomial();
-        String expResult = "";
+        Polynomial instance = new Polynomial("1 0 1 2");
+        String expResult = "1.000000 + 1.000000x^2";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -79,7 +77,7 @@ public class PolynomialTest {
         assertEquals(p4,p7);
         p10.plus(p11);
         p13.plus(p12);
-        assertEquals(p13,p11);
+        assertEquals(p13,p10);
     }
 
     /**
@@ -124,7 +122,7 @@ public class PolynomialTest {
         assertEquals(p4,p7);
         p10.times(p11);
         p13.times(p12);
-        assertEquals(p13,p11);
+        assertEquals(p13,p10);
     }
 
     /**
@@ -172,6 +170,17 @@ public class PolynomialTest {
         px.plus(py);
         
         assertEquals(pa, px);
+    }
+    
+    /**
+     * Test of apply method, of class Polynomial.
+     */
+    @Test
+    public void testApply() {
+        System.out.println("apply");
+        Polynomial p1 = new Polynomial("4 3 3 2 4 1 3 0");
+        double expected = 55.0;
+        assertEquals(p1.apply(2), expected, 0.0);
     }
     
 }

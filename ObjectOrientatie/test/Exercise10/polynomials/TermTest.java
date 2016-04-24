@@ -44,12 +44,10 @@ public class TermTest {
     @Test
     public void testGetExp() {
         System.out.println("getExp");
-        Term instance = null;
+        Term instance = new Term (1, 0);
         int expResult = 0;
         int result = instance.getExp();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -58,12 +56,10 @@ public class TermTest {
     @Test
     public void testGetCoef() {
         System.out.println("getCoef");
-        Term instance = null;
-        double expResult = 0.0;
+        Term instance = new Term(1, 3);
+        double expResult = 1.000000;
         double result = instance.getCoef();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -132,12 +128,10 @@ public class TermTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        Term instance = null;
-        String expResult = "";
+        Term instance = new Term(1, 3);
+        String expResult = "1.000000x^3";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -146,27 +140,12 @@ public class TermTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Object may_be_term = null;
-        Term instance = null;
+        Object may_be_term = new Term (1, 3);
+        Term instance = new Term (2, 4);
         boolean expResult = false;
         boolean result = instance.equals(may_be_term);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of scanTerm method, of class Term.
-     */
-    @Test
-    public void testScanTerm() {
-        System.out.println("scanTerm");
-        Scanner s = null;
-        Term expResult = null;
-        Term result = Term.scanTerm(s);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
 }
