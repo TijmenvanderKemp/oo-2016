@@ -81,6 +81,10 @@ public class Polynomial {
         return polynomial;
     }
 
+    /**
+     * adds a polynomial to this polynomial
+     * @param b the polynomial to be added
+     */
     public void plus(Polynomial b) {
         // Add up all the terms with the same coefficient
         terms.stream().forEach((termThis) -> {
@@ -104,6 +108,10 @@ public class Polynomial {
     }
 
 
+    /**
+     * Subtracts a polynomial from this polynomial
+     * @param b the polynomial to be subtracted
+     */
     public void minus(Polynomial b) {
         List<String> negativeTerms = new LinkedList<>();
         b.terms.stream().forEach((t) -> {
@@ -115,6 +123,10 @@ public class Polynomial {
     }
 
 
+    /**
+     * multiplies a polynomial by this polynomial
+     * @param b the polynomial to be multiplied with
+     */
     public void times(Polynomial b) {
         List<Polynomial> polyList = new LinkedList<>();
         
@@ -150,6 +162,11 @@ public class Polynomial {
         return this.toString().equals(other_poly.toString());
     }
     
+    /**
+     * Calculates the value of the polynomial with a given input
+     * @param in the given input variable
+     * @return the value of the polynomial with the given input
+     */
     public double apply (double in) {
         double result = 0;
         for (Term t : terms) {
