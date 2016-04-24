@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author tijmen
+ * 
  */
 public class PolynomialTest {
     

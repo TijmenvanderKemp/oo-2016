@@ -1,3 +1,8 @@
+/*
+ * Created by Joep Veldhoven and Tijmen van der Kemp for the course Object Orientation 2016
+ * Joep Veldhoven - s4456556
+ * Tijmen van der Kemp - s4446887
+ */
 package Exercise10.polynomials;
 
 import static java.lang.Math.pow;
