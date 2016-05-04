@@ -24,6 +24,7 @@ public class Controller {
     DocumentBuilderFactory dBF;
     DocumentBuilder dB;
     Document d;
+    DocumentHandler dH;
     View view;
     
     public Controller () {
@@ -33,6 +34,13 @@ public class Controller {
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, "Couldn't create a DocumentBuilder with this configuration.", ex);
         }
+        getBuienradar();
+        
+        view = new View();
+        view.addController(this);
+    }
+    
+    private void getBuienradar () {
         try {
             d = dB.parse("http://xml.buienradar.nl");
         } catch (SAXException ex) {
@@ -40,8 +48,10 @@ public class Controller {
         } catch (IOException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, "Error in I/O. Maybe your internet is down?", ex);
         }
-        
-        view = new View();
-        view.addController(this);
+        dH = new DocumentHandler(d);
+    }
+    
+    public void refreshDocument() {
+        getBuienradar();
     }
 }
