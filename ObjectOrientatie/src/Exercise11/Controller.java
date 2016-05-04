@@ -26,7 +26,7 @@ public class Controller {
     DocumentBuilder dB;
     Document d;
     DocumentHandler dH;
-    View view;
+    List<String> weerstations;
     
     public Controller () {
         dBF = DocumentBuilderFactory.newInstance();
@@ -37,11 +37,7 @@ public class Controller {
         }
         getBuienradar();
         
-        List<String> weerstations = dH.getWeerstations();
-        
-        
-        view = new View();
-        view.addController(this);
+        weerstations = dH.getWeerstations();
     }
     
     private void getBuienradar () {
@@ -57,5 +53,13 @@ public class Controller {
     
     public void refreshDocument() {
         getBuienradar();
+    }
+    
+    public List<String> getWeerStations() {
+        return weerstations;
+    }
+    
+    public List<String> getInfoAboutStation (String station) {
+        return dH.getInfoAboutStation(station);
     }
 }

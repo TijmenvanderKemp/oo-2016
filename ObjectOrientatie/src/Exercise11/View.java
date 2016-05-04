@@ -5,64 +5,67 @@
 
 package Exercise11;
 
-import javafx.scene.control.Label;
+import java.util.List;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
 
 /**
  *
  * @author Joep Veldhoven (s4456556)
  * @author Tijmen van der Kemp (s4446887)
  */
-public class View extends Application{
-
-    Controller controller;
+public class View extends Application {
     
-    public View(){
-        launch();
-    }
+    Controller controller;
     
     @Override
     public void start(Stage stage)	{	
+        controller = new Controller();
+        
         GridPane grid =	new GridPane();	
 	grid.setAlignment(Pos.CENTER);	
 	grid.setHgap(5);	
 	grid.setVgap(10);	
-	Label heading =	new Label("Enter name and password");	
+        
+	Label heading =	new Label("Weather Forecast");	
 	heading.setFont(Font.font(18));	
 	grid.add(heading, 0, 0,	2, 1);	
-	grid.add(new Label("name"),0,1);	
-	grid.add(new Label("Password"),0,2);	
-	TextField nameField = new TextField("user");	
-	TextField pwdField = new PasswordField();	
-	pwdField.setTooltip(new	Tooltip("At least 1 letter"));	
-	grid.add(nameField, 1, 1);	
-	grid.add(pwdField, 1, 2);
-        Label feedback = new Label("");	
-	grid.add(feedback, 0, 4, 2, 1);	
-	Button btn = new Button();	
-	btn.setText("ok");	
-	btn.setOnAction(e->{	
-		String pwd1 = pwdField.getText();	
-		String name = nameField.getText();	
+        
+        Button refreshButton = new Button();
+        grid.add(refreshButton, 0, 1, 2, 1);
+        refreshButton.setText("Refresh the data");
+        refreshButton.setOnAction((ActionEvent e) -> {
+            controller.refreshDocument();
+        });  
+        
+	grid.add(new Label("Station:"),0,2);
+        List<String> weerstations = controller.getWeerStations();
+        // Implement dropdown
+        
+	Button stationButton = new Button();	
+	stationButton.setText("ok");	
+	stationButton.setOnAction(e->{	
+		controller.getInfoAboutStation("Arnhem"); // CHANGE THIS TO RELEVANT THING
         });
-	grid.add(btn, 1, 3);	
+	grid.add(stationButton, 1, 3);	
+        
 	Scene scene = new Scene(grid, 300, 200);	
-	stage.setTitle(this.getClass().getSimpleName());	
+	stage.setTitle("Buienradar.nl");	
 	stage.setScene(scene);	
 	stage.show();	
         
     }
-    public void addController (Controller c) {
-        controller = c;
+    
+    public static void main (String [] args) {
+        launch(args);
     }
     
 }
