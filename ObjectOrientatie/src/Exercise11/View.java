@@ -8,8 +8,9 @@ package Exercise11;
 import java.util.LinkedList;
 import java.util.List;
 import javafx.application.Application;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,12 +29,13 @@ import javafx.stage.Stage;
 public class View extends Application {
     
     Controller controller;
+    String choiceOnChoiceBox;
     List<String> gegevens = new LinkedList<>();
     
     @Override
     public void start(Stage stage)	{	
         controller = new Controller();
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 14; i++)
             gegevens.add("");
         
         GridPane grid =	new GridPane();	
@@ -41,10 +43,12 @@ public class View extends Application {
 	grid.setHgap(5);	
 	grid.setVgap(10);	
         
+        // The title label at the top
 	Label heading =	new Label("Weather Forecast");	
 	heading.setFont(Font.font(18));	
 	grid.add(heading, 0, 0,	2, 1);	
         
+        // The button to refresh the data
         Button refreshButton = new Button();
         grid.add(refreshButton, 0, 1, 2, 1);
         refreshButton.setText("Refresh the data");
@@ -52,18 +56,21 @@ public class View extends Application {
             controller.refreshDocument();
         });  
         
+        // The dropdown with all the stations
 	grid.add(new Label("Station:"),0,2);
         List<String> weerstations = controller.getWeerStations();
         ChoiceBox<String> choice = new ChoiceBox<>();	
 	choice.getItems().addAll(weerstations);	
 	choice.setValue(weerstations.get(0));
         grid.add(choice, 1, 2);
-        // Implement dropdown
         
-	Button stationButton = new Button();	
-	stationButton.setText("Vraag gegevens op");	
-	stationButton.setOnAction(new StationHandler());
-	grid.add(stationButton, 1, 3);	
+        // Using StringProperty to update the Labels automatically
+        StringProperty pDatum = new SimpleStringProperty();
+	StringProperty pLuchtV = new SimpleStringProperty();
+	StringProperty pTemp = new SimpleStringProperty();
+	StringProperty pWindS = new SimpleStringProperty();
+	StringProperty pWindR = new SimpleStringProperty();
+	StringProperty pRegen = new SimpleStringProperty();
         
         grid.add(new Label("Datum:"), 0, 4);
         grid.add(new Label("Luchtvochtigheid:"), 0, 5);
@@ -72,21 +79,47 @@ public class View extends Application {
         grid.add(new Label("Windrichting:"),0 , 8);
         grid.add(new Label("Regen (mm/h):"),0 , 9);
         
-        grid.add(new Label(gegevens.get(2)), 1, 4);
+        Label gDatum = new Label("");
+        Label gLuchtV = new Label("");
+        Label gTemp = new Label("");
+        Label gWindS = new Label("");
+        Label gWindR = new Label("");
+        Label gRegen = new Label("");
         
+        gDatum.textProperty().bind(pDatum);
+        gLuchtV.textProperty().bind(pLuchtV);
+        gTemp.textProperty().bind(pTemp);
+        gWindS.textProperty().bind(pWindS);
+        gWindR.textProperty().bind(pWindR);
+        gRegen.textProperty().bind(pRegen);
         
-	Scene scene = new Scene(grid, 300, 200);	
+        grid.add(gDatum, 1, 4);
+        grid.add(gLuchtV, 1, 5);
+        grid.add(gTemp, 1, 6);
+        grid.add(gWindS, 1, 7);
+        grid.add(gWindR, 1, 8);
+        grid.add(gRegen, 1, 9);
+        
+        // The button to request the data per station.
+        Button stationButton = new Button();	
+	stationButton.setText("Vraag gegevens op");	
+	stationButton.setOnAction((ActionEvent ae) -> {
+            gegevens = controller.getInfoAboutStation(choice.getValue());
+            pDatum.setValue(gegevens.get(2));
+            pLuchtV.setValue(gegevens.get(3));
+            pTemp.setValue(gegevens.get(4));
+            pWindS.setValue(gegevens.get(6));
+            pWindR.setValue(gegevens.get(8));
+            pRegen.setValue(gegevens.get(12));
+        });
+        // Update for the first choice in the list.
+        stationButton.fire();
+	grid.add(stationButton, 1, 3);
+        
+	Scene scene = new Scene(grid, 300, 320);	
 	stage.setTitle("Buienradar.nl");	
 	stage.setScene(scene);	
-	stage.show();	
-        
-    }
-    
-    private class StationHandler implements EventHandler<ActionEvent>{
-        @Override
-        public void handle(ActionEvent event) {
-            
-        }
+	stage.show();
     }
     
     public static void main (String [] args) {
