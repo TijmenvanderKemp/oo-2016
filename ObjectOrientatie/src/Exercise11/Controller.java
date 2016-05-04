@@ -38,16 +38,7 @@ public class Controller {
         getBuienradar();
         
         List<String> weerstations = dH.getWeerstations();
-        for (String s : weerstations) {
-            System.out.println(s);
-        }
         
-        System.out.println();
-        
-        List<String> data = dH.getInfoAboutStation("Arnhem");
-        for (String s : data) {
-            System.out.println(s);
-        }
         
         view = new View();
         view.addController(this);
