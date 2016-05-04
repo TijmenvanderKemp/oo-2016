@@ -5,7 +5,14 @@
 
 package Exercise11;
 
-import javax.swing.text.Document;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -20,9 +27,20 @@ public class Controller {
     View view;
     
     public Controller () {
-        dBF = new DocumentBuilderFactory();
-        dB = dBF.newDocumentBuilder();
-        d = dB.parse();
+        dBF = DocumentBuilderFactory.newInstance();
+        try {
+            dB = dBF.newDocumentBuilder();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, "Couldn't create a DocumentBuilder with this configuration.", ex);
+        }
+        try {
+            d = dB.parse("http://xml.buienradar.nl");
+        } catch (SAXException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, "Error parsing this file. Take a look at the XML.", ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, "Error in I/O. Maybe your internet is down?", ex);
+        }
+        
         view = new View();
         view.addController(this);
     }
