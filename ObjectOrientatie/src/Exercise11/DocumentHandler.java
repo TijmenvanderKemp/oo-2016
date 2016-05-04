@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
@@ -17,8 +18,8 @@ import org.w3c.dom.NodeList;
  * @author Tijmen van der Kemp (s4446887)
  */
 public class DocumentHandler {
-    Document d;
-    List<String> weerstations;
+    private final Document d;
+    private final List<String> weerstations;
     
     public DocumentHandler (Document d) {
         this.d = d;
@@ -33,7 +34,41 @@ public class DocumentHandler {
         return weerstations;
     }
     
-    public void getInfoAboutStation (String station) {
-        // IMPLEMENT
+    public List<String> getInfoAboutStation (String station) {
+        /* String list of data:
+            latitude
+            longtitude
+            datum
+            luchtvochtigheid
+            temperatuur (celsius)
+            windsnelheid (m/s)
+            windsnelheid (beaufort)
+            windrichting (graden)
+            windrichting (afkorting)
+            luchtdruk
+            zichtmeters
+            windstoten (m/s)
+            regen (mm/u)
+            icoon
+            temperatuur (10 cm)
+        */
+        List<String> data = new LinkedList<>();
+        
+        NodeList ndl = d.getElementsByTagName("stationnaam");
+        for (int i = 0; i < ndl.getLength(); i ++) {
+            // Find the one node with the name of what you entered in the dropdown box.
+            if (ndl.item(i).getFirstChild().getNodeValue().substring(12).equals(station)) {
+                
+                // Go through all subsequent 15 nodes and write down the data in the List.
+                Node dataNode = ndl.item(i);
+                for (int gegevensindex = 0; gegevensindex < 15; gegevensindex ++) {
+                    dataNode = dataNode.getNextSibling();
+                    data.add(dataNode.getFirstChild().getNodeValue());
+                }
+                
+            }
+        }
+        
+        return data;
     }
 }

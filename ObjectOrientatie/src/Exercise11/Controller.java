@@ -6,6 +6,7 @@
 package Exercise11;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -35,6 +36,18 @@ public class Controller {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, "Couldn't create a DocumentBuilder with this configuration.", ex);
         }
         getBuienradar();
+        
+        List<String> weerstations = dH.getWeerstations();
+        for (String s : weerstations) {
+            System.out.println(s);
+        }
+        
+        System.out.println();
+        
+        List<String> data = dH.getInfoAboutStation("Arnhem");
+        for (String s : data) {
+            System.out.println(s);
+        }
         
         view = new View();
         view.addController(this);
