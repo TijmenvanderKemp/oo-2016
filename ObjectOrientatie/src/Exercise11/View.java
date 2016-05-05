@@ -12,10 +12,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.GroupBuilder;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.ImageViewBuilder;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -78,6 +83,7 @@ public class View extends Application {
         grid.add(new Label("Windsnelheid (bf):"), 0, 7);
         grid.add(new Label("Windrichting:"),0 , 8);
         grid.add(new Label("Regen (mm/h):"),0 , 9);
+        grid.add(new Label("Visuele referentie:"), 0, 10);
         
         Label gDatum = new Label("");
         Label gLuchtV = new Label("");
@@ -100,6 +106,9 @@ public class View extends Application {
         grid.add(gWindR, 1, 8);
         grid.add(gRegen, 1, 9);
         
+        // Create the icon and save the group.
+        Group iconGroup = createIcon("http://xml.buienradar.nl/icons/a.gif", grid);
+        
         // The button to request the data per station.
         Button stationButton = new Button();	
 	stationButton.setText("Vraag gegevens op");	
@@ -111,15 +120,41 @@ public class View extends Application {
             pWindS.setValue(gegevens.get(6));
             pWindR.setValue(gegevens.get(8));
             pRegen.setValue(gegevens.get(12));
+            ( (ImageView) iconGroup.getChildren().get(0) )
+                    .setImage(new Image(gegevens.get(13)));
         });
         // Update for the first choice in the list.
         stationButton.fire();
 	grid.add(stationButton, 1, 3);
         
-	Scene scene = new Scene(grid, 300, 320);	
+	Scene scene = new Scene(grid, 300, 340);	
 	stage.setTitle("Buienradar.nl");	
 	stage.setScene(scene);	
 	stage.show();
+    }
+    
+    private Group createIcon (String url, GridPane grid) {
+        
+        String imageSource = url;
+         
+        ImageView imageView = ImageViewBuilder.create()
+                .image(new Image(imageSource))
+                .build();
+         
+        Group myGroup = GroupBuilder.create()
+                .children(imageView)
+                .build();
+        
+        
+        grid.add(myGroup, 1, 10);
+        
+        return myGroup;
+    }
+    
+    private Group updateIcon (String url, Group iconGroup) {
+        ImageView iconImageView = (ImageView) iconGroup.getChildren().get(0);
+        iconImageView.setImage(new Image(url));
+        return iconGroup;
     }
     
     public static void main (String [] args) {
