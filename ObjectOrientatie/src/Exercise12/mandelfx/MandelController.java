@@ -89,8 +89,8 @@ public class MandelController {
     }
     
     void drag (double xLeft, double yUp, double xRight, double yDown) {
-        centerX = ((xLeft + xRight) / 2 - gridWidth/2) / scale;
-        centerY = ((yUp + yDown) / 2 - gridHeight/2) / scale;
+        centerX = ((xLeft + xRight) / 2 - gridWidth/2) / scale + centerX;
+        centerY = ((yUp + yDown) / 2 - gridHeight/2) / scale + centerY;
         
         double largerSide = Math.max(Math.abs(xRight - xLeft), 
                                      Math.abs(yDown - yUp));
