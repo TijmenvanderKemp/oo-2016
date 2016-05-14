@@ -44,13 +44,14 @@ public class MandelFX extends Application {
 
         areaFiller.fill( canvas );
 
-        Group root = new Group( canvas );
+        Group root = new Group(  );
         
         GridPane g = new GridPane();
         
-        g.add(new Label("Center (x, y):"), 0, 0);
-        g.add(new Label("Scale:"), 0, 1);
-        g.add(new Label("Repetitions:"), 0, 2);
+        g.add(canvas, 0, 0, 3, 1);
+        g.add(new Label("Center (x, y):"), 0, 1);
+        g.add(new Label("Scale:"), 0, 2);
+        g.add(new Label("Repetitions:"), 0, 3);
         
         TextField centerXTextField = new TextField("0");
         TextField centerYTextField = new TextField("0");
@@ -58,11 +59,11 @@ public class MandelFX extends Application {
         TextField repetitionsTextField = new TextField("20");
         Button enterDataButton = new Button("Draw the fractal!");
         
-        g.add(centerXTextField, 1, 0);
-        g.add(centerYTextField, 2, 0);
-        g.add(scaleTextField, 1, 1, 2, 1);
-        g.add(repetitionsTextField, 1, 2, 2, 1);
-        g.add(enterDataButton, 0, 3, 3, 1);
+        g.add(centerXTextField, 1, 1);
+        g.add(centerYTextField, 2, 1);
+        g.add(scaleTextField, 1, 2, 2, 1);
+        g.add(repetitionsTextField, 1, 3, 2, 1);
+        g.add(enterDataButton, 0, 4, 3, 1);
         
         root.getChildren().add(g);
         
