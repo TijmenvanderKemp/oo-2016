@@ -24,6 +24,11 @@ public class AreaFiller {
 
     /**
      * fills the canvas with some arbitrarily chosen pattern
+     * @param canvas canvas dat gevuld moet worden
+     * @param centerX x-coordinaat van het midden van het canvas
+     * @param centerY y-coordinaat van het midden van het canvas
+     * @param scale de schaal hoe ver is ingezoomd op het canvas
+     * @param repetition na hoeveel pogingen we aannemen dat een mandelgetal oneindig is.
      */
     public void fill( Canvas canvas, 
                       double centerX, 
@@ -62,10 +67,23 @@ public class AreaFiller {
         }
     }
 
+    /**
+     * berekent de afstand van een punt tot (0,0)
+     * @param x x-coordinaat van het punt
+     * @param y y-coordinaat van het punt
+     * @return  de afstand
+     */
     public double distanceTo0(double x, double y){
         return Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
     }
 
+    /**
+     * geeft het mandelgetal van een punt
+     * @param a x-coordinaat van het punt
+     * @param b y-coordinaat
+     * @param repetitions het aantal repitions waarna we aannemen dat het mandelgetal oneindig is
+     * @return Het mandelgetal van het punt, geeft repetitions als het mandelgetal oneindig zou zijn
+     */
     public int getMandelgetal(double a, double b, double repetitions){
         int n = 0;
         double x = a;
