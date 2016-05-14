@@ -32,7 +32,13 @@ public class AreaFiller {
         final PixelWriter pixelWriter = canvas.getGraphicsContext2D().getPixelWriter();
         for (int i = 0; i < imageWith; i++) {
             for (int j = 0; j < imageHeight; j++) {
-                
+                int n = getMandelgetal((double) i/800,(double) j/800);
+                if(n % 2 == 1){
+                    pixelWriter.setColor(i, j, Color.BLACK);
+                }
+                else{
+                    pixelWriter.setColor(i, j, Color.WHITE);
+                }
                 //int colorIndex = i/5 * imageWith/5 + j/5;
                 //pixelWriter.setColor(i, j, colorMap.getColor( colorIndex ));
             }               
@@ -47,7 +53,7 @@ public class AreaFiller {
         int n = 0;
         double x = a;
         double y = b;
-        while(distanceTo0(x,y) <= 2){
+        while(distanceTo0(x,y) <= 2 && n <= MAX_ITERATIONS){
             x = Math.pow(x,2) - Math.pow(y,2) + a;
             y = 2 * x * y + b;
             n++;
