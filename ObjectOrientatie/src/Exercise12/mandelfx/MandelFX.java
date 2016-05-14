@@ -27,6 +27,11 @@ public class MandelFX extends Application {
     private Canvas canvas;
     private MandelController mandelController;
     
+    TextField centerXTextField;
+    TextField centerYTextField;
+    TextField scaleTextField;
+    TextField repetitionsTextField;
+    
     @Override
     public void start(Stage primaryStage) {
         mandelController = new MandelController(this);
@@ -51,10 +56,10 @@ public class MandelFX extends Application {
         g.add(new Label("Scale:"), 0, 3);
         g.add(new Label("Repetitions:   "), 0, 4);
         
-        TextField centerXTextField = new TextField("0");
-        TextField centerYTextField = new TextField("0");
-        TextField scaleTextField = new TextField("100");
-        TextField repetitionsTextField = new TextField("20");
+        centerXTextField = new TextField("0");
+        centerYTextField = new TextField("0");
+        scaleTextField = new TextField("100");
+        repetitionsTextField = new TextField("20");
         Button enterDataButton = new Button("Draw the fractal!");
         
         g.add(centerXTextField, 1, 2);
@@ -76,11 +81,21 @@ public class MandelFX extends Application {
             });
         });
         
+        canvas.setOnMousePressed (e -> mandelController.beginRect(e));
+        canvas.setOnMouseReleased(e -> mandelController.finishRect(e));
+        
         // Fire the button to draw the fractal for the first time
         enterDataButton.fire();
         
         Scene scene = new Scene(root);
         return scene;
+    }
+    
+    public void setTextFields (String[] textStringArray) {
+        centerXTextField.setText(textStringArray[0]);
+        centerYTextField.setText(textStringArray[1]);
+        scaleTextField.setText(textStringArray[2]);
+        repetitionsTextField.setText(textStringArray[3]);
     }
     
     public static void main(String[] args) {
