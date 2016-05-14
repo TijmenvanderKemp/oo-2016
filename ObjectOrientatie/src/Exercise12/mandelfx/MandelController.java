@@ -6,8 +6,10 @@
 package Exercise12.mandelfx;
 
 import Exercise12.mandelmodel.AreaFiller;
+import javafx.scene.paint.Color;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -46,10 +48,21 @@ public class MandelController {
         areaFiller.fill( canvas, centerX, centerY, scale, repetitions );
     }
 
-    void beginRect(MouseEvent e) {
+    Rectangle beginRect(MouseEvent e) {
         rect[0] = e.getX();
         rect[1] = e.getY();
+        Rectangle rectangle = new Rectangle (rect[0], rect[1], 10, 10);
+        rectangle.setFill(new Color(1.0f, 0.0f, 0.0f, 0.5f));
+        rectangle.setStroke(new Color(1.0f, 0.0f, 0.0f, 1.0f));
+        
+        
         e.consume();
+        
+        Rectangle newRect = new Rectangle (rect[0], rect[1], 10, 10);
+        newRect.setFill(new Color(1, 0, 0, 0.5));
+        newRect.setStroke(new Color(1, 0, 0, 1));
+        
+        return newRect;
     }
 
     void finishRect(MouseEvent e) {

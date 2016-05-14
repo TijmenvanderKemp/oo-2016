@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
 
 /**
  *
@@ -31,6 +32,8 @@ public class MandelFX extends Application {
     TextField centerYTextField;
     TextField scaleTextField;
     TextField repetitionsTextField;
+    
+    Rectangle rect;
     
     @Override
     public void start(Stage primaryStage) {
@@ -69,6 +72,7 @@ public class MandelFX extends Application {
         g.add(enterDataButton, 1, 5, 2, 1);
         
         root.getChildren().add(g);
+        root.getChildren().add(new Rectangle(0, 0, 10, 10));
         
         // Pass the values from the TextFields to the controller
         // Also pass the canvas so the controller can draw
@@ -81,8 +85,18 @@ public class MandelFX extends Application {
             });
         });
         
-        canvas.setOnMousePressed (e -> mandelController.beginRect(e));
-        canvas.setOnMouseReleased(e -> mandelController.finishRect(e));
+        canvas.setOnMousePressed (e -> {
+            rect = mandelController.beginRect(e);
+            root.getChildren().add(rect);
+                });
+        canvas.setOnMouseReleased(e -> {
+            mandelController.finishRect(e);
+            root.getChildren().remove(rect);
+                });
+        canvas.setOnMouseDragged(e -> {
+            rect.setWidth(Math.abs(e.getX() - rect.getX()));
+            rect.setHeight(Math.abs(e.getY() - rect.getY()));
+                });
         
         // Fire the button to draw the fractal for the first time
         enterDataButton.fire();
