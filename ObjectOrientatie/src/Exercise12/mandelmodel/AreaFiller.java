@@ -22,6 +22,8 @@ public class AreaFiller {
     public static final int MAX_ITERATIONS = 20;
 
     private static final ColorMap colorMap = new ColorMap( MAX_ITERATIONS );
+    
+    
 
     /**
      * fills the canvas with some arbitrarily chosen pattern
@@ -31,13 +33,17 @@ public class AreaFiller {
                       double centerY, 
                       double scale,
                       double repetition ) {
-        int imageWith   = (int) canvas.getWidth();
+        repetition = Math.min(repetition, 1000);
+        int imageWidth   = (int) canvas.getWidth();
         int imageHeight = (int) canvas.getHeight();
+        scale = imageWidth / scale;
         final PixelWriter pixelWriter = canvas.getGraphicsContext2D().getPixelWriter();
-        for (int i = 0; i < imageWith; i++) {
+        for (int i = 0; i < imageWidth; i++) {
             for (int j = 0; j < imageHeight; j++) {
-                int n = getMandelgetal((double) i/800,(double) j/800);
-                if(n % 2 == 1){
+                int n = getMandelgetal(((double) i/imageWidth - 0.5) * scale + centerX,
+                                       ((double) j/imageHeight - 0.5) * scale + centerY, 
+                                       repetition);
+                if(n % 2 == 0){
                     pixelWriter.setColor(i, j, Color.BLACK);
                 }
                 else{
@@ -53,15 +59,21 @@ public class AreaFiller {
         return Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
     }
 
-    public int getMandelgetal(double a, double b){
+    public int getMandelgetal(double a, double b, double repetitions){
         int n = 0;
         double x = a;
         double y = b;
-        while(distanceTo0(x,y) <= 2 && n <= MAX_ITERATIONS){
-            x = Math.pow(x,2) - Math.pow(y,2) + a;
-            y = 2 * x * y + b;
+        while(distanceTo0(x,y) <= 2 && n <= repetitions){
+            double xNew = Math.pow(x,2) - Math.pow(y,2) + a;
+            double yNew = 2 * x * y + b;
+            x = xNew;
+            y = yNew;
             n++;
         }
-        return n;
+        if(n == repetitions + 1){
+            return 0;
+        }
+        else
+            return n;
     }
 }
