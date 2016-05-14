@@ -37,6 +37,12 @@ public class MandelController {
         rect = new double[4];
     }
     
+    /**
+     * When the button is clicked, this function calls the AreaFiller to 
+     * draw the fractal with the values provided in the TextFields.
+     * @param canvas the canvas to draw the fractal on
+     * @param data the data to draw with
+     */
     public void dataEntered (Canvas canvas, String [] data) {
         this.canvas = canvas;
         gridWidth = canvas.getWidth();
@@ -48,6 +54,11 @@ public class MandelController {
         areaFiller.fill( canvas, centerX, centerY, scale, repetitions );
     }
 
+    /**
+     * Stores the beginning of the area that the user wants to zoom in on.
+     * @param e
+     * @return A Rectangle object on that location for drawing.
+     */
     Rectangle beginRect(MouseEvent e) {
         rect[0] = e.getX();
         rect[1] = e.getY();
@@ -65,6 +76,10 @@ public class MandelController {
         return newRect;
     }
 
+    /**
+     * Zooms in on the selected rectangle.
+     * @param e 
+     */
     void finishRect(MouseEvent e) {
         rect[2] = e.getX();
         rect[3] = e.getY();
@@ -81,6 +96,12 @@ public class MandelController {
         e.consume();
     }
     
+    /**
+     * Zooms in or out on the selected point.
+     * @param x of the point to zoom on
+     * @param y of the point to zoom on
+     * @param in whether to zoom in or out
+     */
     void clickZoom (double x, double y, boolean in) {
         centerX = (x - gridWidth/2) / scale + centerX;
         centerY = (y - gridHeight/2) / scale + centerY;
@@ -93,6 +114,7 @@ public class MandelController {
         
         areaFiller.fill( canvas, centerX, centerY, scale, repetitions );
         
+        // Update the TextFields to represent the new values
         parentFX.setTextFields(new String[] {
             String.valueOf(centerX),
             String.valueOf(centerY),
@@ -101,6 +123,14 @@ public class MandelController {
         });
     }
     
+    /**
+     * Zooms in on the selected rectangle. Similar to the point zoom,
+     * just minor differences in the center and scale calculation.
+     * @param xLeft
+     * @param yUp
+     * @param xRight
+     * @param yDown 
+     */
     void drag (double xLeft, double yUp, double xRight, double yDown) {
         centerX = ((xLeft + xRight) / 2 - gridWidth/2) / scale + centerX;
         centerY = ((yUp + yDown) / 2 - gridHeight/2) / scale + centerY;

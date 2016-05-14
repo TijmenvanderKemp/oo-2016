@@ -88,15 +88,19 @@ public class MandelFX extends Application {
         });
         
         canvas.setOnMousePressed (e -> {
+            // Begin a new red rectangle
             rect = mandelController.beginRect(e);
+            // Store the origin in memory so we can always return to it
             rectX = rect.getX();
             rectY = rect.getY();
             root.getChildren().add(rect);
                 });
+        
         canvas.setOnMouseReleased(e -> {
             mandelController.finishRect(e);
             root.getChildren().remove(rect);
                 });
+        
         canvas.setOnMouseDragged(e -> {
             changeRect(e);
                 });
@@ -108,6 +112,11 @@ public class MandelFX extends Application {
         return scene;
     }
     
+    /**
+     * Set the text fields to represent the current state of the screen.
+     * Especially helpful when you don't know where in the picture you are.
+     * @param textStringArray The data that belong in the four text fields.
+     */
     public void setTextFields (String[] textStringArray) {
         centerXTextField.setText(textStringArray[0]);
         centerYTextField.setText(textStringArray[1]);
@@ -115,6 +124,11 @@ public class MandelFX extends Application {
         repetitionsTextField.setText(textStringArray[3]);
     }
     
+    /**
+     * With many thanks to the lovely Sjaak Smetsers who provided this code
+     * in the lecture slides.
+     * @param e 
+     */
     private void changeRect (MouseEvent e) {
         if (e.getX() > rectX) {
             rect.setX(rectX);
