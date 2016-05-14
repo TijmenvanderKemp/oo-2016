@@ -10,11 +10,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
-import Exercise12.mandelmodel.AreaFiller;
-import java.util.ArrayList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -40,18 +36,17 @@ public class MandelFX extends Application {
 
     private Scene makeScene() {
         canvas = new Canvas(GRID_WIDTH, GRID_HEIGHT);
-        AreaFiller areaFiller = new AreaFiller(  );
-
-        areaFiller.fill( canvas );
+        
 
         Group root = new Group(  );
         
         GridPane g = new GridPane();
         
         g.add(canvas, 0, 0, 3, 1);
-        g.add(new Label("Center (x, y):"), 0, 1);
-        g.add(new Label("Scale:"), 0, 2);
-        g.add(new Label("Repetitions:"), 0, 3);
+        g.add(new Label(" "), 0, 1);
+        g.add(new Label("Center (x, y):   "), 0, 2);
+        g.add(new Label("Scale:"), 0, 3);
+        g.add(new Label("Repetitions:   "), 0, 4);
         
         TextField centerXTextField = new TextField("0");
         TextField centerYTextField = new TextField("0");
@@ -59,22 +54,22 @@ public class MandelFX extends Application {
         TextField repetitionsTextField = new TextField("20");
         Button enterDataButton = new Button("Draw the fractal!");
         
-        g.add(centerXTextField, 1, 1);
-        g.add(centerYTextField, 2, 1);
-        g.add(scaleTextField, 1, 2, 2, 1);
-        g.add(repetitionsTextField, 1, 3, 2, 1);
-        g.add(enterDataButton, 0, 4, 3, 1);
+        g.add(centerXTextField, 1, 2);
+        g.add(centerYTextField, 2, 2);
+        g.add(scaleTextField, 1, 3, 2, 1);
+        g.add(repetitionsTextField, 1, 4, 2, 1);
+        g.add(enterDataButton, 1, 5, 2, 1);
         
         root.getChildren().add(g);
         
-        enterDataButton.setOnAction((ActionEvent e) -> 
-            mandelController.dataEntered(new String[]{
+        enterDataButton.setOnAction((ActionEvent e) -> {
+            mandelController.dataEntered(canvas, new String[]{
                 centerXTextField.getText(),
                 centerYTextField.getText(),
                 scaleTextField.getText(),
                 repetitionsTextField.getText()
-            })
-        );
+            });
+        });
         
         // Fire the button to draw the fractal for the first time
         enterDataButton.fire();

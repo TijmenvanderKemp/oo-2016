@@ -26,7 +26,11 @@ public class AreaFiller {
     /**
      * fills the canvas with some arbitrarily chosen pattern
      */
-    public void fill( Canvas canvas ) {
+    public void fill( Canvas canvas, 
+                      double centerX, 
+                      double centerY, 
+                      double scale,
+                      double repetition ) {
         int imageWith   = (int) canvas.getWidth();
         int imageHeight = (int) canvas.getHeight();
         final PixelWriter pixelWriter = canvas.getGraphicsContext2D().getPixelWriter();
