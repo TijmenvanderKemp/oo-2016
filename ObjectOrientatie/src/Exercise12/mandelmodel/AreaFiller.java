@@ -52,12 +52,13 @@ public class AreaFiller {
                 int n = getMandelgetal(((double) i/imageWidth - 0.5) * scale + centerX,
                                        ((double) j/imageHeight - 0.5) * scale + centerY, 
                                        repetition);
-                if(n % 2 == 0){
+                pixelWriter.setColor(i, j, colorMap.getColor(n));
+                /**if(n % 2 == 0){
                     pixelWriter.setColor(i, j, Color.BLACK);
                 }
                 else{
                     pixelWriter.setColor(i, j, Color.WHITE);
-                }
+                }*/
                 //int colorIndex = i/5 * imageWith/5 + j/5;
                 //pixelWriter.setColor(i, j, colorMap.getColor( colorIndex ));
             }               
@@ -79,10 +80,12 @@ public class AreaFiller {
             y = yNew;
             n++;
         }
-        if(n == repetitions + 1){
+        return n;
+        /**if(n == repetitions + 1){
             return 0;
         }
         else
             return n;
+        */
     }
 }
