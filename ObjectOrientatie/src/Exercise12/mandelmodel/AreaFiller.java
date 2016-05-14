@@ -33,13 +33,22 @@ public class AreaFiller {
                       double centerY, 
                       double scale,
                       double repetition ) {
+        
+        // Hard cap the repetition number at 1000, so users dont fry their computer
         repetition = Math.min(repetition, 1000);
+        
+        // Get the image dimensions from the canvas so the class can draw
         int imageWidth   = (int) canvas.getWidth();
         int imageHeight = (int) canvas.getHeight();
+        
+        // Make it so a bigger scale actually zooms in
         scale = imageWidth / scale;
+        
         final PixelWriter pixelWriter = canvas.getGraphicsContext2D().getPixelWriter();
         for (int i = 0; i < imageWidth; i++) {
             for (int j = 0; j < imageHeight; j++) {
+                // i/imageWidth is between 0 and 1.
+                // First make sure it's between -0.5 and 0.5, then scale it, then offset it
                 int n = getMandelgetal(((double) i/imageWidth - 0.5) * scale + centerX,
                                        ((double) j/imageHeight - 0.5) * scale + centerY, 
                                        repetition);
