@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -41,8 +42,10 @@ public class MandelFX extends Application {
         Group root = new Group(  );
         
         GridPane g = new GridPane();
+        g.setPadding(new Insets(6));
         
         g.add(canvas, 0, 0, 3, 1);
+        // Create a while buffer between the picture and the input
         g.add(new Label(" "), 0, 1);
         g.add(new Label("Center (x, y):   "), 0, 2);
         g.add(new Label("Scale:"), 0, 3);
@@ -62,6 +65,8 @@ public class MandelFX extends Application {
         
         root.getChildren().add(g);
         
+        // Pass the values from the TextFields to the controller
+        // Also pass the canvas so the controller can draw
         enterDataButton.setOnAction((ActionEvent e) -> {
             mandelController.dataEntered(canvas, new String[]{
                 centerXTextField.getText(),

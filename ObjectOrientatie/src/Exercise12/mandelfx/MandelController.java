@@ -17,17 +17,21 @@ public class MandelController {
     private final MandelFX parentFX;
     private final AreaFiller areaFiller;
     
+    double centerX;
+    double centerY;
+    double scale;
+    double repetitions;
+    
     public MandelController (MandelFX parent) {
         parentFX = parent;
         areaFiller = new AreaFiller(  );
-
     }
     
     public void dataEntered (Canvas canvas, String [] data) {
-        double centerX = Double.parseDouble(data[0]);
-        double centerY = Double.parseDouble(data[1]);
-        double scale = Double.parseDouble(data[2]);
-        double repetitions = Double.parseDouble(data[3]);
+        centerX = Double.parseDouble(data[0]);
+        centerY = Double.parseDouble(data[1]);
+        scale = Double.parseDouble(data[2]);
+        repetitions = Double.parseDouble(data[3]);
         areaFiller.fill( canvas, centerX, centerY, scale, repetitions );
     }
 }
