@@ -15,6 +15,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 
@@ -34,6 +35,8 @@ public class MandelFX extends Application {
     TextField repetitionsTextField;
     
     Rectangle rect;
+    double rectX;
+    double rectY;
     
     @Override
     public void start(Stage primaryStage) {
@@ -72,7 +75,6 @@ public class MandelFX extends Application {
         g.add(enterDataButton, 1, 5, 2, 1);
         
         root.getChildren().add(g);
-        root.getChildren().add(new Rectangle(0, 0, 10, 10));
         
         // Pass the values from the TextFields to the controller
         // Also pass the canvas so the controller can draw
@@ -87,6 +89,8 @@ public class MandelFX extends Application {
         
         canvas.setOnMousePressed (e -> {
             rect = mandelController.beginRect(e);
+            rectX = rect.getX();
+            rectY = rect.getY();
             root.getChildren().add(rect);
                 });
         canvas.setOnMouseReleased(e -> {
@@ -94,8 +98,7 @@ public class MandelFX extends Application {
             root.getChildren().remove(rect);
                 });
         canvas.setOnMouseDragged(e -> {
-            rect.setWidth(Math.abs(e.getX() - rect.getX()));
-            rect.setHeight(Math.abs(e.getY() - rect.getY()));
+            changeRect(e);
                 });
         
         // Fire the button to draw the fractal for the first time
@@ -110,6 +113,25 @@ public class MandelFX extends Application {
         centerYTextField.setText(textStringArray[1]);
         scaleTextField.setText(textStringArray[2]);
         repetitionsTextField.setText(textStringArray[3]);
+    }
+    
+    private void changeRect (MouseEvent e) {
+        if (e.getX() > rectX) {
+            rect.setX(rectX);
+            rect.setWidth (e.getX() - rect.getX());
+        }
+        else {
+            rect.setWidth(rect.getWidth() - e.getX() + rect.getX());
+            rect.setX(e.getX());
+        }
+        if (e.getY() > rectY) {
+            rect.setY(rectY);
+            rect.setHeight(e.getY() - rect.getY());
+        }
+        else {
+            rect.setHeight(rect.getHeight() - e.getY() + rect.getY());
+            rect.setY(e.getY());
+        }
     }
     
     public static void main(String[] args) {

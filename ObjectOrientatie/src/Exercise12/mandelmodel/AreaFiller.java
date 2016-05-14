@@ -6,10 +6,7 @@
 package Exercise12.mandelmodel;
 
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;
-import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
 
 /**
  * A skeleton class illustrating the use of a pixelWriter
