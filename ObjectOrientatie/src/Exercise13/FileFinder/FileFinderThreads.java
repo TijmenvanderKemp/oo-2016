@@ -7,12 +7,10 @@ package Exercise13.FileFinder;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author tijmen
+ * @author Tijmen van der Kemp s4446887 & Joep Veldhoven s4456556
  */
 public class FileFinderThreads implements Runnable {
     private final File rootDir;

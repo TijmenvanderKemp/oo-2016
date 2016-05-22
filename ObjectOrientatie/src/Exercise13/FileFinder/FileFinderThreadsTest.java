@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /**
  *
- * @author tijmen
+ * @author Tijmen van der Kemp s4446887 & Joep Veldhoven s4456556
  */
 public class FileFinderThreadsTest {
     
