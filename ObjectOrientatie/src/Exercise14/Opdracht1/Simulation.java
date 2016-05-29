@@ -45,6 +45,9 @@ public class Simulation {
     train = new Train(station);
   }
 
+  /**
+   * makes a step in the simulation
+   */
   public void step() {
     if (station.getNrOfPassengersWaiting() > 0) {
       taxis[nextTaxi].takePassengers();
@@ -64,6 +67,9 @@ public class Simulation {
     return hasEnded;
   }
 
+  /**
+   * shows all the statistics of the simulation
+   */
   public void showStatistics() {
     System.out.println("All persons have been transported");
     System.out.println("Total time of this simulation:" + calcTotalTime(taxis));
