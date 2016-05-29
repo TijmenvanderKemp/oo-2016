@@ -2,7 +2,7 @@
  *  Made by Joep Veldhoven and Tijmen van der Kemp for the Object Oriëntatie class of 2016.
  *  Do not copy or use without permission.
  */
-package opdracht14.taxirides;
+package Exercise14.Opdracht1;
 
 /**
  *
@@ -35,10 +35,12 @@ public class Simulation {
     taxis = new Taxi[NROFTAXIS];
     taxiThreads = new Thread[NROFTAXIS];
     for (int i = 0; i < NROFTAXIS; i++) {
-      taxis[i] = i < NROFSMALLTAXIS ? new Taxi(i + 1, CAPACITYSMALL, TIMESMALL, station) : new Taxi(i + 1,
-          CAPACITYLARGE, TIMELARGE, station);
-      taxiThreads[i] = new Thread(taxis[i]);
-      taxiThreads[i].start();
+        taxis[i] = 
+            i < NROFSMALLTAXIS ? 
+                new Taxi(i + 1, CAPACITYSMALL, TIMESMALL, station) : 
+                new Taxi(i + 1, CAPACITYLARGE, TIMELARGE, station);
+        taxiThreads[i] = new Thread(taxis[i]);
+        taxiThreads[i].start();
     }    
     train = new Train(station);
   }
@@ -53,9 +55,6 @@ public class Simulation {
       train.getOff();
     }
     else {
-      for(int i = 0; i < NROFTAXIS; i++){
-          taxis[i].setHasEnded(true);
-      }
       train.closeStation();
       hasEnded = true;        
     }

@@ -2,7 +2,7 @@
  *  Made by Joep Veldhoven and Tijmen van der Kemp for the Object Oriëntatie class of 2016.
  *  Do not copy or use without permission.
  */
-package opdracht14.taxirides;
+package Exercise14.Opdracht1;
 
 /**
  *
@@ -21,7 +21,6 @@ public class Taxi implements Runnable {
     private final Station station;
     private int totalNrOfPassengers = 0;
     private int nrOfRides = 0;
-    private boolean hasEnded;
   
     public Taxi(int nr, int maxNumberOfPassengers, int transportationTime, Station station) {
         this.taxiId = nr;
@@ -29,13 +28,12 @@ public class Taxi implements Runnable {
         this.transportationTime = transportationTime;
         this.station = station;
         System.out.println("New taxi " + nr + " created ");
-        hasEnded = false;
     }
 
     /**
      * Tries to take maxNrOfPassenegers from the station. If actual number is less then that number is taken
      */
-    public void takePassengers() {
+    public synchronized void takePassengers() {
         int passengersWaiting = station.getNrOfPassengersWaiting();        
         if ( passengersWaiting > 0 ) {
             int nrOfPassengers = Math.min(passengersWaiting, maxNrOfPassengers);
@@ -55,9 +53,7 @@ public class Taxi implements Runnable {
     }
     
     public void run(){
-        while(!hasEnded){
-            
-        }
+        
     }
     /**
      * Calculates the total time of this taxi by multiplying the number of rides by the transportation time
@@ -70,9 +66,5 @@ public class Taxi implements Runnable {
 
     public  int getTotalNrOfPassengers() {
         return totalNrOfPassengers;
-    }
-
-    public  void setHasEnded(boolean e){
-        hasEnded = e;
     }
 }
