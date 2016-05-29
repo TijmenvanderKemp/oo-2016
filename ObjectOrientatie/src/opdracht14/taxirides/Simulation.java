@@ -23,6 +23,7 @@ public class Simulation {
   public static final int NROFSMALLTAXIS = 2;
 
   private Taxi[] taxis;
+  private Thread[] taxiThreads;
   private Train train;
   private Station station;
 
@@ -32,10 +33,13 @@ public class Simulation {
   public Simulation() {
     station = new Station();
     taxis = new Taxi[NROFTAXIS];
+    taxiThreads = new Thread[NROFTAXIS];
     for (int i = 0; i < NROFTAXIS; i++) {
       taxis[i] = i < NROFSMALLTAXIS ? new Taxi(i + 1, CAPACITYSMALL, TIMESMALL, station) : new Taxi(i + 1,
           CAPACITYLARGE, TIMELARGE, station);
-    }
+      taxiThreads[i] = new Thread(taxis[i]);
+      taxiThreads[i].start();
+    }    
     train = new Train(station);
   }
 
@@ -49,8 +53,11 @@ public class Simulation {
       train.getOff();
     }
     else {
+      for(int i = 0; i < NROFTAXIS; i++){
+          taxis[i].setHasEnded(true);
+      }
       train.closeStation();
-      hasEnded = true;
+      hasEnded = true;        
     }
   }
 

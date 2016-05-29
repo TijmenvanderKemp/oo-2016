@@ -12,7 +12,7 @@ package opdracht14.taxirides;
 
 import java.util.concurrent.TimeUnit;
 
-public class Taxi {
+public class Taxi implements Runnable {
 
     private static final long SLEEPTIME = 100;
     private final int taxiId;
@@ -21,6 +21,7 @@ public class Taxi {
     private final Station station;
     private int totalNrOfPassengers = 0;
     private int nrOfRides = 0;
+    private boolean hasEnded;
   
     public Taxi(int nr, int maxNumberOfPassengers, int transportationTime, Station station) {
         this.taxiId = nr;
@@ -28,6 +29,7 @@ public class Taxi {
         this.transportationTime = transportationTime;
         this.station = station;
         System.out.println("New taxi " + nr + " created ");
+        hasEnded = false;
     }
 
     /**
@@ -51,17 +53,26 @@ public class Taxi {
             }
         }
     }
+    
+    public void run(){
+        while(!hasEnded){
+            
+        }
+    }
     /**
      * Calculates the total time of this taxi by multiplying the number of rides by the transportation time
      * @return total time
      */
-    public int calcTotalTime() {
+    public  int calcTotalTime() {
         return transportationTime * nrOfRides;
     }
     
 
-    public int getTotalNrOfPassengers() {
+    public  int getTotalNrOfPassengers() {
         return totalNrOfPassengers;
     }
 
+    public  void setHasEnded(boolean e){
+        hasEnded = e;
+    }
 }
