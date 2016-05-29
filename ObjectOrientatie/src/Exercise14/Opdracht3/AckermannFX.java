@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Exercise14.Opdracht2;
+package Exercise14.Opdracht3;
 
 import javafx.application.Application;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,12 +25,26 @@ import javafx.scene.layout.GridPane;
 public class AckermannFX extends Application {
 
     Label resultLabel;
-    AckermannModel solver = new AckermannModel (this) ;
+    AckermannTask solver = new AckermannTask (this) ;
     Thread t;
     
     
     @Override
     public void start(Stage primaryStage) {
+        
+        solver.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                setResultLabel(solver.getValue());
+            }
+        });
+        solver.setOnCancelled(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                setResultLabel("Calculation was interrupted by user");
+            }
+        });
+        
         primaryStage.setTitle("Ackermann");
         primaryStage.setScene( makeScene() );
         primaryStage.show();
@@ -62,6 +78,8 @@ public class AckermannFX extends Application {
         
         
         startButton.setOnAction((ActionEvent e) -> {
+            solver = new AckermannTask (this) ;
+            
             int m = 0, n = 0;
             try {
                 m = Integer.parseInt(mField.getText());
@@ -84,8 +102,7 @@ public class AckermannFX extends Application {
         });
         
         stopButton.setOnAction((ActionEvent e) -> {
-            setResultLabel("Calculation was stopped.");
-            t.interrupt();
+            solver.cancel();
             
         });
         
