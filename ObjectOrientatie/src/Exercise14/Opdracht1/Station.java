@@ -44,6 +44,9 @@ public class Station {
         return nrOfPassengersAtStation;
     }
     
+    /**
+     * closes the station, so no more trains will arrive
+     */
     public void close() {
         isClosed = true;
     }

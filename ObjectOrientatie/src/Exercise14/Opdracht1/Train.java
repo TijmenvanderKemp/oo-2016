@@ -39,6 +39,9 @@ public class Train {
     station.enterStation(nrOfPassengers);
   }
 
+  /**
+   * closes the station, so no more trains will arrive there.
+   */
   public void closeStation() {
     station.close();
   }
