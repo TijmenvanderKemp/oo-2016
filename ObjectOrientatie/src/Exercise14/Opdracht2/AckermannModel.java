@@ -36,6 +36,9 @@ public class AckermannModel implements Runnable {
             return -1;
         }
         else {
+            if (n == -1) {
+                return -1;
+            }
             if (m == 0) {
                 return (n + 1);
             }
@@ -52,12 +55,8 @@ public class AckermannModel implements Runnable {
         }
     }
     
-    public synchronized String getSolution () {
-        return solution;
-    }
-    
     @Override
-    public void run() {
+    public synchronized void run() {
         int solutionInt = recursiveSolve (m, n);
         if (solutionInt != -1) {
             solution = "" + solutionInt;
