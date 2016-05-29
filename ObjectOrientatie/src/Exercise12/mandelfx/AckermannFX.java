@@ -23,7 +23,7 @@ import javafx.scene.shape.Rectangle;
  *
  * @author Sjaak
  */
-public class MandelFX extends Application {
+public class AckermannFX extends Application {
 
     public static final int GRID_WIDTH = 800, GRID_HEIGHT = 800;    
     private Canvas canvas;

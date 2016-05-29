@@ -18,7 +18,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class MandelController {
     
-    private final MandelFX parentFX;
+    private final AckermannFX parentFX;
     private final AreaFiller areaFiller;
     
     Canvas canvas;
@@ -31,7 +31,7 @@ public class MandelController {
     
     double [] rect;
     
-    public MandelController (MandelFX parent) {
+    public MandelController (AckermannFX parent) {
         parentFX = parent;
         areaFiller = new AreaFiller(  );
         rect = new double[4];
