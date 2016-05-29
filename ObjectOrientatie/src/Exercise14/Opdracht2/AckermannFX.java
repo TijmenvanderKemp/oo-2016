@@ -41,7 +41,6 @@ public class AckermannFX extends Application {
         g.setPadding(new Insets(6));
         
         g.add(new Label("Computing Ackermann"), 0, 0, 2, 1);
-        // Create a while buffer between the picture and the input
         g.add(new Label("m"), 0, 1);
         g.add(new Label("n"), 0, 2);
         g.add(new Label("result"), 0, 3);
@@ -62,6 +61,7 @@ public class AckermannFX extends Application {
         
         
         startButton.setOnAction((ActionEvent e) -> {
+            // Parse the numbers from the m and n fields
             int m = 0, n = 0;
             try {
                 m = Integer.parseInt(mField.getText());
@@ -76,6 +76,7 @@ public class AckermannFX extends Application {
                 nField.setText("Not an integer!");
             }
             solver.setInputs(m, n);
+            
             t = new Thread(solver);
             t.setUncaughtExceptionHandler((Thread thread, Throwable exception) ->
                     System.out.println("The computation crashed! Did you run out of memory?"));
@@ -84,9 +85,7 @@ public class AckermannFX extends Application {
         });
         
         stopButton.setOnAction((ActionEvent e) -> {
-            setResultLabel("Calculation was stopped.");
             t.interrupt();
-            
         });
         
         Scene scene = new Scene(root);

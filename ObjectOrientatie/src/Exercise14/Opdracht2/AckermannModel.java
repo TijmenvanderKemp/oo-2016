@@ -36,6 +36,8 @@ public class AckermannModel implements Runnable {
             return -1;
         }
         else {
+            // n is -1 when the statement in line 51 is called.
+            // we want to make sure it immediately returns.
             if (n == -1) {
                 return -1;
             }

@@ -32,6 +32,7 @@ public class AckermannFX extends Application {
     @Override
     public void start(Stage primaryStage) {
         
+        // Set the handlers for success and cancels
         solver.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent event) {
@@ -57,7 +58,6 @@ public class AckermannFX extends Application {
         g.setPadding(new Insets(6));
         
         g.add(new Label("Computing Ackermann"), 0, 0, 2, 1);
-        // Create a while buffer between the picture and the input
         g.add(new Label("m"), 0, 1);
         g.add(new Label("n"), 0, 2);
         g.add(new Label("result"), 0, 3);
@@ -78,6 +78,8 @@ public class AckermannFX extends Application {
         
         
         startButton.setOnAction((ActionEvent e) -> {
+            // We have to create a new one because the old task lingered.
+            // maybe not the prettiest way but it hard resets the previous Task
             solver = new AckermannTask (this) ;
             
             int m = 0, n = 0;
