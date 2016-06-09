@@ -1,0 +1,2 @@
+a) Als twee tegenoverliggende autos allebei tegelijk naar links willen kunnen ze allebei de eerste twee zones reserveren maar de laatste zone is altijd door de ander gereserveerd. Dan zijn dus alle zones gereserveerd zonder dat er een auto doorrijdt.
+b)Als elke auto zone reserveert vanaf laag naar hoog zoals ze genummerd zijn kan er geen deadlock optreden.
