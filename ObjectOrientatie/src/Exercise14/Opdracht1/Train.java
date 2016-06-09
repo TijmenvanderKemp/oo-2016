@@ -4,13 +4,17 @@
  */
 package Exercise14.Opdracht1;
 
+import static Exercise14.Opdracht1.Simulation.MAX_TRAVELLERS;
+import static Exercise14.Opdracht1.Simulation.MIN_TRAVELLERS;
+import static Exercise14.Opdracht1.Simulation.TRAIN_TRIPS;
+
 /**
  *
  * @author Joep
  */
 
 
-public class Train {
+public class Train implements Runnable{
   private int nrOfPassengers;
   private final Station station;
   private int nrOfTrips = 0;
@@ -49,5 +53,15 @@ public class Train {
   public int getNrOfTrips() {
     return nrOfTrips;
   }
+
+    @Override
+    public void run() {
+        if (nrOfTrips < TRAIN_TRIPS && !(station.getNrOfPassengersWaiting() > 0)) {
+            getIn(Util.getRandomNumber(MIN_TRAVELLERS, MAX_TRAVELLERS));
+            getOff();
+        }
+        else
+            closeStation();
+    }
 
 }
