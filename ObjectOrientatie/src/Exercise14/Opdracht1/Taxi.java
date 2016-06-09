@@ -43,11 +43,11 @@ public class Taxi implements Runnable {
             totalNrOfPassengers += nrOfPassengers;
             nrOfRides++;
             System.out.println("Taxi " + taxiId + " takes " + nrOfPassengers + " passengers");
-            try {
+            /*try {
                 TimeUnit.MILLISECONDS.sleep(3 * SLEEPTIME); // Taxi is delivering passengers
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
         } else {
             System.out.println("Taxi " + taxiId + " takes no passengers");
             try {
