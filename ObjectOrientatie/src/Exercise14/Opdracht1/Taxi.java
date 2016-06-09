@@ -10,6 +10,7 @@ package Exercise14.Opdracht1;
  */
 
 
+import static Exercise14.Opdracht1.Simulation.NROFTAXIS;
 import java.util.concurrent.TimeUnit;
 
 public class Taxi implements Runnable {
@@ -53,7 +54,9 @@ public class Taxi implements Runnable {
     }
     
     public void run(){
-        
+        if (station.getNrOfPassengersWaiting() > 0) {
+            takePassengers();
+        }
     }
     /**
      * Calculates the total time of this taxi by multiplying the number of rides by the transportation time
