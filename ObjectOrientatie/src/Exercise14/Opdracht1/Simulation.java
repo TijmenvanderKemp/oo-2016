@@ -56,6 +56,13 @@ public class Simulation {
             taxiThreads[i].start();
         }
         new Thread(train).start();
+        for (Thread t : taxiThreads) {
+            try {
+                t.join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Simulation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     public boolean ended() {

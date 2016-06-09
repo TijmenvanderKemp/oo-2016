@@ -33,11 +33,13 @@ public class Taxi implements Runnable {
     /**
      * Tries to take maxNrOfPassenegers from the station. If actual number is less then that number is taken
      */
-    public synchronized void takePassengers() {
+    public void takePassengers() {
         int passengersWaiting = station.getNrOfPassengersWaiting();
         if (passengersWaiting > 0) {
             int nrOfPassengers = Math.min(passengersWaiting, maxNrOfPassengers);
-            station.leaveStation(nrOfPassengers);
+            synchronized(this){
+                station.leaveStation(nrOfPassengers);
+            }
             totalNrOfPassengers += nrOfPassengers;
             nrOfRides++;
             System.out.println("Taxi " + taxiId + " takes " + nrOfPassengers + " passengers");
@@ -57,12 +59,14 @@ public class Taxi implements Runnable {
     }
     
     @Override
-    public void run(){
+    public  void run(){            
         while (!station.isClosed() || station.getNrOfPassengersWaiting() > 0) {
+            //System.out.println(station.getNrOfPassengersWaiting());
             if (station.getNrOfPassengersWaiting() > 0) {
                 takePassengers();
             }
         }
+        //System.out.println("Deleting taxi");
     }
 
     /**
