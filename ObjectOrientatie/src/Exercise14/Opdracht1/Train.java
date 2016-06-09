@@ -60,7 +60,6 @@ public class Train implements Runnable{
             }
         }
         closeStation();
-        System.out.println("End of train thread");
     }
 
 }

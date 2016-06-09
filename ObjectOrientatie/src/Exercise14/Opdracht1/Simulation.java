@@ -4,6 +4,9 @@
  */
 package Exercise14.Opdracht1;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Joep
@@ -44,7 +47,14 @@ public class Simulation {
         
         train = new Train(station);
         new Thread(train).start();
-
+        
+        for (Thread t : taxiThreads) {
+            try {
+                t.join();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Simulation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     public boolean ended() {
