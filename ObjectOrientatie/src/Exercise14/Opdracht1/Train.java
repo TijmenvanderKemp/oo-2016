@@ -4,10 +4,6 @@
  */
 package Exercise14.Opdracht1;
 
-import static Exercise14.Opdracht1.Simulation.MAX_TRAVELLERS;
-import static Exercise14.Opdracht1.Simulation.MIN_TRAVELLERS;
-import static Exercise14.Opdracht1.Simulation.TRAIN_TRIPS;
-
 /**
  *
  * @author Joep
@@ -15,53 +11,55 @@ import static Exercise14.Opdracht1.Simulation.TRAIN_TRIPS;
 
 
 public class Train implements Runnable{
-  private int nrOfPassengers;
-  private final Station station;
-  private int nrOfTrips = 0;
 
-  public Train(Station station) {
-    this.station = station;
-    this.nrOfPassengers = 0;
-  }
+    public static final int TRAIN_TRIPS = 10;
+    public static final int MIN_TRAVELLERS = 60;
+    public static final int MAX_TRAVELLERS = 90;
 
-  /**
-   * Populate this train with number nrOfPassengers
-   *
-   * @param number
-   *          the number of passenegers of this train
-   */
-  public void getIn(int number) {
-    nrOfPassengers = number;
-  }
+    private int nrOfPassengers;
+    private final Station station;
+    private int nrOfTrips = 0;
 
-  /**
-   * empties this train and augment the number of Passengers at the station with
-   * this nrOfPassenegers
-   */
-  public void getOff() {
-    nrOfTrips += 1;
-    station.enterStation(nrOfPassengers);
-  }
+    public Train(Station station) {
+        this.station = station;
+        this.nrOfPassengers = 0;
+    }
 
-  /**
-   * closes the station, so no more trains will arrive there.
-   */
-  public void closeStation() {
+    /**
+    * Populate this train with number nrOfPassengers
+    *
+    * @param number
+    *          the number of passenegers of this train
+    */
+    public void getIn(int number) {
+        nrOfPassengers = number;
+    }
+
+    /**
+    * empties this train and augment the number of Passengers at the station with
+    * this nrOfPassenegers
+    */
+    public void getOff() {
+        nrOfTrips += 1;
+        station.enterStation(nrOfPassengers);
+    }
+
+    /**
+    * closes the station, so no more trains will arrive there.
+    */
+public void closeStation() {
     station.close();
-  }
-
-  public int getNrOfTrips() {
-    return nrOfTrips;
   }
 
     @Override
     public void run() {
-        if (nrOfTrips < TRAIN_TRIPS && !(station.getNrOfPassengersWaiting() > 0)) {
+        if (nrOfTrips < TRAIN_TRIPS && station.getNrOfPassengersWaiting() == 0) {
             getIn(Util.getRandomNumber(MIN_TRAVELLERS, MAX_TRAVELLERS));
             getOff();
         }
-        else
+        if (nrOfTrips == TRAIN_TRIPS) {
             closeStation();
+        }
     }
 
 }

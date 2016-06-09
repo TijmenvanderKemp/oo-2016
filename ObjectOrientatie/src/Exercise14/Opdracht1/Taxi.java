@@ -10,7 +10,6 @@ package Exercise14.Opdracht1;
  */
 
 
-import static Exercise14.Opdracht1.Simulation.NROFTAXIS;
 import java.util.concurrent.TimeUnit;
 
 public class Taxi implements Runnable {
@@ -35,29 +34,29 @@ public class Taxi implements Runnable {
      * Tries to take maxNrOfPassenegers from the station. If actual number is less then that number is taken
      */
     public synchronized void takePassengers() {
-        int passengersWaiting = station.getNrOfPassengersWaiting();        
-        if ( passengersWaiting > 0 ) {
+        int passengersWaiting = station.getNrOfPassengersWaiting();
+        if (passengersWaiting > 0) {
             int nrOfPassengers = Math.min(passengersWaiting, maxNrOfPassengers);
             station.leaveStation(nrOfPassengers);
             totalNrOfPassengers += nrOfPassengers;
             nrOfRides++;
             System.out.println("Taxi " + taxiId + " takes " + nrOfPassengers + " passengers");
         } else {
-            System.out.println("Taxi " + taxiId + " takes no passengers");  
+            System.out.println("Taxi " + taxiId + " takes no passengers");
             try {
-              TimeUnit.MILLISECONDS.sleep(SLEEPTIME); // if no passengers at the station wait some time
-            }
-            catch (InterruptedException e) {
-              e.printStackTrace();
+                TimeUnit.MILLISECONDS.sleep(SLEEPTIME); // if no passengers at the station wait some time
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
     
     public void run(){
-        if (station.getNrOfPassengersWaiting() > 0) {
-            takePassengers();
+        while (!station.isClosed() || station.getNrOfPassengersWaiting() > 0) {
+            if (station.getNrOfPassengersWaiting() > 0) takePassengers();
         }
     }
+
     /**
      * Calculates the total time of this taxi by multiplying the number of rides by the transportation time
      * @return total time
