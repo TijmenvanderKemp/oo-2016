@@ -5,7 +5,6 @@
  */
 package Exercise14.Opdracht3;
 
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 
 /**
@@ -61,11 +60,17 @@ public class AckermannTask extends Task<String> {
         if (solutionInt != -1) {
             solution = "" + solutionInt;
         }
-        Platform.runLater(() -> {afx.setResultLabel(solution);});
-        
         return solution;
     }
     
+    @Override protected void succeeded() {
+        super.succeeded();
+        afx.setResultLabel(solution);
+    }
     
+    @Override protected void cancelled() {
+        super.cancelled();
+        afx.setResultLabel("Calculation unsuccessful.");
+    }
     
 }

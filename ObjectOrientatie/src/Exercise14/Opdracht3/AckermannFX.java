@@ -32,19 +32,7 @@ public class AckermannFX extends Application {
     @Override
     public void start(Stage primaryStage) {
         
-        // Set the handlers for success and cancels
-        solver.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                setResultLabel(solver.getValue());
-            }
-        });
-        solver.setOnCancelled(new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                setResultLabel("Calculation was interrupted by user");
-            }
-        });
+        
         
         primaryStage.setTitle("Ackermann");
         primaryStage.setScene( makeScene() );
