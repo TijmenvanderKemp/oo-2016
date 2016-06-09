@@ -31,9 +31,6 @@ public class AckermannFX extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        
-        
-        
         primaryStage.setTitle("Ackermann");
         primaryStage.setScene( makeScene() );
         primaryStage.show();
