@@ -30,9 +30,7 @@ public class Simulation {
     public Simulation() {
         station = new Station();
 
-        train = new Train(station);
-        new Thread(train).start();
-
+        
         taxis = new Taxi[NROFTAXIS];
         taxiThreads = new Thread[NROFTAXIS];
         for (int i = 0; i < NROFTAXIS; i++) {
@@ -43,6 +41,10 @@ public class Simulation {
             taxiThreads[i] = new Thread(taxis[i]);
             taxiThreads[i].start();
         }
+        
+        train = new Train(station);
+        new Thread(train).start();
+
     }
 
     public boolean ended() {
