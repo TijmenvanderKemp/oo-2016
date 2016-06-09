@@ -42,19 +42,20 @@ public class Simulation {
                     new Taxi(i + 1, CAPACITYSMALL, TIMESMALL, station) :
                     new Taxi(i + 1, CAPACITYLARGE, TIMELARGE, station);
             taxiThreads[i] = new Thread(taxis[i]);
-            taxiThreads[i].start();
+            
         }
         
         train = new Train(station);
-        new Thread(train).start();
         
-        for (Thread t : taxiThreads) {
-            try {
-                t.join();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Simulation.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        
+        
+    }
+    
+    public void start(){
+        for (int i = 0; i < NROFTAXIS; i++) {
+            taxiThreads[i].start();
         }
+        new Thread(train).start();
     }
 
     public boolean ended() {
