@@ -47,19 +47,20 @@ public class Train implements Runnable{
     /**
     * closes the station, so no more trains will arrive there.
     */
-public void closeStation() {
-    station.close();
-  }
+    public void closeStation() {
+        station.close();
+    }
 
     @Override
     public void run() {
-        if (nrOfTrips < TRAIN_TRIPS && station.getNrOfPassengersWaiting() == 0) {
-            getIn(Util.getRandomNumber(MIN_TRAVELLERS, MAX_TRAVELLERS));
-            getOff();
+        while (nrOfTrips < TRAIN_TRIPS) {
+            if (station.getNrOfPassengersWaiting() == 0) {
+                getIn(Util.getRandomNumber(MIN_TRAVELLERS, MAX_TRAVELLERS));
+                getOff();
+            }
         }
-        if (nrOfTrips == TRAIN_TRIPS) {
-            closeStation();
-        }
+        closeStation();
+        System.out.println("End of train thread");
     }
 
 }

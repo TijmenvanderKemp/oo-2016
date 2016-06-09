@@ -63,6 +63,7 @@ public class Taxi implements Runnable {
                 takePassengers();
             }
         }
+        System.out.println("End of Taxi thread");
     }
 
     /**

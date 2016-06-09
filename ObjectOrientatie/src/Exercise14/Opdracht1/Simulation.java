@@ -20,12 +20,12 @@ public class Simulation {
     public static final int NROFTAXIS = 4;
     public static final int NROFSMALLTAXIS = 2;
 
-    private Taxi[] taxis;
-    private Thread[] taxiThreads;
-    private Train train;
-    private Station station;
+    private final Taxi[] taxis;
+    private final Thread[] taxiThreads;
+    private final Train train;
+    private final Station station;
 
-    private boolean hasEnded = false;
+    private final boolean hasEnded = false;
 
     public Simulation() {
         station = new Station();
@@ -68,11 +68,11 @@ public class Simulation {
     * @return total time
     */
     private static int calcTotalTime(Taxi[] taxis) {
-    int time = 0;
-    for (Taxi taxi : taxis) {
-      time = time + taxi.calcTotalTime();
-    }
-    return time;
+        int time = 0;
+        for (Taxi taxi : taxis) {
+            time = time + taxi.calcTotalTime();
+        }
+        return time;
     }
 
     /**
@@ -83,11 +83,11 @@ public class Simulation {
     * @return total number of passengers
     */
     private static int calcTotalNrOfPassengers(Taxi[] taxis) {
-    int total = 0;
-    for (Taxi taxi : taxis) {
-      total += taxi.getTotalNrOfPassengers();
-    }
-    return total;
+        int total = 0;
+        for (Taxi taxi : taxis) {
+            total += taxi.getTotalNrOfPassengers();
+        }
+        return total;
   }
 
 }
