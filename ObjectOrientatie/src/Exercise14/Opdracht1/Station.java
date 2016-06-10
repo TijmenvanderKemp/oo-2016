@@ -6,7 +6,8 @@ package Exercise14.Opdracht1;
 
 /**
  *
- * @author Joep
+ * @author Joep Veldhoven (s4456556)
+ * @author Tijmen van der Kemp (s4446887)
  */
 
 
@@ -16,7 +17,7 @@ package Exercise14.Opdracht1;
  */
 public class Station {
 
-    private int nrOfPassengersAtStation;
+    private volatile int nrOfPassengersAtStation;
     private int totalNrOfPassengers;
     private boolean isClosed;
     
@@ -33,14 +34,21 @@ public class Station {
     }
     /**
      * Ask for nrOfPassengers Passengers to leave the station
-     *
+     * if there aren't any more passengers return 0 so the taxi doesn't take people that aren't there
      * @param nrOfPassengers
+     * @return the number of passengers to actually leave
      */
-    public void leaveStation( int nrOfPassengers ) {
-        nrOfPassengersAtStation -= nrOfPassengers;
+    public synchronized int leaveStation( int nrOfPassengers ) {
+        if (getNrOfPassengersWaiting() >= nrOfPassengers) {
+            nrOfPassengersAtStation -= nrOfPassengers;
+            return nrOfPassengers;
+        }
+        else {
+            return 0;
+        }
     }
 
-    public int getNrOfPassengersWaiting() {
+    public synchronized int getNrOfPassengersWaiting() {
         return nrOfPassengersAtStation;
     }
     

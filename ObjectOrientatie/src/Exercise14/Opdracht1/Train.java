@@ -5,8 +5,9 @@
 package Exercise14.Opdracht1;
 
 /**
- *
- * @author Joep
+ * 
+ * @author Joep Veldhoven (s4456556)
+ * @author Tijmen van der Kemp (s4446887)
  */
 
 
@@ -52,17 +53,14 @@ public class Train implements Runnable{
     }
 
     @Override
-    public  void  run() {
+    public void run() {
         while (nrOfTrips < TRAIN_TRIPS) {
-            //System.out.println(nrOfTrips);
-//            System.out.println(station.getNrOfPassengersWaiting());
             if (station.getNrOfPassengersWaiting() == 0) {
                 getIn(Util.getRandomNumber(MIN_TRAVELLERS, MAX_TRAVELLERS));
                 getOff();
             }
         }
         closeStation();
-        //System.out.println("Deleting train");
     }
 
 }

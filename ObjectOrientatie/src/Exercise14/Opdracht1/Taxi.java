@@ -6,11 +6,14 @@ package Exercise14.Opdracht1;
 
 /**
  *
- * @author Joep
+ * @author Joep Veldhoven (s4456556)
+ * @author Tijmen van der Kemp (s4446887)
  */
 
 
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Taxi implements Runnable {
 
@@ -37,48 +40,42 @@ public class Taxi implements Runnable {
         int passengersWaiting = station.getNrOfPassengersWaiting();
         if (passengersWaiting > 0) {
             int nrOfPassengers = Math.min(passengersWaiting, maxNrOfPassengers);
-            synchronized(this){
-                station.leaveStation(nrOfPassengers);
-            }
+            System.out.println("Taxi " + taxiId + " takes " + nrOfPassengers + " passengers");
+            nrOfPassengers = station.leaveStation(nrOfPassengers);
             totalNrOfPassengers += nrOfPassengers;
             nrOfRides++;
-            System.out.println("Taxi " + taxiId + " takes " + nrOfPassengers + " passengers");
-            /*try {
-                TimeUnit.MILLISECONDS.sleep(3 * SLEEPTIME); // Taxi is delivering passengers
+            try {
+                TimeUnit.MILLISECONDS.sleep(4); // This makes it so the same taxi doesn't get all the passengers
             } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
+                Logger.getLogger(Taxi.class.getName()).log(Level.SEVERE, null, e);
+            }
         } else {
             System.out.println("Taxi " + taxiId + " takes no passengers");
             try {
                 TimeUnit.MILLISECONDS.sleep(SLEEPTIME); // if no passengers at the station wait some time
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Logger.getLogger(Taxi.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }
     
     @Override
-    public  void run(){            
+    public void run(){            
         while (!station.isClosed() || station.getNrOfPassengersWaiting() > 0) {
-            //System.out.println(station.getNrOfPassengersWaiting());
-            if (station.getNrOfPassengersWaiting() > 0) {
-                takePassengers();
-            }
+            takePassengers();
         }
-        //System.out.println("Deleting taxi");
     }
 
     /**
      * Calculates the total time of this taxi by multiplying the number of rides by the transportation time
      * @return total time
      */
-    public  int calcTotalTime() {
+    public int calcTotalTime() {
         return transportationTime * nrOfRides;
     }
     
 
-    public  int getTotalNrOfPassengers() {
+    public int getTotalNrOfPassengers() {
         return totalNrOfPassengers;
     }
 }

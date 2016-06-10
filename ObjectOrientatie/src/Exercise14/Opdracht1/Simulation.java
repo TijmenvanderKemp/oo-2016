@@ -9,7 +9,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Joep
+ * @author Joep Veldhoven (s4456556)
+ * @author Tijmen van der Kemp (s4446887)
  */
 
 
@@ -56,6 +57,8 @@ public class Simulation {
             taxiThreads[i].start();
         }
         new Thread(train).start();
+        
+        // Wait for all the threads to be destroyed
         for (Thread t : taxiThreads) {
             try {
                 t.join();
@@ -66,17 +69,17 @@ public class Simulation {
     }
 
     public boolean ended() {
-    return hasEnded;
+        return hasEnded;
     }
 
     /**
     * shows all the statistics of the simulation
     */
     public void showStatistics() {
-    System.out.println("All persons have been transported");
-    System.out.println("Total time of this simulation:" + calcTotalTime(taxis));
-    System.out.println("Total nr of train travellers:" + station.getTotalNrOfPassengers());
-    System.out.println("Total nr of persons transported in this simulation:" + calcTotalNrOfPassengers(taxis));
+        System.out.println("All persons have been transported");
+        System.out.println("Total time of this simulation:" + calcTotalTime(taxis));
+        System.out.println("Total nr of train travellers:" + station.getTotalNrOfPassengers());
+        System.out.println("Total nr of persons transported in this simulation:" + calcTotalNrOfPassengers(taxis));
     }
 
     /**

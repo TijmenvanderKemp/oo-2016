@@ -6,12 +6,10 @@
 package Exercise14.Opdracht3;
 
 import javafx.application.Application;
-import javafx.concurrent.WorkerStateEvent;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,6 +19,9 @@ import javafx.scene.layout.GridPane;
 /**
  *
  * @author Sjaak
+ * @author Joep Veldhoven (s4456556)
+ * @author Tijmen van der Kemp (s4446887)
+ * 
  */
 public class AckermannFX extends Application {
 
